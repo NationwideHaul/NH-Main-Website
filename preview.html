@@ -41,12 +41,13 @@
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
     /* TOP BAR */
-    .top-bar { background: var(--black); color: var(--white); padding: 10px 0; font-size: 13px; }
+    .top-bar { background: linear-gradient(90deg, #111 0%, #1a1a1a 35%, var(--red) 100%); color: var(--white); padding: 10px 0; font-size: 13px; }
     .top-bar__inner { display: flex; align-items: center; justify-content: center; gap: 24px; }
     .top-bar__left { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: 0.02em; }
     .top-bar__left a.top-bar__phone { color: #fff; text-decoration: none; font-weight: 800; font-size: 14px; }
     .top-bar__left a.top-bar__phone:hover { text-decoration: underline; }
-    .top-bar__chat { background: var(--red); color: var(--white); padding: 5px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-decoration: none; animation: pulse-btn 2s infinite; }
+    .top-bar__chat { background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.25); color: var(--white); padding: 5px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+    .top-bar__chat:hover { background: rgba(255,255,255,0.25); color: #fff; }
     @keyframes pulse-btn { 0%,100%{ box-shadow:0 0 0 0 rgba(192,24,28,0.5); } 50%{ box-shadow:0 0 0 6px rgba(192,24,28,0); } }
     .top-bar__social { display: flex; align-items: center; gap: 16px; }
     .top-bar__social a { color: var(--white); opacity: 0.85; transition: opacity 0.2s, transform 0.2s; }
@@ -56,7 +57,7 @@
     .site-header { background: var(--white); padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 8px rgba(0,0,0,0.07); }
     .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
     .site-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .site-logo img { height: 72px; width: auto; }
+    .site-logo img { height: 96px; width: auto; }
     .site-nav { display: flex; align-items: center; gap: 28px; }
     .site-nav a { font-size: 14px; font-weight: 500; color: var(--dark); transition: color 0.2s; white-space: nowrap; }
     .site-nav a:hover { color: var(--red); }
@@ -163,7 +164,7 @@
     .perks-grid .nav-dropdown__item:last-child { grid-column: 1 / -1; }
 
     /* ── PERKS PAGES ──────────────────────────────────── */
-    .perks-hero { background: linear-gradient(135deg, #0f1923 0%, #1a1a2e 55%, #C0181C 100%); padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
+    .perks-hero { background: linear-gradient(135deg, #111111 0%, #1a1a1a 55%, #C0181C 100%); padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
     .perks-hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: rgba(192,24,28,0.12); border-radius: 50%; pointer-events: none; }
     .perks-hero__badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(192,24,28,0.25); border: 1px solid rgba(192,24,28,0.5); color: #ff9999; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; }
     .perks-hero h1 { font-size: clamp(26px,3.5vw,46px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
@@ -193,11 +194,11 @@
     .perks-tier .tier-sub { font-size: 13px; color: var(--gray-text); margin-bottom: 18px; }
     .perks-tier ul { list-style: none; text-align: left; font-size: 13px; color: var(--dark); line-height: 1.8; }
     .perks-tier ul li::before { content: '✓ '; color: var(--red); font-weight: 700; }
-    .perks-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 24px; background: #0f1923; border-radius: 14px; padding: 36px 32px; margin-top: 48px; }
+    .perks-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 24px; background: #111111; border-radius: 14px; padding: 36px 32px; margin-top: 48px; }
     .perks-stat { text-align: center; color: #fff; }
     .perks-stat .stat-val { font-size: 30px; font-weight: 800; color: #ff6b6b; line-height: 1; margin-bottom: 6px; }
     .perks-stat .stat-lbl { font-size: 12px; color: rgba(255,255,255,0.65); }
-    .perks-cta-bar { background: linear-gradient(135deg, #0f1923, #C0181C); padding: 64px 0; text-align: center; color: #fff; }
+    .perks-cta-bar { background: linear-gradient(135deg, #111111, #C0181C); padding: 64px 0; text-align: center; color: #fff; }
     .perks-cta-bar h2 { font-size: clamp(22px,3vw,36px); font-weight: 800; margin-bottom: 10px; }
     .perks-cta-bar p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .perks-btn-white { display: inline-block; background: #fff; color: var(--red); font-weight: 700; font-size: 15px; padding: 13px 30px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
@@ -241,10 +242,32 @@
     .reveal-right { opacity:0; transform:translateX(36px);  transition:opacity 0.65s ease,transform 0.65s ease; }
     .reveal.revealed,.reveal-left.revealed,.reveal-right.revealed { opacity:1; transform:none; }
 
+    /* Scroll progress bar */
+    .scroll-progress { position:fixed; top:0; left:0; height:3px; background:var(--red); width:0%; z-index:9999; pointer-events:none; }
+
+    /* Staggered card entrance — visible by default, animate on reveal */
+    @keyframes staggerFadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:none; } }
+    .stagger-item.revealed { animation:staggerFadeUp 0.55s ease both; }
+
+    /* Heading reveal — visible by default, animate on reveal */
+    @keyframes headingReveal { from { clip-path:inset(100% 0 0 0); transform:translateY(20px); } to { clip-path:inset(0 0 0 0); transform:translateY(0); } }
+    .heading-reveal.revealed { animation:headingReveal 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+
+    /* Stat completion glow */
+    @keyframes statLand { 0%{transform:scale(1);text-shadow:none;} 40%{transform:scale(1.08);text-shadow:0 0 20px rgba(192,24,28,0.5), 0 0 40px rgba(192,24,28,0.2);} 100%{transform:scale(1);text-shadow:none;} }
+    .stat-item__number.stat-landed { animation:statLand 0.6s ease-out; }
+
+    /* Gallery staggered entrance — visible by default, animate on reveal */
+    @keyframes galleryPop { from { opacity:0; transform:scale(0.88); } to { opacity:1; transform:scale(1); } }
+    .gallery-stagger.revealed { animation:galleryPop 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+    /* 3D tilt on inventory cards */
+    .inventory-grid { perspective:1000px; }
+
     /* Hero */
     .ab-hero { position:relative; background:#0d0d0d; min-height:580px; display:flex; align-items:center; overflow:hidden; }
     .ab-hero__bg { position:absolute; inset:0; }
-    .ab-hero__bg img { width:100%; height:100%; object-fit:cover; opacity:0.55; }
+    .ab-hero__bg img { width:100%; height:100%; object-fit:cover; object-position:center 35%; opacity:0.55; }
     .ab-hero__overlay { position:absolute; inset:0; background:linear-gradient(105deg,rgba(0,0,0,0.7) 40%,rgba(192,24,28,0.1) 100%); }
     .ab-hero__content { position:relative; z-index:2; padding:90px 0 80px; }
     .ab-hero__eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--red); margin-bottom:18px; animation:fadeIn 0.8s ease both; }
@@ -396,7 +419,7 @@
        ============================================ */
 
     /* Hero */
-    .lr-hero { background: linear-gradient(135deg, #0f1923 0%, #1c2d3f 55%, #C0181C 100%); padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
+    .lr-hero { background: linear-gradient(135deg, #111111 0%, #1a1a1a 55%, #C0181C 100%); padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
     .lr-hero::before { content: ''; position: absolute; top: -60px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(192,24,28,0.15) 0%, transparent 70%); pointer-events: none; }
     .lr-hero__top { text-align: center; margin-bottom: 52px; }
     .lr-hero__badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(192,24,28,0.25); border: 1px solid rgba(192,24,28,0.5); color: #ff9999; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
@@ -407,7 +430,7 @@
     .lr-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .lr-card { border-radius: 16px; padding: 36px 32px; cursor: default; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
     .lr-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.35); }
-    .lr-card--lease { background: linear-gradient(135deg, #0f1923, #1c2d3f); border: 1.5px solid rgba(192,24,28,0.45); }
+    .lr-card--lease { background: linear-gradient(135deg, #111111, #1a1a1a); border: 1.5px solid rgba(192,24,28,0.45); }
     .lr-card--rent  { background: linear-gradient(135deg, #1a1218, #2d1a1c); border: 1.5px solid rgba(192,24,28,0.3); }
     .lr-card__icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
     .lr-card--lease .lr-card__icon { background: rgba(192,24,28,0.2); }
@@ -463,7 +486,7 @@
     .lr-compare-table { width: 100%; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #fff; border-collapse: collapse; }
     .lr-compare-table thead th { padding: 20px 24px; font-size: 14px; font-weight: 800; text-align: left; }
     .lr-compare-table thead th:first-child { background: var(--dark); color: #fff; width: 32%; }
-    .lr-compare-table thead th:nth-child(2) { background: #0f1923; color: #ff9999; text-align: center; }
+    .lr-compare-table thead th:nth-child(2) { background: #111111; color: #ff9999; text-align: center; }
     .lr-compare-table thead th:nth-child(3) { background: #1c1215; color: #ffb3b3; text-align: center; }
     .lr-compare-table tbody tr { border-bottom: 1px solid #f0f0f0; }
     .lr-compare-table tbody tr:last-child { border-bottom: none; }
@@ -501,7 +524,7 @@
     .lr-faq__sidebar p { font-size: 13px; color: var(--gray-text); margin-bottom: 16px; }
 
     /* Quote form */
-    .lr-quote { padding: 80px 0; background: linear-gradient(135deg, #0f1923, #1c2d3f, #C0181C); color: #fff; }
+    .lr-quote { padding: 80px 0; background: linear-gradient(135deg, #111111, #1a1a1a, #C0181C); color: #fff; }
     .lr-quote__inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: center; }
     .lr-quote h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
     .lr-quote p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 24px; }
@@ -517,7 +540,7 @@
     .lr-form__group label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; text-transform: uppercase; }
     .lr-form__group input, .lr-form__group select, .lr-form__group textarea { width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; color: #fff; outline: none; transition: border-color 0.2s; }
     .lr-form__group input::placeholder, .lr-form__group textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .lr-form__group select option { background: #0f1923; color: #fff; }
+    .lr-form__group select option { background: #111111; color: #fff; }
     .lr-form__group input:focus, .lr-form__group select:focus, .lr-form__group textarea:focus { border-color: #ff6b6b; }
     .lr-form__submit { background: var(--red); color: #fff; border: none; padding: 14px; border-radius: 9px; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; width: 100%; margin-top: 4px; }
     .lr-form__submit:hover { background: var(--red-dark); }
@@ -555,7 +578,10 @@
        ============================================ */
 
     /* Hero banner */
-    .fin-hero { background: linear-gradient(135deg, #0f1923 0%, #1c2d3f 60%, #C0181C 100%); padding: 72px 0 64px; color: #fff; }
+    .fin-hero { background: #111111; padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
+    .fin-hero::before { content:''; position:absolute; inset:0; background:url('files/DSC01916.jpg') center 35%/cover no-repeat; opacity:0.5; }
+    .fin-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(17,17,17,0.65) 0%, rgba(26,26,26,0.45) 50%, rgba(192,24,28,0.4) 100%); }
+    .fin-hero .container { position:relative; z-index:1; }
     .fin-hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .fin-hero__badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(192,24,28,0.25); border: 1px solid rgba(192,24,28,0.5); color: #ff8080; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; }
     .fin-hero h1 { font-size: 38px; font-weight: 800; line-height: 1.2; margin-bottom: 18px; }
@@ -598,7 +624,7 @@
     .fin-type-card__pros { display: flex; flex-direction: column; gap: 5px; }
     .fin-type-card__pro { font-size: 12px; color: #444; display: flex; align-items: center; gap: 7px; }
     .fin-type-card__pro::before { content: '✓'; font-weight: 800; color: #10b981; flex-shrink: 0; }
-    .fin-nfnow { background: linear-gradient(135deg, #0f1923, #1c2d3f); border-radius: 16px; padding: 28px; color: #fff; margin-top: 16px; }
+    .fin-nfnow { background: linear-gradient(135deg, #111111, #1a1a1a); border-radius: 16px; padding: 28px; color: #fff; margin-top: 16px; }
     .fin-nfnow__logo { font-size: 22px; font-weight: 900; color: #ff4f4f; margin-bottom: 8px; letter-spacing: -0.5px; }
     .fin-nfnow p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 16px; }
     .fin-nfnow__link { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 7px; }
@@ -623,7 +649,7 @@
     .calc-rate-row input[type=number] { width: 80px; padding: 8px 10px; border: 1.5px solid var(--gray-mid); border-radius: 7px; font-size: 14px; font-weight: 700; color: var(--red); text-align: center; font-family: 'Inter', sans-serif; outline: none; }
     .calc-rate-row input[type=number]:focus { border-color: var(--red); }
     .calc-rate-row span { font-size: 13px; color: var(--gray-text); }
-    .calc-result { background: linear-gradient(135deg, #0f1923, #1c2d3f); border-radius: 14px; padding: 28px; color: #fff; text-align: center; }
+    .calc-result { background: linear-gradient(135deg, #111111, #1a1a1a); border-radius: 14px; padding: 28px; color: #fff; text-align: center; }
     .calc-result__label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
     .calc-result__amount { font-size: 52px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px; }
     .calc-result__amount sup { font-size: 24px; vertical-align: top; margin-top: 10px; }
@@ -666,7 +692,7 @@
     .faq-item.is-open .faq-item__a { display: block; }
 
     /* Final CTA */
-    .fin-cta { padding: 80px 0; background: linear-gradient(135deg, #0f1923 0%, #1c2d3f 100%); color: #fff; text-align: center; }
+    .fin-cta { padding: 80px 0; background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%); color: #fff; text-align: center; }
     .fin-cta h2 { font-size: 34px; font-weight: 800; margin-bottom: 12px; }
     .fin-cta p { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .fin-cta__btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
@@ -693,10 +719,10 @@
     /* HERO */
     .hero { position: relative; min-height: 560px; display: flex; align-items: center; overflow: hidden; }
     .hero__bg { position: absolute; inset: 0; z-index: 0; }
-    .hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero__bg img, .hero__bg video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 100%); z-index: 1; }
     .hero__content { position: relative; z-index: 2; text-align: center; color: var(--white); padding: 80px 24px; width: 100%; }
-    .hero__title { font-size: clamp(28px, 4vw, 52px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; background: linear-gradient(108deg, #fff 0%, #fff 47%, rgba(255,140,140,0.55) 48.5%, rgba(210,30,30,0.88) 50%, rgba(255,140,140,0.55) 51.5%, #fff 53%, #fff 100%); background-size: 300% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
+    .hero__title { font-size: clamp(28px, 4vw, 52px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; background: linear-gradient(135deg, #fff 0%, #fff 38%, rgba(255,180,180,0.5) 41%, rgba(230,60,60,0.75) 44%, rgba(192,24,28,0.95) 48%, rgba(230,60,60,0.75) 52%, rgba(255,180,180,0.5) 55%, #fff 58%, #fff 100%); background-size: 400% 400%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
     .hero__subtitle { font-size: 18px; font-weight: 400; opacity: 0.92; margin-bottom: 36px; }
     .hero__search { display: flex; align-items: center; justify-content: center; gap: 0; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 8px; padding: 6px; border: 1px solid rgba(255,255,255,0.25); }
     .hero__search select { flex: 1; background: rgba(255,255,255,0.95); border: none; padding: 12px 14px; font-size: 14px; font-family: 'Inter', sans-serif; color: #444; outline: none; border-radius: 4px; margin-right: 6px; cursor: pointer; }
@@ -713,20 +739,35 @@
       to   { transform: scale(1); }
     }
     @keyframes textShimmer {
-      0%   { background-position: -20% center; }
-      44%  { background-position: 120% center; }
-      100% { background-position: 120% center; }
+      0%   { background-position: 120% 120%; }
+      50%  { background-position: -20% -20%; }
+      100% { background-position: -20% -20%; }
     }
-    .hero__bg img { animation: heroBgZoom 8s ease forwards; }
-    .hero__title   { animation: heroFadeUp 0.7s 0.1s ease both, textShimmer 6s ease-in-out 1.6s infinite; }
+    .hero__bg img, .hero__bg video { animation: heroBgZoom 8s ease forwards; }
+    .hero__title   { animation: heroFadeUp 0.7s 0.1s ease both, textShimmer 8s ease-in-out 1.6s infinite; }
     .hero__subtitle{ animation: heroFadeUp 0.7s 0.25s ease both; }
     .hero__search  { animation: heroFadeUp 0.7s 0.4s ease both; }
 
     /* FINANCING BANNER */
-    .financing-banner { background: var(--white); padding: 32px 0; }
-    .financing-banner__inner { background: #F0F0F0; border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; padding: 28px 36px; gap: 24px; box-shadow: var(--shadow); }
-    .financing-banner__text h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
-    .financing-banner__text p { font-size: 14px; color: var(--gray-text); }
+    .financing-banner { background:#fff; padding:40px 0; }
+    .financing-banner__inner { border-radius:18px; display:flex; align-items:stretch; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); min-height:220px; position:relative; }
+    .financing-banner__bg { position:absolute; inset:0; background:url('files/financing-banner-bg.jpg') center 38%/cover no-repeat; }
+    .financing-banner__bg::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.45) 100%); }
+    .financing-banner__content { flex:1; padding:44px 48px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2; }
+    .financing-banner__badge { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,0.1); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; padding:7px 14px; border-radius:20px; margin-bottom:16px; width:fit-content; }
+    .financing-banner__badge svg { color:#4ade80; flex-shrink:0; }
+    .financing-banner__text h2 { font-size:34px; font-weight:900; color:#fff; margin-bottom:10px; line-height:1.15; }
+    .financing-banner__text h2 span { color:var(--red); }
+    .financing-banner__text p { font-size:15px; color:rgba(255,255,255,0.6); line-height:1.7; max-width:500px; }
+    .financing-banner__text p strong { color:#fff; }
+    .financing-banner__cta-side { position:relative; z-index:2; width:320px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:40px; background:rgba(192,24,28,0.85); backdrop-filter:blur(8px); }
+    .financing-banner__cta-side::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(0,0,0,0.15) 100%); }
+    .financing-banner__cta { position:relative; z-index:1; background:#fff; color:var(--red); padding:16px 36px; border-radius:10px; font-weight:800; font-size:16px; display:inline-flex; align-items:center; gap:10px; transition:transform 0.2s, box-shadow 0.2s; text-decoration:none; }
+    .financing-banner__cta:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.3); color:var(--red); }
+    .financing-banner__cta svg { transition:transform 0.2s; }
+    .financing-banner__cta:hover svg { transform:translateX(3px); }
+    .financing-banner__nef { position:relative; z-index:1; height:30px; width:auto; filter:brightness(0) invert(1); opacity:0.7; }
+    .financing-banner__cta-label { position:relative; z-index:1; font-size:12px; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.06em; font-weight:600; }
     .btn-red { background: var(--red); color: var(--white); padding: 13px 28px; border-radius: 6px; font-weight: 700; font-size: 14px; white-space: nowrap; display: inline-block; }
     .btn-red:hover { background: var(--red-dark); color: var(--white); }
 
@@ -765,6 +806,14 @@
       flex-shrink: 0;
     }
     .logo-carousel-track img:hover { opacity: 0.75; transform: scale(1.05); }
+
+    /* Enlarged priority logos — MAC, Pitts, XL Specialized */
+    .logo-carousel-track img[alt="Clear MAC"],
+    .logo-carousel-track img[alt="Pitts"],
+    .logo-carousel-track img[alt="XL Specialized"] {
+      height: 88px;
+      max-width: 260px;
+    }
 
     /* Fade edges */
     .logo-carousel-wrapper::before,
@@ -840,6 +889,53 @@
     .oem-whybuy__item h4 { font-size:15px; font-weight:700; color:var(--black); margin-bottom:8px; }
     .oem-whybuy__item p { font-size:13px; line-height:1.7; color:var(--gray-text); }
     .oem-whybuy__icon { font-size:28px; margin-bottom:12px; }
+
+    /* MANUFACTURERS HUB PAGE */
+    .mfr-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; padding:56px 0; }
+    .mfr-card { background:#fff; border:1.5px solid var(--gray-mid); border-radius:14px; padding:36px 24px 28px; text-align:center; text-decoration:none; color:var(--dark); transition:transform 0.25s, box-shadow 0.25s, border-color 0.25s; cursor:pointer; display:flex; flex-direction:column; align-items:center; }
+    .mfr-card:hover { transform:translateY(-6px); box-shadow:0 12px 32px rgba(0,0,0,0.1); border-color:var(--red); color:var(--dark); }
+    .mfr-card__logo { height:70px; width:auto; max-width:180px; object-fit:contain; margin-bottom:20px; }
+    .mfr-card h3 { font-size:16px; font-weight:800; margin-bottom:6px; }
+    .mfr-card p { font-size:13px; color:var(--gray-text); line-height:1.5; margin-bottom:16px; flex:1; }
+    .mfr-card__link { font-size:13px; font-weight:700; color:var(--red); display:inline-flex; align-items:center; gap:5px; }
+    .mfr-card:hover .mfr-card__link { text-decoration:underline; }
+    @media (max-width:960px) { .mfr-grid { grid-template-columns:repeat(2,1fr); gap:20px; } }
+    @media (max-width:520px) { .mfr-grid { grid-template-columns:1fr; } }
+
+    /* OEM BROCHURES & SPECS SECTION */
+    .oem-brochures { padding:56px 0; background:var(--gray); }
+    .oem-brochures h2 { font-size:24px; font-weight:800; color:var(--black); margin-bottom:8px; text-align:center; }
+    .oem-brochures > .container > p { font-size:14px; color:var(--gray-text); text-align:center; margin-bottom:32px; }
+    .oem-accordion { border:1.5px solid var(--gray-mid); border-radius:10px; margin-bottom:16px; overflow:hidden; background:#fff; }
+    .oem-accordion__trigger { width:100%; display:flex; align-items:center; justify-content:space-between; padding:18px 24px; background:var(--black); color:#fff; font-size:15px; font-weight:700; border:none; cursor:pointer; font-family:inherit; }
+    .oem-accordion__trigger svg { transition:transform 0.25s; }
+    .oem-accordion.is-open .oem-accordion__trigger svg { transform:rotate(180deg); }
+    .oem-accordion__body { display:none; padding:24px; }
+    .oem-accordion.is-open .oem-accordion__body { display:block; }
+    .oem-brochures__cat-title { font-size:16px; font-weight:800; color:var(--black); margin:0 0 16px 0; }
+    .oem-brochures__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-bottom:28px; }
+    .oem-brochures__grid:last-child { margin-bottom:0; }
+    .oem-pdf-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:24px 16px; background:#fff; border:1.5px solid var(--gray-mid); border-radius:10px; text-decoration:none; color:var(--dark); transition:border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+    .oem-pdf-card:hover { border-color:var(--red); box-shadow:0 6px 20px rgba(0,0,0,0.08); transform:translateY(-3px); color:var(--dark); }
+    .oem-pdf-card__icon { width:48px; height:48px; margin-bottom:12px; }
+    .oem-pdf-card__name { font-size:13px; font-weight:700; line-height:1.4; }
+
+    /* OEM PRODUCT LINEUP TABLE */
+    .oem-lineup { padding:56px 0; }
+    .oem-lineup h2 { font-size:24px; font-weight:800; color:var(--black); margin-bottom:8px; text-align:center; }
+    .oem-lineup > .container > p { font-size:14px; color:var(--gray-text); text-align:center; margin-bottom:32px; }
+    .oem-lineup__table { width:100%; border-collapse:collapse; font-size:14px; }
+    .oem-lineup__table thead { background:var(--black); color:#fff; }
+    .oem-lineup__table th { padding:14px 16px; text-align:left; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; }
+    .oem-lineup__table td { padding:12px 16px; border-bottom:1px solid var(--gray-mid); color:var(--dark); }
+    .oem-lineup__table tbody tr:hover { background:rgba(192,24,28,0.04); }
+    .oem-lineup__table .badge-tandem { background:#e8f5e9; color:#2e7d32; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; }
+    .oem-lineup__table .badge-tridem { background:#e3f2fd; color:#1565c0; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; }
+    .oem-lineup__table .badge-both { background:#fff3e0; color:#e65100; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; }
+    @media(max-width:768px) {
+      .oem-lineup__table { font-size:12px; }
+      .oem-lineup__table th, .oem-lineup__table td { padding:10px 10px; }
+    }
 
     /* LEGAL PAGES */
     .legal-hero { background:var(--black); padding:48px 0 40px; text-align:center; }
@@ -922,7 +1018,7 @@
     .about-video { padding: 24px 0 56px; }
     .video-wrapper { max-width: 640px; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
     .video-wrapper iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
-    .video-placeholder { width: 100%; aspect-ratio: 16/9; background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: white; }
+    .video-placeholder { width: 100%; aspect-ratio: 16/9; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: white; }
     .video-placeholder__play { width: 64px; height: 64px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .video-placeholder__label { font-size: 13px; opacity: 0.7; }
     .video-placeholder__name { font-size: 15px; font-weight: 600; }
@@ -971,7 +1067,7 @@
     .video-card { position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; }
     .video-card__thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
     .video-card__thumb-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; }
-    .video-thumb-1 { background: linear-gradient(135deg, #1a2a3a, #2c4060); }
+    .video-thumb-1 { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
     .video-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%); }
     .video-card__play { width: 52px; height: 52px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
     .video-card__info { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; color: var(--white); }
@@ -1033,12 +1129,33 @@
     .contact-form__success p { font-size: 13px; color: var(--gray-text); }
 
     /* CONTACT CTA */
-    .contact-cta { padding: 56px 0; }
-    .contact-cta__box { background: #F0F0F0; border-radius: var(--radius); text-align: center; padding: 48px 32px; }
-    .contact-cta__box h2 { font-size: 26px; font-weight: 800; color: var(--red); margin-bottom: 8px; }
-    .contact-cta__box p { font-size: 14px; color: var(--gray-text); margin-bottom: 28px; }
-    .contact-cta__btns { display: flex; align-items: center; justify-content: center; gap: 16px; }
-    .contact-cta__btns .btn-red { min-width: 180px; text-align: center; padding: 14px 28px; font-size: 15px; }
+    .contact-cta { padding: 64px 0; position:relative; overflow:hidden; }
+    .contact-cta__box { position:relative; border-radius:20px; text-align:center; padding:64px 40px; overflow:hidden; }
+    .contact-cta__box::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, #111 0%, #1a1a1a 50%, #2a1215 100%); }
+    .contact-cta__box::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 50%, rgba(192,24,28,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(192,24,28,0.08) 0%, transparent 60%); }
+    .contact-cta__box > * { position:relative; z-index:2; }
+    .contact-cta__icon { width:56px; height:56px; background:rgba(192,24,28,0.12); border:1.5px solid rgba(192,24,28,0.25); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; animation:ctaIconFloat 3s ease-in-out infinite; }
+    @keyframes ctaIconFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+    .contact-cta__box h2 { font-size:36px; font-weight:900; color:#fff; margin-bottom:10px; }
+    .contact-cta__box h2 span { background:linear-gradient(90deg, var(--red), #ff6b6b); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .contact-cta__box p { font-size:16px; color:rgba(255,255,255,0.5); margin-bottom:36px; max-width:460px; margin-left:auto; margin-right:auto; line-height:1.7; }
+    .contact-cta__btns { display:flex; align-items:center; justify-content:center; gap:20px; }
+    .contact-cta__btn { display:flex; align-items:center; gap:14px; padding:18px 32px; border-radius:14px; text-decoration:none; transition:transform 0.25s, box-shadow 0.25s; min-width:240px; }
+    .contact-cta__btn:hover { transform:translateY(-3px); }
+    .contact-cta__btn--call { background:var(--red); color:#fff; box-shadow:0 6px 24px rgba(192,24,28,0.35); }
+    .contact-cta__btn--call:hover { box-shadow:0 10px 32px rgba(192,24,28,0.5); color:#fff; }
+    .contact-cta__btn--email { background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(4px); }
+    .contact-cta__btn--email:hover { background:rgba(255,255,255,0.12); box-shadow:0 8px 24px rgba(0,0,0,0.2); color:#fff; }
+    .contact-cta__btn-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .contact-cta__btn--call .contact-cta__btn-icon { background:rgba(255,255,255,0.15); }
+    .contact-cta__btn--email .contact-cta__btn-icon { background:rgba(255,255,255,0.08); }
+    .contact-cta__btn-text { text-align:left; }
+    .contact-cta__btn-text strong { display:block; font-size:15px; font-weight:700; }
+    .contact-cta__btn-text small { font-size:12px; opacity:0.65; }
+    .contact-cta__orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.15; z-index:1; animation:ctaOrbMove 8s ease-in-out infinite; }
+    .contact-cta__orb--1 { width:300px; height:300px; background:var(--red); top:-80px; left:-60px; }
+    .contact-cta__orb--2 { width:250px; height:250px; background:#ff6b6b; bottom:-80px; right:-40px; animation-delay:4s; }
+    @keyframes ctaOrbMove { 0%,100%{transform:translate(0,0);} 50%{transform:translate(20px,15px);} }
 
     /* PHOTO GALLERY */
     .photo-gallery { display: grid; grid-template-columns: repeat(5, 1fr); }
@@ -1086,7 +1203,10 @@
       .hero__search { flex-direction: column; padding: 10px; }
       .hero__search select { width: 100%; margin-right: 0; margin-bottom: 8px; }
       .hero__search-btn { width: 100%; }
-      .financing-banner__inner { flex-direction: column; text-align: center; padding: 24px; }
+      .financing-banner__inner { flex-direction:column; }
+      .financing-banner__content { padding:32px 24px; text-align:center; align-items:center; }
+      .financing-banner__cta-side { width:100%; padding:28px 24px; }
+      .financing-banner__badge { margin-left:auto; margin-right:auto; }
       .services-grid { grid-template-columns: repeat(2,1fr); }
       .stats__grid { grid-template-columns: 1fr; }
       .browse-category__inner { grid-template-columns: 1fr; }
@@ -1094,7 +1214,10 @@
       .contact-page__inner { grid-template-columns: 1fr; }
       .contact-form__row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 28px 20px; }
-      .contact-cta__btns { flex-direction: column; align-items: center; }
+      .contact-cta__btns { flex-direction: column; align-items: stretch; }
+      .contact-cta__btn { min-width:unset; justify-content:center; }
+      .contact-cta__box { padding:48px 24px; }
+      .contact-cta__box h2 { font-size:28px; }
       .photo-gallery { grid-template-columns: repeat(2,1fr); }
       .footer__grid { grid-template-columns: 1fr; }
       .footer__bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -1129,7 +1252,7 @@
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
         <a href="https://www.youtube.com/nationwidehaul/" target="_blank" aria-label="YouTube">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          <img src="files/youtube-logo.jpg" alt="YouTube" style="width:26px;height:26px;border-radius:50%;object-fit:cover;transform:scale(1.35);clip-path:circle(38%);">
         </a>
       </div>
     </div>
@@ -1291,6 +1414,15 @@
                 <span>Meet the team behind Nationwide Haul</span>
               </div>
             </a>
+            <a href="#" onclick="showPage('manufacturers');return false;" class="nav-dropdown__item">
+              <div class="nav-dropdown__item-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 20V8l4-4h4l4 4v12"/><path d="M6 12h4"/><path d="M14 20V8l4-4h4v16"/><path d="M18 12h2"/></svg>
+              </div>
+              <div class="nav-dropdown__item-text">
+                <strong>Manufacturers</strong>
+                <span>Browse our authorized brands</span>
+              </div>
+            </a>
             <a href="#" class="nav-dropdown__item">
               <div class="nav-dropdown__item-icon">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -1314,7 +1446,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero__bg">
-    <img src="files/hero_image.jpg" alt="Nationwide Haul trucks on the road">
+    <video autoplay muted loop playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+      <source src="files/home-video-web.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content container">
@@ -1347,11 +1481,25 @@
 <section class="financing-banner">
   <div class="container">
     <div class="financing-banner__inner">
-      <div class="financing-banner__text">
-        <h2>Fast &amp; Flexible Financing</h2>
-        <p>Apply through our <strong>in-house financing</strong> division, and get approved quickly with no impact to your credit</p>
+      <div class="financing-banner__bg"></div>
+      <div class="financing-banner__content">
+        <div class="financing-banner__badge">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          No Impact to Your Credit Score
+        </div>
+        <div class="financing-banner__text">
+          <h2>Get Your Truck <span>Financed Today</span></h2>
+          <p>Apply through our <strong>in-house financing</strong> division and get approved quickly. All credit types welcome — <strong>$0 down available</strong>.</p>
+        </div>
       </div>
-      <a href="https://www.nefnow.com/app/?co=1001" target="_blank" class="btn-red">Get Pre-Qualified</a>
+      <div class="financing-banner__cta-side">
+        <span class="financing-banner__cta-label">Powered by</span>
+        <img src="NEF Logo.png" alt="NEF NOW" class="financing-banner__nef">
+        <a href="https://www.nefnow.com/app/?co=1001" target="_blank" class="financing-banner__cta">
+          Get Pre-Qualified
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1395,7 +1543,7 @@
     </div>
     <div class="inventory-grid">
       <a href="#" class="inventory-card">
-        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 240.png" alt="MAC Tri-Axle End Dump">
+        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 240.jpg" alt="MAC Tri-Axle End Dump">
         <div class="inventory-card__body">
           <div class="inventory-card__title">2026 MAC<br>Tri-Axle End Dump w/Frame</div>
           <div class="inventory-card__price"><span>$76,425</span><span class="inventory-card__badge">New</span></div>
@@ -1403,7 +1551,7 @@
         </div>
       </a>
       <a href="#" class="inventory-card">
-        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 242.png" alt="MAC Pneumatic Dry Bulk Tanker">
+        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 242.jpg" alt="MAC Pneumatic Dry Bulk Tanker">
         <div class="inventory-card__body">
           <div class="inventory-card__title">2026 MAC<br>1050C Pneumatic Dry Bulk Tanker</div>
           <div class="inventory-card__price"><span>$75,900</span><span class="inventory-card__badge">New</span></div>
@@ -1411,7 +1559,7 @@
         </div>
       </a>
       <a href="#" class="inventory-card">
-        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 244.png" alt="Utility Reefer">
+        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 244.jpg" alt="Utility Reefer">
         <div class="inventory-card__body">
           <div class="inventory-card__title">2020 Utility<br>3000R Reefer w/ Carrier 7500×4</div>
           <div class="inventory-card__price"><span>$31,900</span><span class="inventory-card__badge">Used</span></div>
@@ -1419,7 +1567,7 @@
         </div>
       </a>
       <a href="#" class="inventory-card">
-        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 246.png" alt="Kenworth T680">
+        <img class="inventory-card__img" src="TopPicks by customers/Rectangle 246.jpg" alt="Kenworth T680">
         <div class="inventory-card__body">
           <div class="inventory-card__title">2020 KENWORTH T680</div>
           <div class="inventory-card__price"><span>$34,990</span><span class="inventory-card__badge">Used</span></div>
@@ -1607,7 +1755,7 @@
   <div class="container">
     <div class="youtube-section__channel">
       <div class="youtube-section__channel-left">
-        <div class="yt-channel-logo-placeholder">NH</div>
+        <img src="files/youtube-logo.jpg" alt="YouTube" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
         <div class="yt-channel-info">
           <h3>Nationwide Haul</h3>
           <span>41 Videos &nbsp;·&nbsp; 25K Views</span>
@@ -1648,14 +1796,36 @@
 <section class="contact-cta">
   <div class="container">
     <div class="contact-cta__box">
-      <h2>Need help or have questions?</h2>
-      <p>Our team is here to help you find the right equipment.</p>
+      <!-- Animated background orbs -->
+      <div class="contact-cta__orb contact-cta__orb--1"></div>
+      <div class="contact-cta__orb contact-cta__orb--2"></div>
+
+      <!-- Floating icon -->
+      <div class="contact-cta__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0181c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+
+      <h2>Need Help or Have <span>Questions?</span></h2>
+      <p>Our team of experts is ready to help you find the perfect truck or trailer. Reach out today — no pressure, just answers.</p>
+
       <div class="contact-cta__btns">
-        <a href="tel:8775597039" class="btn-red" style="text-align:center;">
-          Call Sales<br><span style="font-size:12px;font-weight:400;">(877) 559 7039</span>
+        <a href="tel:8775597039" class="contact-cta__btn contact-cta__btn--call">
+          <div class="contact-cta__btn-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-cta__btn-text">
+            <strong>Call Sales</strong>
+            <small>(877) 559-7039</small>
+          </div>
         </a>
-        <a href="mailto:sales@nationwidehaul.com" class="btn-red" style="text-align:center;">
-          Email Us<br><span style="font-size:12px;font-weight:400;">sales@nationwidehaul.com</span>
+        <a href="mailto:sales@nationwidehaul.com" class="contact-cta__btn contact-cta__btn--email">
+          <div class="contact-cta__btn-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div class="contact-cta__btn-text">
+            <strong>Email Us</strong>
+            <small>sales@nationwidehaul.com</small>
+          </div>
         </a>
       </div>
     </div>
@@ -1717,7 +1887,7 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="https://www.youtube.com/nationwidehaul/" target="_blank" aria-label="YouTube">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+            <img src="files/youtube-logo.jpg" alt="YouTube" style="width:24px;height:24px;border-radius:50%;object-fit:cover;transform:scale(1.35);clip-path:circle(38%);">
           </a>
         </div>
       </div>
@@ -1795,6 +1965,20 @@
               <span>Mon–Fri, 8am – 6pm EST</span>
             </div>
           </div>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-info__block">
+          <h3>Email Us</h3>
+          <a href="mailto:sales@nationwidehaul.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;padding:14px 16px;background:#f9f9f9;border-radius:10px;transition:background 0.2s;">
+            <div class="contact-info__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong style="display:block;font-size:15px;">sales@nationwidehaul.com</strong>
+              <span style="font-size:13px;color:#666;">Click to send us an email</span>
+            </div>
+          </a>
         </div>
 
         <!-- Coverage banner -->
@@ -1914,7 +2098,7 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="https://www.youtube.com/nationwidehaul/" target="_blank" aria-label="YouTube">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+            <img src="files/youtube-logo.jpg" alt="YouTube" style="width:24px;height:24px;border-radius:50%;object-fit:cover;transform:scale(1.35);clip-path:circle(38%);">
           </a>
         </div>
       </div>
@@ -1947,8 +2131,15 @@
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Trusted Commercial Financing Partner
         </div>
-        <h1 id="fin-h1">Commercial Truck &amp; Trailer<br><span>Financing Solutions in the USA</span></h1>
-        <p class="fin-hero__sub">Get approved fast for semi-truck, trailer, and heavy equipment financing — even with challenged credit. Nationwide Haul works with NEF NOW to deliver flexible terms built for owner-operators and fleets.</p>
+        <h1 id="fin-h1">Commercial Truck &amp; Trailer<br><span>Financing Solutions</span></h1>
+        <p class="fin-hero__sub">Get approved fast for semi-truck, trailer, and heavy equipment financing — even with challenged credit — from our own in-house financing company: NEF NOW.</p>
+        <div style="display:flex;align-items:center;gap:20px;margin:18px 0 8px;">
+          <img src="NEF Logo.png" alt="NEF NOW" style="height:44px;width:auto;filter:brightness(0) invert(1);">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(255,255,255,0.08);border-radius:8px;border:1px solid rgba(255,255,255,0.15);">
+            <img src="files/nefa-logo.svg" alt="NEFA" style="height:36px;width:auto;">
+            <span style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.3;">Trusted member of the<br><strong style="color:#fff;">National Equipment Finance Association</strong></span>
+          </div>
+        </div>
         <div class="fin-hero__ctas">
           <a href="https://www.nefnow.com/app/?co=1001" target="_blank" rel="noopener" class="btn-white">Apply Now via NEF NOW →</a>
         </div>
@@ -1992,7 +2183,6 @@
         <p class="fin-section-label">How It Works</p>
         <h2 id="fin-eeat-h2">Commercial Truck &amp; Trailer Financing — Built for the Trucking Industry</h2>
         <p>Securing the right commercial vehicle financing is one of the most critical decisions a trucking business makes. Whether you're an <strong>owner-operator buying your first semi-truck</strong> or a fleet manager adding units, Nationwide Haul works directly with NEF NOW — our sister company and a dedicated commercial vehicle lender — to give you fast, flexible financing options.</p>
-        <p><strong>Commercial Truck Loans</strong> let you own the equipment outright once the loan is paid off. Monthly payments build equity, there are no mileage restrictions, and you gain full asset value at payoff. Ideal for operators who run equipment long-term and want to maximize ROI.</p>
         <p><strong>Credit requirements:</strong> While traditional lenders require a 680+ credit score, NEF NOW works with scores as low as 500. They evaluate business cash flow, time in business, and down payment as additional qualifying factors. A 10–20% down payment significantly improves approval odds and reduces your monthly payment.</p>
         <p>Terms range from <strong>24 to 84 months</strong>. Pre-qualification is available with no hard credit pull — you get a real rate offer before committing.</p>
       </div>
@@ -2616,11 +2806,11 @@
         <div class="ab-stat-item__lbl">Clients Served</div>
       </div>
       <div class="ab-stat-item reveal">
-        <div class="ab-stat-item__num" data-target="40" data-suffix="+">40+</div>
-        <div class="ab-stat-item__lbl">Lending Partners</div>
+        <div class="ab-stat-item__num">+15</div>
+        <div class="ab-stat-item__lbl">Years in Business</div>
       </div>
       <div class="ab-stat-item reveal">
-        <div class="ab-stat-item__num" data-target="3" data-suffix=" States">3 States</div>
+        <div class="ab-stat-item__num">Nationwide</div>
         <div class="ab-stat-item__lbl">Service Locations</div>
       </div>
       <div class="ab-stat-item reveal">
@@ -2747,7 +2937,7 @@
         </div>
         <div class="ab-team-card-sm reveal">
           <div class="ab-team-card-sm__wrap">
-            <img class="ab-team-card-sm__photo" src="ABOUT/TEAM/Tracy.png" alt="Tracy Madon">
+            <img class="ab-team-card-sm__photo" src="ABOUT/TEAM/Tracy.jpg" alt="Tracy Madon">
           </div>
           <div class="ab-team-card-sm__name">Tracy Madon</div>
           <div class="ab-team-card-sm__role">Managing Partner &amp; Co-Founder</div>
@@ -2796,7 +2986,7 @@
         </div>
         <div class="ab-team-card-sm reveal">
           <div class="ab-team-card-sm__wrap">
-            <img class="ab-team-card-sm__photo" src="ABOUT/TEAM/VANESSA.png" alt="Vanessa Kirk">
+            <img class="ab-team-card-sm__photo" src="ABOUT/TEAM/VANESSA.jpg" alt="Vanessa Kirk">
           </div>
           <div class="ab-team-card-sm__name">Vanessa Kirk</div>
           <div class="ab-team-card-sm__role">Sales Representative</div>
@@ -2935,7 +3125,7 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="https://www.youtube.com/nationwidehaul/" target="_blank" aria-label="YouTube">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+            <img src="files/youtube-logo.jpg" alt="YouTube" style="width:24px;height:24px;border-radius:50%;object-fit:cover;transform:scale(1.35);clip-path:circle(38%);">
           </a>
         </div>
       </div>
@@ -3044,7 +3234,7 @@
 </section>
 
 <!-- STATS -->
-<section style="background:#0f1923;padding:40px 0;">
+<section style="background:#111111;padding:40px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;">
       <div style="text-align:center;color:#fff;"><div style="font-size:30px;font-weight:800;color:#ff6b6b;line-height:1;margin-bottom:6px;">40+</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Government Clients Served</div></div>
@@ -3181,7 +3371,7 @@
 </section>
 
 <!-- MIAMI-DADE CUSTOM TRAILER SHOWCASE -->
-<section style="background:#0f1923;padding:72px 0;">
+<section style="background:#111111;padding:72px 0;">
   <div class="container">
     <div class="munic-video-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
 
@@ -3343,7 +3533,7 @@
 
       <!-- WAY 2: Consign -->
       <div style="display:grid;grid-template-columns:56px 1fr;gap:0;background:#fff;border:1px solid var(--gray-mid);border-radius:14px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,0.06);">
-        <div style="background:#1a1a2e;display:flex;align-items:flex-start;justify-content:center;padding:28px 0;">
+        <div style="background:#1a1a1a;display:flex;align-items:flex-start;justify-content:center;padding:28px 0;">
           <span style="color:#ff6b6b;font-size:20px;font-weight:800;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:0.05em;">02</span>
         </div>
         <div style="padding:28px 32px;">
@@ -3352,19 +3542,19 @@
           <p style="font-size:14px;color:var(--gray-text);line-height:1.7;margin-bottom:20px;">This process involves four simple steps to make your sale:</p>
           <div style="display:flex;flex-direction:column;gap:10px;">
             <div style="display:flex;align-items:flex-start;gap:12px;">
-              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a2e;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">1</span>
+              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a1a;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">1</span>
               <p style="font-size:14px;color:var(--dark);margin:2px 0 0;line-height:1.5;">We inspect your equipment.</p>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px;">
-              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a2e;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">2</span>
+              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a1a;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">2</span>
               <p style="font-size:14px;color:var(--dark);margin:2px 0 0;line-height:1.5;">We determine the fair market value of your equipment.</p>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px;">
-              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a2e;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">3</span>
+              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a1a;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">3</span>
               <p style="font-size:14px;color:var(--dark);margin:2px 0 0;line-height:1.5;">We agree on the terms of the consignment, including any necessary repairs.</p>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px;">
-              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a2e;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">4</span>
+              <span style="display:inline-flex;width:26px;height:26px;min-width:26px;background:#1a1a1a;color:#ff6b6b;border-radius:50%;font-size:12px;font-weight:800;align-items:center;justify-content:center;">4</span>
               <p style="font-size:14px;color:var(--dark);margin:2px 0 0;line-height:1.5;">Sell your equipment.</p>
             </div>
           </div>
@@ -4160,7 +4350,7 @@
         </div>
       </div>
       <div style="display:flex;justify-content:center;align-items:center;">
-        <img src="TCS/partner-card.png" alt="TCS Fuel Card" style="max-width:420px;width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.4));transform:rotate(3deg);">
+        <img src="TCS/partner-card.jpg" alt="TCS Fuel Card" style="max-width:420px;width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.4));transform:rotate(3deg);">
       </div>
     </div>
   </div>
@@ -4173,11 +4363,11 @@
     <p class="perks-sub">Save on every gallon with America's largest fuel discount network.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
       <div style="border-radius:14px;overflow:hidden;">
-        <img src="TCS/1-14-26-tcs-fuel.jpg" alt="TCS Fuel Card program" style="width:100%;height:100%;object-fit:cover;object-position:center;min-height:520px;border-radius:14px;">
+        <img src="TCS/tcs-fuel-card-pic.jpg" alt="TCS Fuel Card program" style="width:100%;height:100%;object-fit:cover;object-position:center;min-height:520px;border-radius:14px;">
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding-top:8px;">
         <!-- Highlight stat -->
-        <div style="background:linear-gradient(135deg,#0f1923,#1a2a3a);border-radius:12px;padding:24px 28px;margin-bottom:8px;">
+        <div style="background:linear-gradient(135deg,#111111,#1a1a1a);border-radius:12px;padding:24px 28px;margin-bottom:8px;">
           <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
             <span style="font-size:36px;font-weight:800;color:#ff6b6b;">$0.57</span>
             <span style="font-size:14px;color:rgba(255,255,255,0.7);">avg. savings per gallon</span>
@@ -4288,6 +4478,80 @@
   </div>
 </footer>
 </div><!-- /#page-perks-tcs -->
+
+<!-- ═══════════════ MANUFACTURERS HUB ═══════════════ -->
+<div id="page-manufacturers" style="display:none;">
+
+<section class="oem-hero">
+  <div class="container">
+    <h1>Our Manufacturers</h1>
+    <p>Authorized dealer of the industry's top brands. Click any manufacturer to learn more.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="mfr-grid">
+
+    <a href="#" onclick="showPage('oem-clearmac');return false;" class="mfr-card">
+      <img src="Logos showcase/Clear MAc Logo (2).png" alt="Clear MAC" class="mfr-card__logo">
+      <h3>MAC Trailer</h3>
+      <p>Dry vans, dumps, tanks &amp; specialty trailers built to last.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-dorsey');return false;" class="mfr-card">
+      <img src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey" class="mfr-card__logo">
+      <h3>Dorsey Trailers</h3>
+      <p>American-made dry vans &amp; platform trailers since 1919.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-pitts');return false;" class="mfr-card">
+      <img src="Logos showcase/Pitts Logo (1).png" alt="Pitts" class="mfr-card__logo">
+      <h3>Pitts Trailers</h3>
+      <p>Logging, lowboy &amp; specialty trailers for heavy-duty jobs.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-vanguard');return false;" class="mfr-card">
+      <img src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard" class="mfr-card__logo">
+      <h3>Vanguard National</h3>
+      <p>Reefers, dry vans &amp; flatbeds for every fleet need.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-xl');return false;" class="mfr-card">
+      <img src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized" class="mfr-card__logo">
+      <h3>XL Specialized</h3>
+      <p>Heavy-haul &amp; specialized trailers for oversized loads.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-autocar');return false;" class="mfr-card">
+      <img src="Logos showcase/autocar-logo-2025.webp" alt="Autocar" class="mfr-card__logo">
+      <h3>Autocar</h3>
+      <p>Severe-duty vocational trucks built for the toughest jobs.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-cie');return false;" class="mfr-card">
+      <img src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing" class="mfr-card__logo">
+      <h3>CIE Manufacturing</h3>
+      <p>Custom-built chassis &amp; trailer solutions.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a href="#" onclick="showPage('oem-wade');return false;" class="mfr-card">
+      <img src="Logos showcase/download.png" alt="WADE Services" class="mfr-card__logo">
+      <h3>WADE Services</h3>
+      <p>Commercial equipment &amp; service solutions.</p>
+      <span class="mfr-card__link">Learn More <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+  </div>
+</div>
+
+</div><!-- /#page-manufacturers -->
 
 <!-- ═══════════════ OEM PAGES ═══════════════ -->
 
@@ -4499,27 +4763,268 @@
 
 <!-- DORSEY -->
 <div id="page-oem-dorsey" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey">
-  <h1>Authorized Dorsey Dealer</h1>
-  <p>Trusted American-made dry van and platform trailers since 1919.</p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey Trailer Logo" style="height:50px;width:auto;filter:none;">
+  </div>
+  <h1>Authorized Dorsey Trailer Dealer</h1>
+  <p>Steel, Combo &amp; Aluminum Flatbeds, Lowboys &amp; Chip Vans — Built in Alabama Since 1911</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
   <h2>About Dorsey Trailers</h2>
-  <p>With over a century of manufacturing expertise, Dorsey Trailers produces high-quality dry vans, flatbeds, and platform trailers built for long-lasting performance. Their trailers are engineered to withstand the demands of commercial transportation across the United States.</p>
-  <p>Nationwide Haul is proud to be an authorized Dorsey dealer, offering competitive pricing, flexible financing, and full after-sale support for every unit sold.</p>
+  <p>Founded in <strong>1911 in Elba, Alabama</strong>, Dorsey Trailer is one of America's oldest and most respected trailer manufacturers. What began as a machine shop repairing power saws and boilers for the timber industry has grown into a full-line manufacturer of <strong>steel, aluminum, and combo flatbed trailers, drop decks, chip vans, and lowboys</strong> trusted by fleets coast to coast.</p>
+  <p>Dorsey's tagline — <strong>"Where Experience Breeds Quality"</strong> — reflects over a century of craftsmanship. Every trailer is built with <strong>high-tensile strength steel</strong>, finished with <strong>PPG&trade; automotive-grade acrylic urethane coatings</strong>, and wired with <strong>Grote Ultra Blue&trade; sealed harnesses</strong> with high-count LED lighting for maximum durability and safety.</p>
+  <p>As an <strong>authorized Dorsey Trailer dealer</strong>, Nationwide Haul offers the complete Dorsey product line with competitive pricing, flexible financing, and comprehensive after-sale support for operations of every size.</p>
 </div></div></section>
+
+<!-- PRODUCT HIGHLIGHTS -->
 <section class="oem-products"><div class="container">
-  <h2>Dorsey Product Lineup</h2>
+  <h2>Dorsey Trailer Product Lines</h2>
   <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop" alt="Dry Van Trailer"><div class="oem-card__body"><h3>Dry Van Trailers</h3><p>Enclosed trailers for general freight, offering maximum cargo protection.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Flatbed Trailer"><div class="oem-card__body"><h3>Flatbed Trailers</h3><p>Open-deck platforms for oversized and heavy loads with easy access.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Platform Trailer"><div class="oem-card__body"><h3>Platform Trailers</h3><p>Versatile platform designs for construction, agriculture, and industrial use.</p></div></div>
+    <div class="oem-card"><img src="OEMS/DORSEY/combo-flatbed.jpg" alt="Dorsey Combo Giant Flatbed Trailer"><div class="oem-card__body"><h3>Combo Trailers</h3><p>Giant Flatbed, Drop Deck, Beavertail, Lift Hauler &amp; Ultra-Light series with 130K true-strength steel.</p></div></div>
+    <div class="oem-card"><img src="OEMS/DORSEY/steel-flatbed.jpg" alt="Dorsey Steel Flatbed Trailer"><div class="oem-card__body"><h3>Steel Trailers</h3><p>Flatbeds, drop flats, beavertails, lift haulers &amp; extendables starting at 11,300 lbs.</p></div></div>
+    <div class="oem-card"><img src="OEMS/DORSEY/chip-van.jpg" alt="Dorsey Chip Van Open Top Trailer"><div class="oem-card__body"><h3>Chip Vans</h3><p>Open top, closed top &amp; walking floor models — up to 120 cubic yards capacity.</p></div></div>
+    <div class="oem-card"><img src="OEMS/DORSEY/lowboy.jpg" alt="Dorsey LB35 Fixed Neck Lowboy Trailer"><div class="oem-card__body"><h3>Lowboys</h3><p>LB35-33CS &amp; LB35-38CS fixed neck lowboys for heavy equipment transport.</p></div></div>
   </div>
 </div></section>
+
+<!-- CATEGORY 1: COMBO TRAILERS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/DORSEY/combo-flatbed.jpg" alt="Dorsey Combo Giant Flatbed Series Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Combo Trailers — Giant &amp; Ultra-Light Series</h3>
+      <p>Dorsey's Combo line is built on <strong>130K true-strength steel frames</strong> with <strong>extruded aluminum flooring</strong> and integrated double LL side rails — delivering exceptional strength at a starting weight of just <strong>10,300 lbs</strong>. Every combo trailer features <strong>Jost A500 landing gear</strong> with 19" cushion-foot travel and <strong>Sherwin Williams two-part acrylic urethane</strong> finish.</p>
+      <p><strong>Flatbed Series:</strong> Combo Giant Flatbed, 10'2" Air Spread configurations<br>
+      <strong>Drop Deck Series:</strong> Combo Giant Drop Deck for step-deck hauling<br>
+      <strong>Beavertail Series:</strong> Combo Giant Beavertail for rear-loading<br>
+      <strong>Lift Hauler Series:</strong> Combo Giant Lift Hauler for equipment transport<br>
+      <strong>Ultra-Light Series:</strong> Lightweight design for maximum payload<br>
+      <strong>Extendable Combo Flat:</strong> Adjustable length for oversized loads</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: STEEL TRAILERS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner oem-cat__inner--reverse">
+    <div class="oem-cat__img">
+      <img src="OEMS/DORSEY/steel-drop-flat.jpg" alt="Dorsey Steel Drop Flat Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Steel Trailers — Flatbeds, Drop Flats &amp; More</h3>
+      <p>Dorsey's all-steel lineup features <strong>fabricated high-tensile steel frames</strong> with <strong>6" structural channel siderails</strong>, starting at <strong>11,300 lbs</strong> with up to <strong>60,000 lbs capacity in 10'</strong>. Each trailer is white-blasted and finished with <strong>two-part primer and Sherwin Williams black acrylic urethane</strong> for long-lasting corrosion protection.</p>
+      <p><strong>Steel Flatbed:</strong> Standard open-deck platform with coil package available<br>
+      <strong>Steel Drop Flat:</strong> Lower deck height for taller cargo<br>
+      <strong>Steel Beavertail:</strong> Tapered rear for drive-on loading<br>
+      <strong>Steel Lift Hauler:</strong> Hydraulic lifting for heavy machinery<br>
+      <strong>Extendable Steel Flat:</strong> Adjustable length for long loads<br>
+      <strong>Extendable Steel Drop:</strong> Extendable drop-deck configuration</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 3: CHIP VANS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/DORSEY/chip-van.jpg" alt="Dorsey Chip Van Open Top Trailer for Forestry">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Chip Vans — Open Top, Closed Top &amp; Walking Floor</h3>
+      <p>A <strong>lightweight and durable staple of the forestry and commodity hauling industry</strong>, Dorsey chip vans deliver up to <strong>120 cubic yards of capacity</strong> (45'x102"x13'6") at a starting weight of just <strong>9,360 lbs</strong>. Built with <strong>exterior-post aluminum walls</strong>, HD aluminum upper and lower rails, and Dorsey's <strong>strongest full-width fifth wheel design</strong>.</p>
+      <p><strong>Open Top:</strong> Mesh pull tarp standard, 40'–53' lengths, 96" and 102" widths<br>
+      <strong>Closed Top:</strong> Fully enclosed for covered bulk transport<br>
+      <strong>Walking Floor:</strong> Automated unloading for wood chips, mulch &amp; biomass</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 4: LOWBOYS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner oem-cat__inner--reverse">
+    <div class="oem-cat__img">
+      <img src="OEMS/DORSEY/lowboy.jpg" alt="Dorsey LB35 Fixed Neck Lowboy Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Lowboys — Fixed Neck Heavy Haulers</h3>
+      <p>Dorsey's fixed neck lowboys are engineered for <strong>transporting heavy equipment and machinery</strong> with the same build quality that has defined the Dorsey brand for over a century. Featuring <strong>hydraulic removable gooseneck systems</strong>, high-tensile I-beam construction, and Dorsey's signature multi-step coating process for maximum corrosion resistance.</p>
+      <p><strong>LB35-33CS:</strong> 35-ton fixed neck, 33' deck length<br>
+      <strong>LB35-38CS:</strong> 35-ton fixed neck, 38' deck length</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FULL PRODUCT LINEUP TABLE -->
+<section class="oem-lineup"><div class="container">
+  <h2>Complete Dorsey Trailer Model Lineup</h2>
+  <p>Over 20 models across 5 categories — American-made quality since 1911</p>
+  <div style="overflow-x:auto;">
+  <table class="oem-lineup__table">
+    <thead>
+      <tr><th>Category</th><th>Model</th><th>Starting Weight</th><th>Application</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Combo</strong></td><td>Giant Flatbed Series</td><td>10,300 lbs</td><td>General freight, flatbed hauling</td></tr>
+      <tr><td><strong>Combo</strong></td><td>Giant Drop Deck Series</td><td>—</td><td>Step-deck, taller cargo</td></tr>
+      <tr><td><strong>Combo</strong></td><td>Giant Beavertail Series</td><td>—</td><td>Rear-loading equipment</td></tr>
+      <tr><td><strong>Combo</strong></td><td>Giant Lift Hauler Series</td><td>—</td><td>Heavy machinery transport</td></tr>
+      <tr><td><strong>Combo</strong></td><td>Ultra-Light Series</td><td>—</td><td>Maximum payload capacity</td></tr>
+      <tr><td><strong>Combo</strong></td><td>Extendable Combo Flat</td><td>—</td><td>Oversized &amp; long loads</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Steel Flatbed</td><td>11,300 lbs</td><td>General freight, coil packages</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Steel Drop Flat</td><td>—</td><td>Lower deck, taller loads</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Steel Beavertail</td><td>—</td><td>Drive-on loading</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Steel Lift Hauler</td><td>—</td><td>Hydraulic lifting</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Extendable Steel Flat</td><td>—</td><td>Long &amp; oversized loads</td></tr>
+      <tr><td><strong>Steel</strong></td><td>Extendable Steel Drop</td><td>—</td><td>Extendable drop-deck</td></tr>
+      <tr><td><strong>Aluminum</strong></td><td>Aluminum Giant Flatbed</td><td>—</td><td>Lightweight flatbed hauling</td></tr>
+      <tr><td><strong>Chip Van</strong></td><td>Open Top</td><td>9,360 lbs</td><td>Forestry, wood chips, mulch</td></tr>
+      <tr><td><strong>Chip Van</strong></td><td>Closed Top</td><td>—</td><td>Covered bulk transport</td></tr>
+      <tr><td><strong>Chip Van</strong></td><td>Walking Floor</td><td>—</td><td>Automated unloading</td></tr>
+      <tr><td><strong>Lowboy</strong></td><td>LB35-33CS Fixed Neck</td><td>—</td><td>Heavy equipment, 33' deck</td></tr>
+      <tr><td><strong>Lowboy</strong></td><td>LB35-38CS Fixed Neck</td><td>—</td><td>Heavy equipment, 38' deck</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<!-- BROCHURES & SPECS -->
+<section class="oem-brochures"><div class="container">
+  <h2>Dorsey Trailer Brochures &amp; Specs</h2>
+  <p>Download official Dorsey Trailer digital brochures for our most popular product lines</p>
+
+  <!-- Combo Giant Brochures -->
+  <div class="oem-accordion is-open" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Combo Giant Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/DORSEY/Combo Giant /FC_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Combo Flatbed</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+        <a href="OEMS/DORSEY/Combo Giant /DC_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Combo Drop Deck</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+        <a href="OEMS/DORSEY/Combo Giant /BTR_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Combo Beavertail</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Steel Giant Brochures -->
+  <div class="oem-accordion" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Steel Giant Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/DORSEY/Steel Giant /FB_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Steel Flatbed</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+        <a href="OEMS/DORSEY/Steel Giant /DF_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Steel Drop Flat</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aluminum Giant Brochures -->
+  <div class="oem-accordion" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Aluminum Giant Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/DORSEY/Aluminum Giant /AF_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Aluminum Flatbed</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+        <a href="OEMS/DORSEY/Aluminum Giant /AF_LF_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Aluminum LF Flatbed</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+        <a href="OEMS/DORSEY/Aluminum Giant /AD_DIGITAL BROCHURE_2023_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Aluminum Drop Deck</span>
+          <span class="oem-pdf-card__label">Digital Brochure</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div></section>
+
+<!-- WHY DORSEY -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Choose Dorsey Trailers?</h2>
+  <p>Over 110 years of American manufacturing excellence</p>
+  <div class="oem-whybuy__grid">
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🏭</div>
+      <h4>Built in America Since 1911</h4>
+      <p>Over a century of continuous manufacturing in Elba, Alabama — one of the oldest trailer makers in the United States.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🔩</div>
+      <h4>High-Tensile Steel Construction</h4>
+      <p>130K true-strength steel frames with fabricated I-beam construction for maximum load capacity and durability.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🎨</div>
+      <h4>Automotive-Grade Finish</h4>
+      <p>PPG&trade; and Sherwin Williams two-part acrylic urethane coatings over shot-blasted steel for superior corrosion protection.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">💡</div>
+      <h4>Grote Ultra Blue&trade; Wiring</h4>
+      <p>Sealed wiring harness with high-count LED lighting and 7-year warranty — the industry standard for reliability.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in Dorsey Trailers?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Put Dorsey Trailers to Work?</h2>
+  <p>Browse our Dorsey inventory or connect with a Nationwide Haul specialist for expert guidance and financing options.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4530,27 +5035,247 @@
 
 <!-- PITTS -->
 <div id="page-oem-pitts" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/Pitts Logo (1).png" alt="Pitts">
-  <h1>Authorized Pitts Dealer</h1>
-  <p>Industry-leading logging, lowboy, and specialty trailers built tough.</p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="Logos showcase/Pitts Logo (1).png" alt="Pitts Trailers Logo" style="height:50px;width:auto;filter:none;">
+  </div>
+  <h1>Authorized Pitts Trailers Dealer</h1>
+  <p>Forestry, Heavy Haul, Chassis &amp; Equipment Trailers — Built Tough Since 1976</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
   <h2>About Pitts Trailers</h2>
-  <p>Pitts Trailers has been manufacturing rugged, high-performance trailers for the forestry, construction, and heavy equipment industries. Known for innovative designs and exceptional build quality, Pitts trailers are built to handle the toughest jobs.</p>
-  <p>Nationwide Haul carries the complete Pitts lineup and provides expert guidance on selecting the right trailer for your operation, backed by financing and full-service support.</p>
+  <p>Since 1976, Pitts Trailers has been the <strong>world's largest and only complete-line forestry trailer manufacturer</strong>. From logging trailers to lowboy RGNs, tag-alongs, and marine chassis, Pitts builds every trailer to handle the most demanding jobs in forestry, construction, and heavy equipment transport.</p>
+  <p>Pitts is known as <strong>"the innovator, not the imitator"</strong> in the trailer industry, with patented technologies like the <strong>Loadpayin' Series</strong> frame, <strong>Lock N' Go landing gear</strong>, and <strong>military-derived rocking beam suspension</strong> — all engineered to haul more weight with less steel.</p>
+  <p>As an <strong>authorized Pitts Trailers dealer</strong>, Nationwide Haul offers the complete Pitts product line with competitive pricing, flexible financing, and comprehensive after-sale support for operations of every size.</p>
 </div></div></section>
+
+<!-- PRODUCT CATEGORIES -->
 <section class="oem-products"><div class="container">
-  <h2>Pitts Product Lineup</h2>
-  <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1504222490345-c075b6008014?w=600&h=400&fit=crop" alt="Logging Trailer"><div class="oem-card__body"><h3>Logging Trailers</h3><p>Purpose-built log trailers for forestry operations with heavy-duty bolsters.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Lowboy Trailer"><div class="oem-card__body"><h3>Lowboy Trailers</h3><p>Low-profile deck for transporting heavy machinery and oversized equipment.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1565891741441-64926e441838?w=600&h=400&fit=crop" alt="Specialty Trailer"><div class="oem-card__body"><h3>Specialty Trailers</h3><p>Custom configurations for unique hauling requirements and industrial applications.</p></div></div>
+  <h2>Pitts Trailer Divisions</h2>
+  <div class="oem-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+    <div class="oem-card"><img src="OEMS/PITTS/forestry-log-trailer.png" alt="Pitts Forestry Log Trailer" style="object-fit:contain;background:#f5f5f5;padding:16px;"><div class="oem-card__body"><h3>Forestry Division</h3><p>Log trailers, loader trailers, chip vans &amp; moving floors for the forestry industry.</p></div></div>
+    <div class="oem-card"><img src="OEMS/PITTS/heavy-haul-lowboy.jpg" alt="Pitts Heavy Haul Lowboy Trailer"><div class="oem-card__body"><h3>Heavy Haul Division</h3><p>Lowboy RGN, fixed neck lowboys &amp; tag-alongs for construction and equipment hauling.</p></div></div>
+    <div class="oem-card"><img src="OEMS/PITTS/marine-chassis.png" alt="Pitts Marine and Mobile Power Chassis" style="object-fit:contain;background:#f5f5f5;padding:16px;"><div class="oem-card__body"><h3>Chassis Division</h3><p>Marine chassis and mobile power chassis for intermodal and specialized applications.</p></div></div>
+    <div class="oem-card"><img src="OEMS/PITTS/forestry-crawler.png" alt="Pitts Equipment Trailers" style="object-fit:contain;background:#f5f5f5;padding:16px;"><div class="oem-card__body"><h3>Equipment Trailers</h3><p>Versatile trailers for transporting machinery, generators, and specialty equipment.</p></div></div>
   </div>
 </div></section>
+
+<!-- CATEGORY 1: FORESTRY -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/PITTS/forestry-log-trailer.png" alt="Pitts Forestry Log Trailers - Loadpayin Series" style="object-fit:contain;background:#f5f5f5;padding:20px;">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Forestry — Log &amp; Loader Trailers</h3>
+      <p>Pitts pioneered the <strong>Loadpayin' Series</strong> in 1994, featuring a fully fabricated frame made of <strong>high-yield materials</strong> with continuous submerged arc welding. The result: trailers that <strong>haul more wood and less steel</strong>.</p>
+      <p><strong>Log Trailer Models:</strong> LT40-8L, LT40, LT40-L, LP40-4L, PT22<br>
+      <strong>Loader Trailers:</strong> KB48 with exclusive military-derived rocking beam suspension<br>
+      <strong>Also available:</strong> Chip vans &amp; moving floors with high-strength aluminum walls</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Forestry Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: HEAVY HAUL -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/PITTS/heavy-haul-lowboy.jpg" alt="Pitts Heavy Haul Lowboy RGN Trailers">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Heavy Haul — Lowboys &amp; Tag-Alongs</h3>
+      <p>Pitts Heavy Haul trailers are engineered for <strong>construction and heavy equipment transport</strong>. Featuring <strong>air ride suspension</strong> with automatic/manual controls, air locking pins, and <strong>5-position ride height adjustment</strong> for maximum versatility.</p>
+      <p><strong>Lowboy RGN Models:</strong> LB35-DC, LB51-DC, LB55-DC, LB55-22GT, LB40-18GT, LB40-22GT, LB60-18GT, LB60-22GT<br>
+      <strong>Lowboy Fixed Neck:</strong> LB25-33, LB35, LB35-CS, LB51, LB51-CS<br>
+      <strong>Tag-Alongs:</strong> TA10, TA12, TA15, TA20, TA25, TA30</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Heavy Haul Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 3: CHASSIS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/PITTS/marine-chassis.png" alt="Pitts Marine and Mobile Power Chassis" style="object-fit:contain;background:#f5f5f5;padding:20px;">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Chassis — Marine &amp; Mobile Power</h3>
+      <p>Pitts builds specialized chassis for <strong>marine container transport</strong> and <strong>mobile power applications</strong>, designed to meet the demands of port operations, intermodal yards, and generator/power unit transport.</p>
+      <p><strong>Marine Chassis:</strong> SC40, SC40-SA, SC40-TRI, SC23, SC40-45, MP20-40-METRO<br>
+      <strong>Mobile Power Chassis:</strong> SC20-AR, SC40-AR, SC40-TRI-AR, SC32-AR, SC38-AR, SC48-TRI-AR</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Chassis Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FULL PRODUCT LINEUP TABLE -->
+<section class="oem-lineup"><div class="container">
+  <h2>Complete Pitts Trailers Model Lineup</h2>
+  <p>Over 40 models across 4 divisions — the industry's most complete trailer line</p>
+  <div style="overflow-x:auto;">
+  <table class="oem-lineup__table">
+    <thead>
+      <tr><th>Division</th><th>Category</th><th>Models</th><th>Application</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Forestry</strong></td><td>Log Trailers</td><td>LT40-8L, LT40, LT40-L, LP40-4L, PT22</td><td>Timber hauling, forestry ops</td></tr>
+      <tr><td><strong>Forestry</strong></td><td>Loader Trailers</td><td>KB48</td><td>Knuckleboom loader transport</td></tr>
+      <tr><td><strong>Forestry</strong></td><td>Chip Vans</td><td>Multiple configs</td><td>Wood chip &amp; biomass transport</td></tr>
+      <tr><td><strong>Heavy Haul</strong></td><td>Lowboy RGN</td><td>LB35-DC, LB51-DC, LB55-DC, LB55-22GT, LB40-18GT, LB40-22GT, LB60-18GT, LB60-22GT</td><td>Heavy equipment, construction</td></tr>
+      <tr><td><strong>Heavy Haul</strong></td><td>Lowboy Fixed Neck</td><td>LB25-33, LB35, LB35-CS, LB51, LB51-CS</td><td>Rear-loading equipment</td></tr>
+      <tr><td><strong>Heavy Haul</strong></td><td>Tag-Alongs</td><td>TA10, TA12, TA15, TA20, TA25, TA30</td><td>Multi-purpose equipment hauling</td></tr>
+      <tr><td><strong>Chassis</strong></td><td>Marine Chassis</td><td>SC40, SC40-SA, SC40-TRI, SC23, SC40-45, MP20-40-METRO</td><td>Port &amp; intermodal containers</td></tr>
+      <tr><td><strong>Chassis</strong></td><td>Mobile Power</td><td>SC20-AR, SC40-AR, SC40-TRI-AR, SC32-AR, SC38-AR, SC48-TRI-AR</td><td>Generator &amp; power unit transport</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<!-- BROCHURES & SPECS -->
+<section class="oem-brochures"><div class="container">
+  <h2>Pitts Trailers Brochures &amp; Specs</h2>
+  <p>Download official Pitts Trailers spec sheets and brochures for our most popular models</p>
+
+  <!-- Lowboy RGN Brochures -->
+  <div class="oem-accordion is-open" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Lowboy RGN Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/PITTS/Lowboy/LB35-22DC_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB35-22DC</span>
+          <span class="oem-pdf-card__label">Lowboy RGN</span>
+        </a>
+        <a href="OEMS/PITTS/Lowboy/LB51_18D_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB51-18D</span>
+          <span class="oem-pdf-card__label">Lowboy RGN</span>
+        </a>
+        <a href="OEMS/PITTS/Lowboy/LB51-22DC_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB51-22DC</span>
+          <span class="oem-pdf-card__label">Lowboy RGN</span>
+        </a>
+        <a href="OEMS/PITTS/Lowboy/LB55-18DC_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB55-18DC</span>
+          <span class="oem-pdf-card__label">Lowboy RGN</span>
+        </a>
+        <a href="OEMS/PITTS/Lowboy/LB55-22DC_2023_Sourcewell_2.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB55-22DC</span>
+          <span class="oem-pdf-card__label">Lowboy RGN</span>
+        </a>
+        <a href="OEMS/PITTS/Lowboy/LB55-22GT_2023_Sourcewell-1.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">LB55-22GT</span>
+          <span class="oem-pdf-card__label">Lowboy Gooseneck</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tag-Along Brochures -->
+  <div class="oem-accordion" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Tag-Along Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/PITTS/Tag/TA10_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">TA10</span>
+          <span class="oem-pdf-card__label">Tag-Along</span>
+        </a>
+        <a href="OEMS/PITTS/Tag/TA12_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">TA12</span>
+          <span class="oem-pdf-card__label">Tag-Along</span>
+        </a>
+        <a href="OEMS/PITTS/Tag/TA20_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">TA20</span>
+          <span class="oem-pdf-card__label">Tag-Along</span>
+        </a>
+        <a href="OEMS/PITTS/Tag/TA25_2023_Sourcewell.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">TA25</span>
+          <span class="oem-pdf-card__label">Tag-Along</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hydraulic Tail Brochures -->
+  <div class="oem-accordion" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Hydraulic Tail Trailers</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/PITTS/Hydraulic Tail /Hydraulic Tail .pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Hydraulic Tail</span>
+          <span class="oem-pdf-card__label">Spec Sheet</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div></section>
+
+<!-- WHY PITTS -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Choose Pitts Trailers?</h2>
+  <p>Nearly 50 years of innovation and unmatched build quality</p>
+  <div class="oem-whybuy__grid">
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🏗️</div>
+      <h4>Loadpayin' Series Frame</h4>
+      <p>Fully fabricated high-yield frame with continuous submerged arc welding — haul more weight with less steel.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🔒</div>
+      <h4>Lock N' Go Landing Gear</h4>
+      <p>Patented landing gear system designed for maximum driver safety and load security on every drop.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🛞</div>
+      <h4>Rocking Beam Suspension</h4>
+      <p>Exclusive military-derived technology delivers the smoothest, most stable transport available on or off road.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🇺🇸</div>
+      <h4>American Built Since 1976</h4>
+      <p>Nearly 50 years of American manufacturing excellence — the innovator, not the imitator in the trailer industry.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in Pitts Trailers?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Put Pitts Trailers to Work?</h2>
+  <p>Browse our Pitts inventory or connect with a Nationwide Haul specialist for expert guidance and financing options.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4561,27 +5286,239 @@
 
 <!-- VANGUARD -->
 <div id="page-oem-vanguard" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard">
-  <h1>Authorized Vanguard Dealer</h1>
-  <p>National Trailer Corporation — reefers, dry vans, and flatbeds built for performance.</p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard National Trailer Corporation Logo" style="height:50px;width:auto;filter:none;">
+  </div>
+  <h1>Authorized Vanguard National Trailer Dealer</h1>
+  <p>Dry Van, Refrigerated &amp; Composite Plate Trailers — Premium Performance from Monon, Indiana</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
   <h2>About Vanguard National Trailer Corporation</h2>
-  <p>Vanguard National Trailer Corporation manufactures a complete line of refrigerated, dry van, and flatbed trailers. With advanced composite technology and innovative engineering, Vanguard trailers deliver superior durability, lighter weight, and lower total cost of ownership.</p>
-  <p>Nationwide Haul is your authorized Vanguard dealer, providing access to the full product line with competitive pricing and comprehensive financing solutions.</p>
+  <p><strong>Vanguard National Trailer Corporation</strong>, headquartered in <strong>Monon, Indiana</strong>, manufactures a comprehensive range of <strong>dry freight vans, refrigerated trailers, flatbeds, converter dollies, and container chassis</strong> for the North American transportation industry. Every Vanguard trailer is engineered with premium performance features that deliver valuable operational savings and years of trouble-free service.</p>
+  <p>Vanguard&rsquo;s dry van lineup — including the <strong>VXP Composite Plate</strong>, <strong>VIP 4000 Sheet &amp; Post</strong>, and <strong>MaxCube</strong> — features industry-leading innovations such as the award-winning <strong>30% Under-Ride Bracing</strong> with LED Glo Lights, <strong>fully galvanized rear frames</strong>, bolt-together bumpers, and galvanized steel thresholds. Their refrigerated trailers boast <strong>12% greater thermal efficiency</strong> than competitors with triple rear door seals and high-quality foam insulation.</p>
+  <p>As an <strong>authorized Vanguard trailer dealer</strong>, Nationwide Haul offers the complete Vanguard product line — from composite plate dry vans to multi-temperature reefers — backed by competitive financing, expert consultation, and dedicated after-sale support for fleets of every size.</p>
 </div></div></section>
+
+<!-- PRODUCT HIGHLIGHTS -->
 <section class="oem-products"><div class="container">
-  <h2>Vanguard Product Lineup</h2>
+  <h2>Vanguard Trailer Product Lines</h2>
   <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=400&fit=crop" alt="Reefer Trailer"><div class="oem-card__body"><h3>Refrigerated Trailers</h3><p>Temperature-controlled trailers for food, pharmaceutical, and perishable freight.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop" alt="Dry Van"><div class="oem-card__body"><h3>Dry Van Trailers</h3><p>Composite technology dry vans for maximum durability and cargo protection.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Flatbed"><div class="oem-card__body"><h3>Flatbed Trailers</h3><p>Open-deck trailers engineered for heavy and oversized load transportation.</p></div></div>
+    <div class="oem-card"><img src="OEMS/VANGUARD/dsc09573.jpg" alt="Vanguard VXP Composite Plate Dry Van Trailer"><div class="oem-card__body"><h3>VXP Composite Plate</h3><p>Snag-free composite plate panels with galvanized logistics posts — 101&frac14;&rdquo; inside width panel to panel.</p></div></div>
+    <div class="oem-card"><img src="OEMS/VANGUARD/dsc09580.jpg" alt="Vanguard VIP 4000 Dry Van Trailer"><div class="oem-card__body"><h3>VIP 4000</h3><p>Sheet &amp; post plastic or plywood lined van — 100&rdquo; inside width post to post with 80 KSI logistics posts.</p></div></div>
+    <div class="oem-card"><img src="OEMS/VANGUARD/dsc09595.jpg" alt="Vanguard MaxCube Dry Van Trailer Interior"><div class="oem-card__body"><h3>MaxCube</h3><p>Anti-snag snap-in interior liner — impact-resistant, recessed between posts with zero fasteners.</p></div></div>
+    <div class="oem-card"><img src="OEMS/VANGUARD/dsc09615.jpg" alt="Vanguard Refrigerated Trailer Connections"><div class="oem-card__body"><h3>Refrigerated Trailers</h3><p>Single &amp; multi-temperature reefers — 12% more thermally efficient with triple rear door seals.</p></div></div>
   </div>
 </div></section>
+
+<!-- CATEGORY 1: VXP COMPOSITE PLATE -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/VANGUARD/dsc09605.jpg" alt="Vanguard VXP Dry Van Rear Galvanized Frame and Under-Ride Bracing">
+    </div>
+    <div class="oem-cat__content">
+      <h3>VXP — Composite Sidewall Van</h3>
+      <p>The Vanguard VXP sets the standard for composite plate dry van trailers. Featuring <strong>snag-free composite plate panels</strong> with <strong>galvanized logistics posts</strong>, the VXP delivers <strong>101&frac14;&rdquo; inside width panel to panel</strong> — maximizing cargo capacity while protecting freight from damage. Choose from standard or high base rail options to match your operation.</p>
+      <p>Every VXP ships with Vanguard&rsquo;s award-winning <strong>30% Under-Ride Bracing</strong> with integrated LED Glo Lights, <strong>fully galvanized rear frame</strong> with bolt-together bumper, and <strong>galvanized landing leg bracing</strong> across seven cross members for long-term corrosion resistance.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>101&frac14;&rdquo; inside width panel to panel</li>
+        <li>Snag-free composite plate sidewalls</li>
+        <li>Award-winning 30% Under-Ride Bracing</li>
+        <li>Fully galvanized rear frame &amp; bumper</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="OEMS/VANGUARD/VXP-with-Standard-Features.pdf" target="_blank" class="btn-brochure">Download Brochure</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: VIP 4000 -->
+<section class="oem-cat oem-cat--reverse"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/VANGUARD/dsc09580.jpg" alt="Vanguard VIP 4000 Dry Van Trailer Side Profile">
+    </div>
+    <div class="oem-cat__content">
+      <h3>VIP 4000 — Sheet &amp; Post Van</h3>
+      <p>The Vanguard VIP 4000 is the go-to <strong>sheet and post dry van</strong> for fleets that need proven reliability and easy maintenance. Featuring <strong>14 ga. 80 KSI Series &ldquo;A&rdquo; logistics posts on 16&rdquo; centers</strong> throughout, with <strong>100&rdquo; inside width post to post</strong> and your choice of plastic or plywood interior lining, the VIP 4000 handles everything from palletized freight to retail distribution.</p>
+      <p>Standard features include the same <strong>galvanized rear frame</strong>, <strong>30% Under-Ride Bracing</strong>, and <strong>dual-function LED lighting</strong> found across the entire Vanguard lineup — ensuring consistent quality and safety regardless of model.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>100&rdquo; inside width post to post</li>
+        <li>14 ga. 80 KSI logistics posts on 16&rdquo; centers</li>
+        <li>Plastic or plywood interior lining</li>
+        <li>Dual-function LED clearance/turn lights</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="OEMS/VANGUARD/VIP-with-Standard-Features.pdf" target="_blank" class="btn-brochure">Download Brochure</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 3: MAXCUBE -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/VANGUARD/dsc09604.jpg" alt="Vanguard MaxCube Dry Van Trailer Interior with Galvanized Threshold">
+    </div>
+    <div class="oem-cat__content">
+      <h3>MaxCube — Anti-Snag Interior Van</h3>
+      <p>The Vanguard MaxCube delivers <strong>101&frac14;&rdquo; inside width</strong> with an innovative <strong>anti-snag snap-in interior liner</strong> that is completely <strong>impact-resistant</strong> and recessed between posts with <strong>zero fasteners</strong> — eliminating snag points that can damage freight or slow loading. The MaxCube uses <strong>Series &ldquo;A&rdquo; logistic posts on 16&rdquo; centers</strong> throughout for consistent load securement.</p>
+      <p>Designed for high-volume operations that demand maximum interior space, fast loading cycles, and minimal freight damage, the MaxCube combines snag-free performance with the same galvanized construction and safety features that define every Vanguard trailer.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>101&frac14;&rdquo; inside width panel to panel</li>
+        <li>Anti-snag snap-in interior — zero fasteners</li>
+        <li>Impact-resistant plastic liner</li>
+        <li>Series &ldquo;A&rdquo; logistic posts on 16&rdquo; centers</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="OEMS/VANGUARD/Maxcube-with-Standard-Features.pdf" target="_blank" class="btn-brochure">Download Brochure</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 4: REFRIGERATED TRAILERS -->
+<section class="oem-cat oem-cat--reverse"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/VANGUARD/dsc09612.jpg" alt="Vanguard Refrigerated Trailer Undercarriage Cross Members and Bracing">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Refrigerated Trailers — Single &amp; Multi-Temp</h3>
+      <p>Vanguard refrigerated trailers are engineered to be <strong>12% more thermally efficient</strong> than the competition. With <strong>triple rear door seals</strong>, high-quality <strong>foam insulation with smooth wall construction</strong>, and <strong>galvanized steel components</strong> throughout, these reefers maintain precise temperature control for food, pharmaceutical, and perishable freight — from truckload to grocery and multi-temp applications.</p>
+      <p>Standard features include <strong>bolt-on galvanized rear bumpers</strong>, reinforced overhead door frames, and <strong>tub-type cross members near the landing gear</strong> for enhanced structural integrity. Available with side doors for multi-stop distribution routes.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>12% greater thermal efficiency</li>
+        <li>Triple rear door seals</li>
+        <li>Single-temp, multi-temp &amp; side-door options</li>
+        <li>Smooth wall foam insulation</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="OEMS/VANGUARD/cimc-reefer-trailers.pdf" target="_blank" class="btn-brochure">Download Brochure</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PRODUCT LINEUP TABLE -->
+<section class="oem-lineup" style="background:var(--bg-dark);padding:60px 0;">
+<div class="container">
+  <h2 style="text-align:center;color:#fff;font-size:28px;margin-bottom:30px;">Vanguard Trailer Product Lineup</h2>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;font-size:14px;color:#cfd4dc;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--red);">
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Model</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Category</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Inside Width</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Key Feature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">VXP Composite Plate</td><td style="padding:10px 14px;">Dry Van</td><td style="padding:10px 14px;">101&frac14;&rdquo;</td><td style="padding:10px 14px;">Snag-free composite panels, standard or high base rail</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">VIP 4000</td><td style="padding:10px 14px;">Dry Van</td><td style="padding:10px 14px;">100&rdquo;</td><td style="padding:10px 14px;">Sheet &amp; post, 14 ga. 80 KSI logistics posts</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">MaxCube</td><td style="padding:10px 14px;">Dry Van</td><td style="padding:10px 14px;">101&frac14;&rdquo;</td><td style="padding:10px 14px;">Anti-snag snap-in liner, zero fasteners</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Single-Temp Reefer</td><td style="padding:10px 14px;">Refrigerated</td><td style="padding:10px 14px;">Standard</td><td style="padding:10px 14px;">12% more thermally efficient, triple door seals</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Multi-Temp Reefer</td><td style="padding:10px 14px;">Refrigerated</td><td style="padding:10px 14px;">Standard</td><td style="padding:10px 14px;">Zone-controlled temperature, multi-stop ready</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Grocery Reefer</td><td style="padding:10px 14px;">Refrigerated</td><td style="padding:10px 14px;">Standard</td><td style="padding:10px 14px;">Side-door option, smooth wall insulation</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">R3 Intermodal Cooler</td><td style="padding:10px 14px;">Refrigerated</td><td style="padding:10px 14px;">Intermodal</td><td style="padding:10px 14px;">Rail-ready refrigerated container</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Flatbed Trailer</td><td style="padding:10px 14px;">Flatbed</td><td style="padding:10px 14px;">Open Deck</td><td style="padding:10px 14px;">Steel construction for heavy &amp; oversized loads</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Converter Dolly</td><td style="padding:10px 14px;">Dolly</td><td style="padding:10px 14px;">N/A</td><td style="padding:10px 14px;">Double &amp; triple trailer configurations</td></tr>
+      <tr><td style="padding:10px 14px;">CIMC Container Chassis</td><td style="padding:10px 14px;">Chassis</td><td style="padding:10px 14px;">20&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Intermodal container transport via CIMC subsidiary</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<!-- BROCHURES & SPECS -->
+<section class="oem-brochures" style="padding:60px 0;background:var(--bg-card);">
+<div class="container">
+  <h2 style="text-align:center;color:#fff;font-size:28px;margin-bottom:30px;">Brochures &amp; Specs</h2>
+
+  <!-- Dry Van Brochures -->
+  <div class="oem-accordion is-open" onclick="this.classList.toggle('is-open')">
+    <h3 class="oem-accordion__header">Dry Van Trailers <span class="oem-accordion__arrow">&#9660;</span></h3>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:16px 0;">
+        <a href="OEMS/VANGUARD/VXP-with-Standard-Features.pdf" target="_blank" class="oem-pdf-card" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;text-decoration:none;color:#cfd4dc;transition:border-color .2s;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="2" fill="#c0392b"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PDF</text></svg>
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:14px;font-weight:600;color:#fff;">VXP Standard Features</span><span style="font-size:12px;color:#8a8f98;">Composite Plate Van</span></span>
+        </a>
+        <a href="OEMS/VANGUARD/VIP-with-Standard-Features.pdf" target="_blank" class="oem-pdf-card" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;text-decoration:none;color:#cfd4dc;transition:border-color .2s;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="2" fill="#c0392b"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PDF</text></svg>
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:14px;font-weight:600;color:#fff;">VIP 4000 Standard Features</span><span style="font-size:12px;color:#8a8f98;">Sheet &amp; Post Van</span></span>
+        </a>
+        <a href="OEMS/VANGUARD/Maxcube-with-Standard-Features.pdf" target="_blank" class="oem-pdf-card" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;text-decoration:none;color:#cfd4dc;transition:border-color .2s;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="2" fill="#c0392b"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PDF</text></svg>
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:14px;font-weight:600;color:#fff;">MaxCube Standard Features</span><span style="font-size:12px;color:#8a8f98;">Anti-Snag Interior Van</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refrigerated Brochures -->
+  <div class="oem-accordion" onclick="this.classList.toggle('is-open')">
+    <h3 class="oem-accordion__header">Refrigerated Trailers <span class="oem-accordion__arrow">&#9660;</span></h3>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:16px 0;">
+        <a href="OEMS/VANGUARD/cimc-reefer-trailers.pdf" target="_blank" class="oem-pdf-card" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;text-decoration:none;color:#cfd4dc;transition:border-color .2s;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="2" fill="#c0392b"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PDF</text></svg>
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:14px;font-weight:600;color:#fff;">CIMC Reefer Trailers</span><span style="font-size:12px;color:#8a8f98;">Refrigerated Lineup</span></span>
+        </a>
+        <a href="OEMS/VANGUARD/r3-intermodal-cooler.pdf" target="_blank" class="oem-pdf-card" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;text-decoration:none;color:#cfd4dc;transition:border-color .2s;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="2" fill="#c0392b"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PDF</text></svg>
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:14px;font-weight:600;color:#fff;">R3 Intermodal Cooler</span><span style="font-size:12px;color:#8a8f98;">Rail-Ready Reefer</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- WHY VANGUARD -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Choose Vanguard Trailers?</h2>
+  <div class="oem-grid oem-grid--4">
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><path d="M6 36l8-24h4l8 24"/><path d="M10 28h12"/><path d="M30 12h12M30 24h12M30 36h12"/></svg></div>
+      <h4>30% Under-Ride Bracing</h4>
+      <p>Award-winning rear impact guard design with integrated LED Glo Lights for maximum safety.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><rect x="6" y="6" width="36" height="36" rx="4"/><path d="M6 18h36M18 6v36"/></svg></div>
+      <h4>Fully Galvanized Steel</h4>
+      <p>Galvanized rear frames, bumpers, thresholds, floor plates &amp; landing leg bracing — built to resist corrosion.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><path d="M24 4a20 20 0 110 40 20 20 0 010-40z"/><path d="M24 14v10l7 7"/></svg></div>
+      <h4>12% More Efficient Reefers</h4>
+      <p>Superior thermal performance with triple rear door seals and foam insulation — less fuel, tighter temps.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><path d="M12 36V20l12-8 12 8v16"/><path d="M20 36v-8h8v8"/><path d="M12 24h24"/></svg></div>
+      <h4>Composite Plate Innovation</h4>
+      <p>Snag-free panels with 101&frac14;&rdquo; interior width — maximum cargo space and zero freight damage.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in Vanguard Trailers?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Upgrade Your Fleet with Vanguard?</h2>
+  <p>Explore our Vanguard inventory or connect with our sales team for a custom quote on dry vans, reefers, and more.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4592,27 +5529,205 @@
 
 <!-- XL SPECIALIZED -->
 <div id="page-oem-xl" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized">
-  <h1>Authorized XL Specialized Dealer</h1>
-  <p>Heavy-haul and specialized trailers engineered for extreme loads.</p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized Trailers Logo" style="height:50px;width:auto;filter:none;">
+  </div>
+  <h1>Authorized XL Specialized Trailer Dealer</h1>
+  <p>Heavy-Haul &amp; Custom Trailers Engineered for Extreme Loads — ISO 9001:2015 Certified</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
   <h2>About XL Specialized Trailers</h2>
-  <p>XL Specialized Trailers is a premier manufacturer of heavy-haul and specialized trailers designed for oversized, overweight, and unique cargo. Their product line includes lowboys, multi-axle configurations, and custom solutions for the most demanding hauling requirements.</p>
-  <p>As an authorized XL Specialized dealer, Nationwide Haul offers expert consultation, competitive pricing, and flexible financing to help you get the right trailer for any heavy-haul application.</p>
+  <p>With over <strong>100 years of heavy-haul design experience</strong>, XL Specialized Trailers is a leading designer and manufacturer of highly engineered and customized heavy-haul trailers in the USA. Headquartered in <strong>Manchester, Iowa</strong> and part of Caparo Bull Moose Industries, XL builds trailers that move the things that <strong>build and sustain the world</strong> — from construction equipment to wind turbine components.</p>
+  <p>Every XL trailer is <strong>custom-built to meet specific customer requirements</strong>, manufactured under <strong>ISO 9001:2015 certified</strong> lean processes. Their product line spans <strong>detachable gooseneck lowboys, extendable trailers, multi-axle configurations up to 170 tons, slide axle, hydraulic tail, wind energy trailers</strong>, and fully custom solutions — all backed by a <strong>5-3-1 warranty</strong> (5-year structural, 3-year paint, 1-year components).</p>
+  <p>As an <strong>authorized XL Specialized dealer</strong>, Nationwide Haul offers the complete XL product line with competitive pricing, flexible financing, and comprehensive after-sale support for construction, energy, infrastructure, and heavy equipment operations.</p>
 </div></div></section>
-<section class="oem-products"><div class="container">
-  <h2>XL Specialized Product Lineup</h2>
-  <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Lowboy Trailer"><div class="oem-card__body"><h3>Lowboy Trailers</h3><p>Low-profile deck for hauling heavy construction and mining equipment.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1565891741441-64926e441838?w=600&h=400&fit=crop" alt="Heavy Haul"><div class="oem-card__body"><h3>Heavy Haul Trailers</h3><p>Multi-axle configurations for oversized and overweight loads up to 150 tons.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Specialized Trailer"><div class="oem-card__body"><h3>Specialized Configurations</h3><p>Custom-built solutions for unique hauling challenges and permit loads.</p></div></div>
+
+<!-- VIDEO SECTION -->
+<section style="padding:40px 0;background:var(--gray);"><div class="container">
+  <h2 style="text-align:center;margin-bottom:8px;">XL Specialized Trailers in Action</h2>
+  <p style="text-align:center;color:var(--gray-text);margin-bottom:28px;">See why operators trust XL for the heaviest loads on the road</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;max-width:900px;margin:0 auto;background:#000;">
+    <iframe src="https://www.youtube-nocookie.com/embed/Kh8TdduNnpc?start=12&rel=0" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
   </div>
 </div></section>
+
+<!-- PRODUCT HIGHLIGHTS -->
+<section class="oem-products"><div class="container">
+  <h2>XL Specialized Trailer Categories</h2>
+  <div class="oem-grid">
+    <div class="oem-card"><img src="OEMS/XL/hdg-lowboy.jpg" alt="XL Specialized Hydraulic Detachable Gooseneck Lowboy" style="object-fit:contain;background:#f5f5f5;padding:12px;"><div class="oem-card__body"><h3>Detachable Gooseneck</h3><p>Mechanical &amp; hydraulic lowboys with low-profile deck for heavy equipment up to 110+ tons.</p></div></div>
+    <div class="oem-card"><img src="OEMS/XL/hde-extendable.jpg" alt="XL Specialized Hydraulic Detachable Extendable Trailer" style="object-fit:contain;background:#f5f5f5;padding:12px;"><div class="oem-card__body"><h3>Extendable Trailers</h3><p>Hydraulic &amp; mechanical extendables for oversized loads — flat deck &amp; step deck configurations.</p></div></div>
+    <div class="oem-card"><img src="OEMS/XL/multi-axle.jpg" alt="XL Specialized Multi-Axle Heavy Haul Trailer 170 Ton" style="object-fit:contain;background:#f5f5f5;padding:12px;"><div class="oem-card__body"><h3>Multi-Axle &amp; Trunnion</h3><p>High-capacity configurations up to 170 tons with jeep &amp; booster combinations.</p></div></div>
+    <div class="oem-card"><img src="OEMS/XL/power-tail.jpg" alt="XL Specialized Power Tail Hydraulic Tail Trailer" style="object-fit:contain;background:#f5f5f5;padding:12px;"><div class="oem-card__body"><h3>Specialty Trailers</h3><p>Slide axle, power tail, folding gooseneck, wind energy &amp; custom-built solutions.</p></div></div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 1: DETACHABLE GOOSENECK -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/XL/hdg-lowboy.jpg" alt="XL Specialized HDG Hydraulic Detachable Gooseneck" style="object-fit:contain;background:#f5f5f5;padding:16px;">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Detachable Gooseneck Trailers</h3>
+      <p>XL's detachable gooseneck lineup delivers <strong>hauling solutions for your heaviest loads</strong>. Available in mechanical and hydraulic configurations with <strong>low-profile decks</strong>, detachable front for drive-on loading, and multiple axle spacing options for state and provincial compliance.</p>
+      <p><strong>HDG — Hydraulic Detachable Gooseneck:</strong> Up to 110-ton capacity<br>
+      <strong>Low-Profile HDG:</strong> Extra-low deck height for tall equipment<br>
+      <strong>MFG — Mechanical Full-Width Gooseneck:</strong> Proven mechanical detach<br>
+      <strong>High-Capacity Detachable:</strong> Multi-axle configs exceeding 120,000 lbs</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: EXTENDABLE TRAILERS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner oem-cat__inner--reverse">
+    <div class="oem-cat__img">
+      <img src="OEMS/XL/hde-extendable.jpg" alt="XL Specialized HDE Hydraulic Detachable Extendable Trailer" style="object-fit:contain;background:#f5f5f5;padding:16px;">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Extendable Trailers</h3>
+      <p>Purpose-built for <strong>oversized and long loads</strong>, XL extendable trailers feature telescoping deck sections with hydraulic or mechanical operation. Available in <strong>flat deck and step deck</strong> configurations with detachable gooseneck options for maximum versatility.</p>
+      <p><strong>HDE — Hydraulic Detachable Extendable:</strong> Hydraulic extend &amp; detach<br>
+      <strong>MDE — Mechanical Detachable Extendable:</strong> Mechanical extend &amp; detach<br>
+      <strong>Flat Deck Extendable:</strong> Open deck for beams, poles &amp; long cargo<br>
+      <strong>Step Deck Extendable:</strong> Two-level deck for taller oversized loads</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 3: MULTI-AXLE & SPECIALTY -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/XL/multi-axle.jpg" alt="XL Specialized 170-Ton Multi-Axle Trunnion Trailer with Jeep and Booster" style="object-fit:contain;background:#f5f5f5;padding:16px;">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Multi-Axle, Trunnion &amp; Specialty Trailers</h3>
+      <p>For the <strong>heaviest and most challenging loads</strong>, XL offers multi-axle configurations scaling up to <strong>170+ tons</strong> with jeep and booster combinations, trunnion-style axles, and steerable options. Plus specialty trailers for wind energy, slide-axle operations, and hydraulic tail loading.</p>
+      <p><strong>Trunnion Style:</strong> Mechanical gooseneck with trunnion axles up to 170 tons<br>
+      <strong>Expandable:</strong> Width-expanding for oversized machinery<br>
+      <strong>Slide Axle:</strong> Adjustable axle positioning for weight distribution<br>
+      <strong>Power Tail:</strong> Hydraulic tail for rear-loading without ramps<br>
+      <strong>Folding Gooseneck:</strong> Hydraulic folding neck for versatile loading<br>
+      <strong>Wind Energy:</strong> Blademate, Towermate &amp; 13-axle for turbine components</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FULL PRODUCT LINEUP TABLE -->
+<section class="oem-lineup"><div class="container">
+  <h2>Complete XL Specialized Model Lineup</h2>
+  <p>Over 20 trailer types across 7 categories — custom-built for every heavy-haul challenge</p>
+  <div style="overflow-x:auto;">
+  <table class="oem-lineup__table">
+    <thead>
+      <tr><th>Category</th><th>Model</th><th>Type</th><th>Application</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Detachable Gooseneck</strong></td><td>HDG</td><td>Hydraulic Detachable</td><td>Heavy equipment, construction</td></tr>
+      <tr><td><strong>Detachable Gooseneck</strong></td><td>Low-Profile HDG</td><td>Low-Profile Hydraulic</td><td>Tall equipment, cranes</td></tr>
+      <tr><td><strong>Detachable Gooseneck</strong></td><td>MFG</td><td>Mechanical Full-Width</td><td>General heavy haul</td></tr>
+      <tr><td><strong>Detachable Gooseneck</strong></td><td>High-Capacity</td><td>Multi-Axle Detachable</td><td>Loads exceeding 120,000 lbs</td></tr>
+      <tr><td><strong>Extendable</strong></td><td>HDE</td><td>Hydraulic Detach Extend</td><td>Long &amp; oversized loads</td></tr>
+      <tr><td><strong>Extendable</strong></td><td>MDE</td><td>Mechanical Detach Extend</td><td>Beams, poles, long cargo</td></tr>
+      <tr><td><strong>Extendable</strong></td><td>Flat Deck Extendable</td><td>Fixed Neck Extend</td><td>Long open-deck cargo</td></tr>
+      <tr><td><strong>Extendable</strong></td><td>Step Deck Extendable</td><td>Step Deck Extend</td><td>Tall oversized loads</td></tr>
+      <tr><td><strong>Multi-Axle</strong></td><td>Trunnion Style</td><td>Mech Gooseneck Trunnion</td><td>Up to 170 tons</td></tr>
+      <tr><td><strong>Multi-Axle</strong></td><td>Expandable</td><td>Width-Expanding</td><td>Oversized machinery</td></tr>
+      <tr><td><strong>Drop Deck</strong></td><td>Fixed Neck Double Drop</td><td>Double Drop</td><td>Tall &amp; heavy equipment</td></tr>
+      <tr><td><strong>Drop Deck</strong></td><td>Paver Special</td><td>Specialized Drop</td><td>Asphalt pavers &amp; machinery</td></tr>
+      <tr><td><strong>Drop Deck</strong></td><td>Step Deck</td><td>Standard Step Deck</td><td>General freight, equipment</td></tr>
+      <tr><td><strong>Specialty</strong></td><td>Slide Axle</td><td>Adjustable Axle</td><td>Weight distribution</td></tr>
+      <tr><td><strong>Specialty</strong></td><td>Power Tail</td><td>Hydraulic Tail</td><td>Rear-loading machinery</td></tr>
+      <tr><td><strong>Specialty</strong></td><td>Folding Gooseneck</td><td>Hydraulic Folding</td><td>Versatile front loading</td></tr>
+      <tr><td><strong>Specialty</strong></td><td>Heavy Duty Flat Deck</td><td>Flat Deck</td><td>General heavy cargo</td></tr>
+      <tr><td><strong>Wind Energy</strong></td><td>Blademate</td><td>Blade Transport</td><td>Wind turbine blades</td></tr>
+      <tr><td><strong>Wind Energy</strong></td><td>Towermate</td><td>Tower Transport</td><td>Wind turbine towers</td></tr>
+      <tr><td><strong>Wind Energy</strong></td><td>Lightweight 13 Axle</td><td>Multi-Axle Wind</td><td>Nacelles &amp; heavy components</td></tr>
+      <tr><td><strong>Custom</strong></td><td>Dolly</td><td>XL Dolly</td><td>Trailer combinations</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<!-- BROCHURES & SPECS -->
+<section class="oem-brochures"><div class="container">
+  <h2>XL Specialized Brochures &amp; Specs</h2>
+  <p>Download official XL Specialized product brochures</p>
+
+  <div class="oem-accordion is-open" onclick="this.classList.toggle('is-open')">
+    <button class="oem-accordion__trigger" type="button">
+      <span>Product Brochures</span>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+      <div class="oem-brochures__grid">
+        <a href="OEMS/XL/MFGMini-2024.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">MFG Mini</span>
+          <span class="oem-pdf-card__label">2024 Brochure</span>
+        </a>
+        <a href="OEMS/XL/Guardian2024.pdf" target="_blank" class="oem-pdf-card">
+          <svg width="32" height="32" fill="none" stroke="var(--red)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="oem-pdf-card__name">Guardian</span>
+          <span class="oem-pdf-card__label">2024 Brochure</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div></section>
+
+<!-- WHY XL -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Choose XL Specialized?</h2>
+  <p>Over 100 years of heavy-haul engineering and American manufacturing</p>
+  <div class="oem-whybuy__grid">
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🏗️</div>
+      <h4>Custom-Built to Order</h4>
+      <p>Every trailer is engineered and built to your exact specifications — no two XL trailers are alike.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">✅</div>
+      <h4>ISO 9001:2015 Certified</h4>
+      <p>Manufactured under internationally certified quality management systems with lean manufacturing processes.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">⚡</div>
+      <h4>Up to 170+ Ton Capacity</h4>
+      <p>Multi-axle configurations with jeep &amp; booster combinations for the heaviest loads on the road.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🛡️</div>
+      <h4>5-3-1 Warranty</h4>
+      <p>5-year structural, 3-year paint, and 1-year component warranty — built to last, backed with confidence.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in XL Specialized Trailers?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Move the Heaviest Loads?</h2>
+  <p>Browse our XL Specialized inventory or connect with a Nationwide Haul specialist for expert guidance and financing options.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4654,27 +5769,182 @@
 
 <!-- CIE MANUFACTURING -->
 <div id="page-oem-cie" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing">
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing Logo" style="height:50px;width:auto;filter:none;">
+  </div>
   <h1>Authorized CIE Manufacturing Dealer</h1>
-  <p>Custom-built trailer solutions for specialized commercial applications.</p>
+  <p>Pioneer Chassis — Intermodal Container Chassis &amp; Trailers Built in America</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
   <h2>About CIE Manufacturing</h2>
-  <p>CIE Manufacturing specializes in custom trailer manufacturing, offering tailored solutions for unique hauling and transportation needs. Their engineering-driven approach ensures that every trailer is built to exact specifications for maximum performance and longevity.</p>
-  <p>Nationwide Haul partners with CIE Manufacturing to deliver custom trailer solutions backed by expert consultation, flexible financing, and comprehensive after-sale support.</p>
+  <p>CIE Manufacturing is the <strong>world's largest intermodal chassis manufacturer</strong>, producing the renowned Pioneer Chassis line. Every chassis is engineered for thousands of miles of reliable service, built at their American factories in <strong>Emporia, Virginia</strong> and <strong>South Gate, California</strong>, with additional production in Sarnia, Ontario.</p>
+  <p>The Pioneer Chassis line features <strong>robotic precision welds</strong>, <strong>laser metal cutting</strong>, and a proprietary <strong>KTL powder coat paint system</strong> that prevents rust and corrosion — ensuring your investment lasts. CIE offers flexible <strong>5-year, 7-year, and 10-year warranty</strong> options for every chassis.</p>
+  <p>Nationwide Haul is proud to be an <strong>authorized CIE Manufacturing dealer</strong>, offering the full Pioneer Chassis product line with competitive pricing, flexible financing, and dedicated after-sale support for fleets of all sizes.</p>
 </div></div></section>
+
+<!-- PRODUCT HIGHLIGHTS -->
 <section class="oem-products"><div class="container">
-  <h2>CIE Manufacturing Solutions</h2>
+  <h2>Pioneer Chassis Product Categories</h2>
   <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Custom Trailer"><div class="oem-card__body"><h3>Custom Trailers</h3><p>Purpose-built trailers designed to your exact specifications and requirements.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Specialty Equipment"><div class="oem-card__body"><h3>Specialty Equipment</h3><p>Engineered solutions for unique transportation and industrial applications.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1565891741441-64926e441838?w=600&h=400&fit=crop" alt="Industrial Transport"><div class="oem-card__body"><h3>Industrial Transport</h3><p>Heavy-duty equipment carriers and custom chassis configurations.</p></div></div>
+    <div class="oem-card"><img src="OEMS/CIE/pioneer-chassis-production2-460x295.jpg" alt="CIE Pioneer Tandem Chassis on production line"><div class="oem-card__body"><h3>Tandem Chassis</h3><p>40' Gooseneck Tandem, 40'/45' Extendable, and 23.5' models for 20' and 40' ISO containers.</p></div></div>
+    <div class="oem-card"><img src="OEMS/CIE/pioneer-chassis-production6-460x295.jpg" alt="CIE Pioneer Tridem Chassis manufacturing"><div class="oem-card__body"><h3>Tridem Chassis</h3><p>20'/40' SL Combo Tridem, 33' Lightweight, and 33' Slider for maximum load capacity.</p></div></div>
+    <div class="oem-card"><img src="OEMS/CIE/pioneer-chassis-production2-460x295.jpg" alt="CIE Pioneer Gooseneck and Extendable Chassis"><div class="oem-card__body"><h3>Gooseneck &amp; Extendable</h3><p>53' Gooseneck and 40-53' Extendable Tridem for domestic containers and oversized loads.</p></div></div>
   </div>
 </div></section>
+
+<!-- CATEGORY 1: TANDEM -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/CIE/pioneer-chassis-production2-460x295.jpg" alt="Pioneer Tandem Chassis by CIE Manufacturing">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Tandem Container Chassis</h3>
+      <p>CIE's Pioneer Tandem chassis are built to carry <strong>20' and 40' ISO containers</strong> with unmatched durability. Designed for port drayage, intermodal yards, and over-the-road transport, every tandem chassis meets <strong>TOFC, AAR, DOT, FMVSS, ISO, ANSI, SAE, and TTMA</strong> specifications.</p>
+      <p><strong>Models include:</strong> Pioneer 40' GN Tandem, Pioneer 40'/45' Extendable Tandem, Pioneer 23.5 Tandem, and Pioneer 20/40 CityCombo Tandem.</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: TRIDEM -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/CIE/pioneer-chassis-production6-460x295.jpg" alt="Pioneer Tridem Chassis by CIE Manufacturing">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Tridem Container Chassis</h3>
+      <p>For heavier loads and maximum weight distribution, CIE's Pioneer Tridem chassis deliver <strong>superior load capacity</strong> across three axles. Ideal for <strong>overweight containers, tank chassis, and drop frame applications</strong>.</p>
+      <p><strong>Models include:</strong> Pioneer 20'/40' SL Combo Tridem, Pioneer 33' Lightweight Tridem, Pioneer 33' Slider Tridem, Pioneer 40' Gooseneck Tridem, and Pioneer 43' Drop Frame.</p>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FULL PRODUCT LINEUP -->
+<section class="oem-lineup"><div class="container">
+  <h2>Complete Pioneer Chassis Lineup</h2>
+  <p>13 models engineered for every intermodal application</p>
+  <div style="overflow-x:auto;">
+  <table class="oem-lineup__table">
+    <thead>
+      <tr><th>Model</th><th>Container Size</th><th>Axle Config</th><th>Application</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Pioneer 23.5 Tandem</strong></td><td>20' ISO</td><td><span class="badge-tandem">Tandem</span></td><td>Port drayage, short-haul</td></tr>
+      <tr><td><strong>Pioneer 20/40 CityCombo WS</strong></td><td>40' ISO</td><td><span class="badge-tandem">Tandem</span></td><td>Urban delivery, tight spaces</td></tr>
+      <tr><td><strong>Pioneer 20/40 SL Combo Tandem</strong></td><td>40' ISO</td><td><span class="badge-both">Both</span></td><td>Versatile intermodal</td></tr>
+      <tr><td><strong>Pioneer 20/40 SL Combo Tridem</strong></td><td>40' ISO</td><td><span class="badge-tridem">Tridem</span></td><td>Heavy-load intermodal</td></tr>
+      <tr><td><strong>Pioneer 33' Lightweight Tridem</strong></td><td>20' ISO</td><td><span class="badge-both">Both</span></td><td>Weight-sensitive routes</td></tr>
+      <tr><td><strong>Pioneer 33' Slider Tridem</strong></td><td>20' ISO</td><td><span class="badge-both">Both</span></td><td>Adjustable load distribution</td></tr>
+      <tr><td><strong>Pioneer 40' GN Tandem</strong></td><td>40' ISO</td><td><span class="badge-tandem">Tandem</span></td><td>Standard intermodal</td></tr>
+      <tr><td><strong>Pioneer 40' GN Lightweight</strong></td><td>40' ISO</td><td><span class="badge-both">Both</span></td><td>Fuel-efficient hauling</td></tr>
+      <tr><td><strong>Pioneer 40' GN Tridem</strong></td><td>40' ISO</td><td><span class="badge-tridem">Tridem</span></td><td>Max capacity gooseneck</td></tr>
+      <tr><td><strong>Pioneer 40/45' Extendable</strong></td><td>40'-45' ISO</td><td><span class="badge-both">Both</span></td><td>Multi-size container flexibility</td></tr>
+      <tr><td><strong>Pioneer 43' Drop Frame</strong></td><td>20' ISO Tank/Dry</td><td><span class="badge-both">Both</span></td><td>Tank containers, low COG</td></tr>
+      <tr><td><strong>Pioneer 40-53' Ext. Tridem</strong></td><td>40'-53' ISO</td><td><span class="badge-both">Both</span></td><td>Domestic + ISO containers</td></tr>
+      <tr><td><strong>Pioneer 53' Gooseneck</strong></td><td>53' Domestic</td><td><span class="badge-both">Both</span></td><td>Domestic container hauling</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<!-- BROCHURES & SPECS -->
+<section class="oem-brochures"><div class="container">
+  <h2>Brochures &amp; Specifications</h2>
+  <p>Download product brochures and detailed spec sheets for the Pioneer Chassis line</p>
+
+  <div class="oem-accordion is-open" id="cieBrochures">
+    <button class="oem-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')">
+      Brochures
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="oem-accordion__body">
+
+      <h4 class="oem-brochures__cat-title">Tandem</h4>
+      <div class="oem-brochures__grid">
+        <a href="OEMS/CIE/tandem/BROCHURE 1 - 40 GN Tandem_3.pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">40' GN Tandem</span>
+        </a>
+        <a href="OEMS/CIE/tandem/BROCHURE 2 - 40-45 Ext Tandem_3.pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">40'/45' Ext Tandem</span>
+        </a>
+      </div>
+
+      <h4 class="oem-brochures__cat-title">Tridem</h4>
+      <div class="oem-brochures__grid">
+        <a href="OEMS/CIE/tridem/BROCURE 3 - 20-40 Tridem_3.pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">20'/40' SL Combo Tridem</span>
+        </a>
+      </div>
+
+      <h4 class="oem-brochures__cat-title">Specs</h4>
+      <div class="oem-brochures__grid">
+        <a href="OEMS/CIE/specs/BROCHURE 4 - CB403P5DF00 (Hutch) - CIE Standard 2023 - Rev01 (1).pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">40' CB Tridem - CB403P5DF00 (Hutch)</span>
+        </a>
+        <a href="OEMS/CIE/specs/SPECS - EX452P5DF00 (Hutch) - 2023 Dealer Spec - Rev 1 (1).pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">45' EX Tandem - EX452P5DF00 (Hutch)</span>
+        </a>
+        <a href="OEMS/CIE/specs/SPECS 3.pdf" target="_blank" class="oem-pdf-card">
+          <svg class="oem-pdf-card__icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" stroke="#C0181C" stroke-width="2"/><path d="M16 4V14H8" stroke="#C0181C" stroke-width="2"/><rect x="8" y="4" width="8" height="10" rx="1" fill="#C0181C" opacity="0.15"/><text x="24" y="28" text-anchor="middle" fill="#C0181C" font-size="10" font-weight="800">PDF</text></svg>
+          <span class="oem-pdf-card__name">40' GN Tandem - GN402P5DF00</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div></section>
+
+<!-- WHY PIONEER -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Pioneer Chassis?</h2>
+  <p>Built with the industry's best components and manufacturing techniques</p>
+  <div class="oem-whybuy__grid">
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🤖</div>
+      <h4>Robotic Precision Welds</h4>
+      <p>Every weld is executed with robotic precision for consistent structural integrity and longer chassis life.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🛡️</div>
+      <h4>KTL Powder Coat Paint</h4>
+      <p>Proprietary KTL powder coat system prevents rust and corrosion, even in the harshest port environments.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">🇺🇸</div>
+      <h4>Made in America</h4>
+      <p>Manufactured at two US factories — Emporia, VA and South Gate, CA — using globally sourced materials.</p>
+    </div>
+    <div class="oem-whybuy__item">
+      <div class="oem-whybuy__icon">📋</div>
+      <h4>5 to 10-Year Warranty</h4>
+      <p>Choose from 5-year, 7-year, or 10-year warranty specifications to match your fleet's needs.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in CIE Manufacturing?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Add Pioneer Chassis to Your Fleet?</h2>
+  <p>Explore our CIE Manufacturing inventory or speak with a Nationwide Haul sales specialist today.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4685,27 +5955,200 @@
 
 <!-- WADE SERVICES -->
 <div id="page-oem-wade" style="display:none;">
+
+<!-- HERO -->
 <section class="oem-hero"><div class="container">
-  <img class="oem-hero__logo" src="Logos showcase/download.png" alt="WADE Services">
-  <h1>Authorized WADE Services Dealer</h1>
-  <p>Reliable commercial equipment and service solutions for the transportation industry.</p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:12px 28px;margin-bottom:20px;">
+    <img src="OEMS/WADE/wade-logo.png" alt="Wade Services Inc Logo" style="height:50px;width:auto;filter:none;">
+  </div>
+  <h1>Authorized Wade Services Trailer Dealer</h1>
+  <p>MagniBeam&trade; Steel Platform Trailers — Drop Decks, Flatbeds, Live Haul &amp; Oil Field — Built in Mississippi for 40+ Years</p>
 </div></section>
+
+<!-- INTRO -->
 <section class="oem-intro"><div class="container"><div class="oem-intro__inner">
-  <h2>About WADE Services</h2>
-  <p>WADE Services INC provides high-quality commercial equipment and service solutions for the trucking and transportation industry. Their commitment to reliability and customer support makes them a trusted partner for fleets and owner-operators across the country.</p>
-  <p>Nationwide Haul is an authorized WADE Services dealer, offering their full product lineup with financing options, expert consultation, and dedicated post-sale support.</p>
+  <h2>About Wade Services Trailers</h2>
+  <p>For over <strong>four decades</strong>, <strong>Wade Services, Inc.</strong> of <strong>Laurel, Mississippi</strong> has designed and manufactured premium steel platform and special application trailers for the most demanding industries in North America. From oil fields to poultry farms, highway freight to heavy equipment, Wade trailers are built tough for the jobs that push equipment to its limits.</p>
+  <p>At the heart of every Wade trailer is the patented <strong>MagniBeam&trade;</strong> — a proprietary I-beam technology developed in partnership with the <strong>Center for Advanced Vehicular Systems (CAVS)</strong> using high-performance computational design and state-of-the-art analytical tools. MagniBeam delivers superior structural integrity with <strong>Hi-Tensile &frac14;" one-piece webs</strong> and <strong>&frac12;" thick 130K top and bottom flanges</strong>, resulting in trailers that handle extreme loads while maintaining a competitive tare weight.</p>
+  <p>As an <strong>authorized Wade Services trailer dealer</strong>, Nationwide Haul offers the complete Wade product lineup — including drop decks, flatbeds, live haul trailers, oil field floats, and specialty units — backed by competitive financing, expert consultation, and dedicated after-sale support.</p>
 </div></div></section>
+
+<!-- PRODUCT HIGHLIGHTS -->
 <section class="oem-products"><div class="container">
-  <h2>WADE Services Solutions</h2>
+  <h2>Wade Trailer Product Lines</h2>
   <div class="oem-grid">
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop" alt="Commercial Equipment"><div class="oem-card__body"><h3>Commercial Equipment</h3><p>Quality commercial transportation equipment for diverse fleet applications.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Fleet Solutions"><div class="oem-card__body"><h3>Fleet Solutions</h3><p>Comprehensive fleet equipment packages for growing transportation operations.</p></div></div>
-    <div class="oem-card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Service Support"><div class="oem-card__body"><h3>Service &amp; Support</h3><p>Ongoing maintenance and support programs to maximize equipment uptime.</p></div></div>
+    <div class="oem-card"><img src="OEMS/WADE/drop-deck-trailer.jpg" alt="Wade MagniBeam Drop Deck Trailer"><div class="oem-card__body"><h3>Drop Decks</h3><p>All steel or aluminum/steel combo, 35&rsquo;&ndash;57&rsquo; lengths with 12&rdquo; standard or 17&rdquo; deep drop options.</p></div></div>
+    <div class="oem-card"><img src="OEMS/WADE/flatbed-trailer.jpg" alt="Wade MagniBeam Highway Flatbed Trailer"><div class="oem-card__body"><h3>Flatbeds</h3><p>Highway and road flatbeds engineered with MagniBeam&trade; I-beam technology for maximum payload capacity.</p></div></div>
+    <div class="oem-card"><img src="OEMS/WADE/livestock-trailer.jpg" alt="Wade Live Haul Poultry Trailer"><div class="oem-card__body"><h3>Live Haul</h3><p>Purpose-built poultry and livestock trailers with X-bracing and inverted structural steel side rails.</p></div></div>
+    <div class="oem-card"><img src="OEMS/WADE/beaver-tail.jpg" alt="Wade Oil Field Float Trailer"><div class="oem-card__body"><h3>Oil Field &amp; Specialty</h3><p>Heavy-duty oil field floats, beavertail trailers, lowboys, and container chassis for extreme applications.</p></div></div>
   </div>
 </div></section>
+
+<!-- CATEGORY 1: DROP DECKS -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/WADE/drop-deck-trailer.jpg" alt="Wade MagniBeam Drop Deck Steel Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Drop Deck Trailers — Standard &amp; Deep Drop</h3>
+      <p>Wade MagniBeam drop decks are available in <strong>all steel or aluminum/steel combination</strong> configurations in lengths from <strong>35&rsquo; to 57&rsquo;</strong> and widths from <strong>96&rdquo; to 120&rdquo;</strong> with unlimited options to match your application. Choose from a standard <strong>12&rdquo; drop</strong> or the deep <strong>17&rdquo; drop</strong> — introduced in 2013 for loads requiring extra vertical clearance.</p>
+      <p>Every drop deck features Wade&rsquo;s signature MagniBeam construction with <strong>Hi-Tensile &frac14;" webs</strong>, <strong>&frac12;" 130K flanges</strong>, and <strong>4&rdquo; 80-yield JR I-Beam cross members on 16&rdquo; centers</strong>. Available configurations include tandem, tri-axle, spread axle, and air-ride suspensions.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>All Steel or Aluminum/Steel Combo construction</li>
+        <li>12&rdquo; standard drop or 17&rdquo; deep drop</li>
+        <li>Tandem, tri-axle &amp; spread axle configurations</li>
+        <li>Optional container locks, ramps &amp; toolboxes</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 2: FLATBEDS -->
+<section class="oem-cat oem-cat--reverse"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/WADE/flatbed-trailer.jpg" alt="Wade MagniBeam Highway Flatbed Steel Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Flatbed Trailers — Highway &amp; Road Series</h3>
+      <p>Wade MagniBeam flatbeds are designed for the demands of <strong>highway freight, construction, and general hauling</strong>. Built on the same MagniBeam I-beam platform as all Wade products, these flatbeds deliver outstanding load-bearing capacity with a tare weight that keeps you profitable. Available in <strong>all steel or combo</strong> configurations.</p>
+      <p>Standard and custom lengths accommodate everything from regional LTL runs to oversized permit loads. Whether you&rsquo;re hauling steel coils, lumber, pipe, or building materials, Wade flatbeds are engineered to handle it with ease.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>MagniBeam&trade; I-beam main rails</li>
+        <li>Hi-Tensile steel cross members on 16&rdquo; centers</li>
+        <li>All steel or aluminum/steel combo</li>
+        <li>Custom lengths and width options</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 3: LIVE HAUL -->
+<section class="oem-cat"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/WADE/live-haul-drop.jpg" alt="Wade MagniBeam Live Haul Poultry Drop Deck Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Live Haul Trailers — Poultry &amp; Livestock</h3>
+      <p>The Wade MagniBeam live haul trailer was designed to conquer the <strong>harshest environments the poultry and livestock industry</strong> can throw at it. These specialized trailers feature <strong>Hi-Tensile &frac14;" one-piece webs</strong> and <strong>&frac12;" thick 130K flanges</strong> with <strong>3&rdquo; inverted angles on 16&rdquo; centers</strong>, X-bracing for extra lateral support during side loading, and inverted structural steel side rails for maximum durability.</p>
+      <p>Available in flatbed and drop deck configurations specifically engineered for <strong>poultry coops, livestock modules, and cage systems</strong>. Wade live haul trailers are trusted by major integrators and independent haulers across the Southeast and beyond.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>X-Bracing for side-loading support</li>
+        <li>Inverted structural steel side rails</li>
+        <li>Flatbed &amp; drop deck configurations</li>
+        <li>Built for poultry, turkey &amp; livestock</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CATEGORY 4: OIL FIELD & SPECIALTY -->
+<section class="oem-cat oem-cat--reverse"><div class="container">
+  <div class="oem-cat__inner">
+    <div class="oem-cat__img">
+      <img src="OEMS/WADE/beaver-tail.jpg" alt="Wade Oil Field Float Beavertail Trailer">
+    </div>
+    <div class="oem-cat__content">
+      <h3>Oil Field Floats &amp; Specialty Trailers</h3>
+      <p>Wade builds heavy-duty <strong>oil field floats, beavertail trailers, lowboys, and container chassis</strong> for the energy, construction, and intermodal sectors. These specialty units feature the same MagniBeam backbone with extra-heavy-duty cross members and reinforced deck plating designed for the most punishing load cycles in the industry.</p>
+      <p>From <strong>60-ton oil field service floats</strong> to custom-configured beavertail trailers for heavy equipment loading, Wade specialty trailers deliver the strength and versatility that oil field service companies, heavy haulers, and container operations demand.</p>
+      <ul style="margin:10px 0 16px 18px;color:#b0b8c4;font-size:15px;line-height:1.7;">
+        <li>60-ton oil field float capacity</li>
+        <li>Beavertail for rear equipment loading</li>
+        <li>Multi-axle lowboys for heavy haul</li>
+        <li>Container chassis configurations</li>
+      </ul>
+      <div class="oem-cat__btns">
+        <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" class="btn-inv">View Inventory</a>
+        <a href="#" onclick="showPage('contact');return false;" class="btn-brochure">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PRODUCT LINEUP TABLE -->
+<section class="oem-lineup" style="background:var(--bg-dark);padding:60px 0;">
+<div class="container">
+  <h2 style="text-align:center;color:#fff;font-size:28px;margin-bottom:30px;">Wade Trailer Product Lineup</h2>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;font-size:14px;color:#cfd4dc;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--red);">
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Model / Type</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Category</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Lengths</th>
+        <th style="text-align:left;padding:12px 14px;color:#fff;font-weight:700;">Configuration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Steel Drop Deck — 12&rdquo; Drop</td><td style="padding:10px 14px;">Drop Deck</td><td style="padding:10px 14px;">35&rsquo;&ndash;57&rsquo;</td><td style="padding:10px 14px;">Tandem / Tri-Axle / Spread</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Steel Drop Deck — 17&rdquo; Deep Drop</td><td style="padding:10px 14px;">Drop Deck</td><td style="padding:10px 14px;">35&rsquo;&ndash;57&rsquo;</td><td style="padding:10px 14px;">Tandem / Tri-Axle / Spread</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Combo Drop Deck — Aluminum/Steel</td><td style="padding:10px 14px;">Drop Deck</td><td style="padding:10px 14px;">35&rsquo;&ndash;57&rsquo;</td><td style="padding:10px 14px;">Tandem / Tri-Axle</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Tri-Axle Drop Deck</td><td style="padding:10px 14px;">Drop Deck</td><td style="padding:10px 14px;">48&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tri-Axle / Air Ride</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Drop Deck w/ Container Locks</td><td style="padding:10px 14px;">Drop Deck</td><td style="padding:10px 14px;">40&rsquo;&ndash;45&rsquo;</td><td style="padding:10px 14px;">Air Ride Closed Tandem</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Highway Steel Flatbed</td><td style="padding:10px 14px;">Flatbed</td><td style="padding:10px 14px;">45&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Spread</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Road Flatbed — Steel</td><td style="padding:10px 14px;">Flatbed</td><td style="padding:10px 14px;">40&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Custom</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Combo Flatbed — Aluminum/Steel</td><td style="padding:10px 14px;">Flatbed</td><td style="padding:10px 14px;">45&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Spread</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Tri-Axle Flatbed</td><td style="padding:10px 14px;">Flatbed</td><td style="padding:10px 14px;">48&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tri-Axle / Air Ride</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Live Haul Flatbed — Poultry</td><td style="padding:10px 14px;">Live Haul</td><td style="padding:10px 14px;">48&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / X-Bracing</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Live Haul Drop Deck — 17&rdquo; Drop</td><td style="padding:10px 14px;">Live Haul</td><td style="padding:10px 14px;">48&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Drop w/ Side Rails</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Live Haul Turkey Trailer</td><td style="padding:10px 14px;">Live Haul</td><td style="padding:10px 14px;">48&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Custom Cage</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">60-Ton Oil Field Float</td><td style="padding:10px 14px;">Oil Field</td><td style="padding:10px 14px;">40&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tri-Axle / Heavy Duty</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Oil Field Service Float</td><td style="padding:10px 14px;">Oil Field</td><td style="padding:10px 14px;">40&rsquo;&ndash;48&rsquo;</td><td style="padding:10px 14px;">Tandem / Reinforced Deck</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 14px;">Beavertail Trailer</td><td style="padding:10px 14px;">Specialty</td><td style="padding:10px 14px;">40&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Tri-Axle</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);"><td style="padding:10px 14px;">Multi-Axle Lowboy</td><td style="padding:10px 14px;">Specialty</td><td style="padding:10px 14px;">Custom</td><td style="padding:10px 14px;">Multi-Axle / Heavy Haul</td></tr>
+      <tr><td style="padding:10px 14px;">Container Chassis</td><td style="padding:10px 14px;">Specialty</td><td style="padding:10px 14px;">20&rsquo;&ndash;53&rsquo;</td><td style="padding:10px 14px;">Tandem / Tri-Axle</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<!-- WHY WADE -->
+<section class="oem-whybuy"><div class="container">
+  <h2>Why Choose Wade MagniBeam Trailers?</h2>
+  <div class="oem-grid oem-grid--4">
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><path d="M24 4L6 14v16l18 10 18-10V14L24 4z"/><path d="M24 4v26M6 14l18 10m0 0l18-10"/></svg></div>
+      <h4>MagniBeam&trade; Technology</h4>
+      <p>Patented I-beam design developed with CAVS — superior structural integrity with optimized tare weight.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="24" cy="24" r="18"/><path d="M24 6v36M6 24h36"/><path d="M12 12l24 24M36 12L12 36"/></svg></div>
+      <h4>130K Hi-Tensile Steel</h4>
+      <p>&frac12;" thick 130K top and bottom flanges with &frac14;" one-piece webs for extreme load handling.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><path d="M24 4l6.24 12.64L44 18.76l-10 9.74 2.36 13.78L24 36l-12.36 6.28L14 28.5 4 18.76l13.76-2.12z"/></svg></div>
+      <h4>40+ Years Experience</h4>
+      <p>Four decades of manufacturing excellence in Laurel, Mississippi — built by experts who know trailers.</p>
+    </div>
+    <div class="oem-why-card">
+      <div class="oem-why-card__icon"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="var(--red)" stroke-width="2"><rect x="6" y="20" width="36" height="20" rx="3"/><path d="M14 20v-6a10 10 0 0120 0v6"/><circle cx="24" cy="32" r="3"/></svg></div>
+      <h4>Custom-Built to Order</h4>
+      <p>Unlimited configuration options — steel, combo, lengths, widths, axles &amp; accessories to match your operation.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
 <section class="oem-cta"><div class="container">
-  <h2>Interested in WADE Services Equipment?</h2>
-  <p>Explore our inventory or speak with a sales representative today.</p>
+  <h2>Ready to Put Wade MagniBeam Trailers to Work?</h2>
+  <p>Explore our Wade inventory or connect with our sales team for a custom quote on any configuration.</p>
   <div class="oem-cta__btns">
     <a href="https://www.nationwidehaul.com/inventory/?/listings/for-sale/equipment/all?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1" target="_blank" style="background:var(--red);color:#fff;">View Inventory</a>
     <a href="#" onclick="showPage('contact');return false;" style="border:2px solid rgba(255,255,255,0.5);color:#fff;">Contact Sales</a>
@@ -4997,6 +6440,17 @@
 
 
 <script>
+  // ── Lazy loading & image performance ─────────────────────
+  (function(){
+    document.querySelectorAll('img').forEach(function(img){
+      img.decoding = 'async';
+      // Don't lazy-load the logo or hero content
+      if (!img.closest('.site-logo') && !img.closest('.hero')) {
+        img.loading = 'lazy';
+      }
+    });
+  })();
+
   // ── Mobile nav ──────────────────────────────────────────
   document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.site-nav').classList.toggle('is-open');
@@ -5014,7 +6468,7 @@
         const step = target / (1800 / 16);
         const timer = setInterval(function() {
           current += step;
-          if (current >= target) { current = target; clearInterval(timer); }
+          if (current >= target) { current = target; clearInterval(timer); el.classList.add('stat-landed'); }
           el.textContent = Math.floor(current).toLocaleString() + suffix;
         }, 16);
         obs.unobserve(el);
@@ -5135,7 +6589,7 @@
   initSvcCarousel();
 
   /* PAGE SWITCHER */
-  var pages = ['home', 'contact', 'financing', 'lease', 'about', 'perks-municipality', 'perks-sell', 'perks-wholesale', 'perks-dot', 'perks-warranty', 'perks-tcs', 'oem-clearmac', 'oem-dorsey', 'oem-pitts', 'oem-vanguard', 'oem-xl', 'oem-autocar', 'oem-cie', 'oem-wade', 'legal-privacy', 'legal-terms'];
+  var pages = ['home', 'contact', 'financing', 'lease', 'about', 'manufacturers', 'perks-municipality', 'perks-sell', 'perks-wholesale', 'perks-dot', 'perks-warranty', 'perks-tcs', 'oem-clearmac', 'oem-dorsey', 'oem-pitts', 'oem-vanguard', 'oem-xl', 'oem-autocar', 'oem-cie', 'oem-wade', 'legal-privacy', 'legal-terms'];
   function showPage(page) {
     // close any open nav dropdowns
     document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.classList.remove('is-open'); });
@@ -5151,7 +6605,7 @@
     if (navContact)   navContact.classList.toggle('nav-active',   page === 'contact');
     if (navFinancing) navFinancing.classList.toggle('nav-active', page === 'financing');
     if (navLease)     navLease.classList.toggle('nav-active',     page === 'lease');
-    if (navAbout)     navAbout.classList.toggle('nav-active',     page === 'about');
+    if (navAbout)     navAbout.classList.toggle('nav-active',     page === 'about' || page === 'manufacturers');
     // Highlight "Client Perks" trigger button when on any perks sub-page
     var perksPages = ['perks-municipality','perks-sell','perks-wholesale','perks-dot','perks-warranty','perks-tcs'];
     var perksTrigger = document.querySelector('#perksDropdown .nav-dropdown__trigger');
@@ -5258,9 +6712,127 @@
     form.style.display = 'none';
     success.style.display = 'block';
   }
+
+  /* ── HOME: DYNAMIC EFFECTS ───────────────────────── */
+
+  // 1. Hero video parallax
+  (function() {
+    if (window.innerWidth <= 768) return;
+    var heroMedia = document.querySelector('#page-home .hero__bg video')
+                 || document.querySelector('#page-home .hero__bg img');
+    var hero = document.querySelector('#page-home .hero');
+    if (!heroMedia || !hero) return;
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset;
+      if (scrollY < hero.offsetHeight + hero.offsetTop) {
+        heroMedia.style.transform = 'scale(1) translateY(' + (scrollY * 0.3) + 'px)';
+      }
+    }, { passive: true });
+  })();
+
+  // 2. Scroll progress bar
+  (function() {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.appendChild(bar);
+    window.addEventListener('scroll', function() {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      bar.style.width = (scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+
+  // 3. Staggered card entrances (inventory + testimonials)
+  (function() {
+    var groups = document.querySelectorAll('#page-home .inventory-grid, #page-home .reviews-grid');
+    var staggerObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var cards = entry.target.querySelectorAll('.stagger-item');
+          cards.forEach(function(card, i) {
+            setTimeout(function() { card.classList.add('revealed'); }, i * 120);
+          });
+          staggerObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    groups.forEach(function(group) {
+      var children = group.children;
+      for (var i = 0; i < children.length; i++) { children[i].classList.add('stagger-item'); }
+      staggerObs.observe(group);
+    });
+  })();
+
+  // 4. Section heading clip-path reveal
+  (function() {
+    var headings = document.querySelectorAll(
+      '#page-home .section-header h2, #page-home .browse-category__heading, ' +
+      '#page-home .nh-difference__header h2, #page-home .contact-cta__box h2'
+    );
+    var headingObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          headingObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    headings.forEach(function(h) { h.classList.add('heading-reveal'); headingObs.observe(h); });
+  })();
+
+  // 5. Photo gallery staggered entrance
+  (function() {
+    var gallery = document.querySelector('#page-home .photo-gallery');
+    if (!gallery) return;
+    var items = gallery.querySelectorAll('.photo-gallery__item');
+    items.forEach(function(item) { item.classList.add('gallery-stagger'); });
+    var galleryObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.gallery-stagger').forEach(function(child, i) {
+            setTimeout(function() { child.classList.add('revealed'); }, i * 100);
+          });
+          galleryObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    galleryObs.observe(gallery);
+  })();
+
+  // 6. 3D tilt hover on inventory cards (desktop only)
+  (function() {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    var cards = document.querySelectorAll('#page-home .inventory-card');
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -4;
+        var rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
+        card.style.transform = 'translateY(-3px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+        card.style.transition = 'box-shadow 0.2s, transform 0.4s ease';
+        setTimeout(function() { card.style.transition = ''; }, 400);
+      });
+    });
+  })();
 </script>
 
 <script src="https://link.nationwidehauldealer.com/js/form_embed.js"></script>
+
+<!-- Intercom Chat Widget -->
+<script>
+  window.intercomSettings = {
+    api_base: "https://api-iam.intercom.io",
+    app_id: "v4qbge05",
+  };
+</script>
+<script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/v4qbge05';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
 
 </body>
 </html>
