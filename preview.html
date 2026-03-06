@@ -1239,7 +1239,7 @@
         <span>Call Us Today</span>
         <a href="tel:8775597039" class="top-bar__phone">(877) 559-7039</a>
         <span>or</span>
-        <a href="#contact" onclick="showPage('contact');return false;" class="top-bar__chat">Chat with Us Now</a>
+        <a href="#" onclick="if(window.Intercom){Intercom('show')}else{showPage('contact')};return false;" class="top-bar__chat">Chat with Us Now</a>
       </div>
       <div class="top-bar__social">
         <a href="https://www.facebook.com/nationwidehaul/" target="_blank" aria-label="Facebook">
