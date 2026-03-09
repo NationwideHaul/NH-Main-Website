@@ -261,8 +261,8 @@
       .ws-why__image { order: -1; }
       .ws-why__image img { min-height: 240px; }
       .dot-lifetime__inner { grid-template-columns: 1fr !important; gap: 32px !important; }
-      #page-perks-tcs .perks-hero [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-      #page-perks-tcs .perks-section [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      #page-perks-tcs .perks-hero [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      #page-perks-tcs .perks-section [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
     }
 
     /* Active nav link */
@@ -874,7 +874,7 @@
     /* OEM PAGES */
     .oem-hero { background:var(--black); padding:64px 0 56px; text-align:center; }
     .oem-hero__logo { height:60px; width:auto; max-width:260px; object-fit:contain; margin-bottom:20px; filter:brightness(0) invert(1); }
-    .oem-hero h1 { font-size:32px; font-weight:800; color:#fff; margin-bottom:8px; }
+    .oem-hero h1, .oem-hero h2 { font-size:32px; font-weight:800; color:#fff; margin-bottom:8px; }
     .oem-hero p { font-size:15px; color:rgba(255,255,255,0.7); max-width:520px; margin:0 auto; }
     .oem-intro { padding:56px 0; }
     .oem-intro__inner { max-width:780px; margin:0 auto; text-align:center; }
@@ -1292,6 +1292,35 @@
       .footer__col:nth-child(1) .footer__tagline { text-align: center; }
       .footer__col:nth-child(1) > p { text-align: center; }
       .footer__bottom { flex-direction: column; gap: 10px; text-align: center; }
+      /* --- Nav Dropdown Mobile Fix (Client Perks) --- */
+      .nav-dropdown__menu--perks { min-width: unset; width: 100%; left: 0; transform: none; }
+      .perks-grid { grid-template-columns: 1fr; }
+      .nav-dropdown__menu { min-width: unset; width: 100%; left: 0; transform: none; position: relative; top: 8px; box-shadow: none; border: none; background: rgba(30,30,30,0.9); border-radius: 10px; }
+      .nav-dropdown__item { color: #fff; border-bottom-color: rgba(255,255,255,0.08); }
+      .nav-dropdown__item-icon { background: rgba(255,255,255,0.1); }
+      .nav-dropdown__item-text span { color: rgba(255,255,255,0.5); }
+      /* --- Section Header Mobile Stacking --- */
+      .section-header { flex-wrap: wrap; }
+      .section-header__line { display: none; }
+      .section-header .btn-outline { width: 100%; text-align: center; margin-top: 4px; }
+      /* --- OEM Subpages Responsive --- */
+      .oem-hero { padding: 40px 0 32px; }
+      .oem-hero h1, .oem-hero h2 { font-size: 22px; }
+      .oem-hero__logo { height: 44px; max-width: 200px; }
+      .oem-hero p { font-size: 13px; }
+      .oem-intro { padding: 36px 0; }
+      .oem-intro h2 { font-size: 20px; }
+      .oem-products { padding: 32px 0 40px; }
+      .oem-products h2 { font-size: 18px; }
+      .oem-products .inventory-grid { grid-template-columns: 1fr; }
+      /* --- Non-Home Page Header --- */
+      .page-inner .site-header { top: 49px; }
+      .page-inner .site-header.is-scrolled { top: 0; }
+      /* --- Financing Banner Mobile (NEF logo below, hide text) --- */
+      .financing-banner__content .financing-banner__text p { display: none; }
+      .financing-banner__cta-side { flex-direction: column; align-items: center; gap: 12px; }
+      .financing-banner__nef { height: 24px; opacity: 1; }
+      .financing-banner__cta-label { font-size: 11px; }
     }
     @media (max-width: 480px) {
       .inventory-grid { grid-template-columns: 1fr; }
