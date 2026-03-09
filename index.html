@@ -6775,13 +6775,15 @@
       title: 'Municipality Bids',
       desc:  'Reliable, scalable fleet solutions for public works and municipal departments.',
       img:   'files/the nationwide haul difference/Municipality bids.jpg',
-      href:  '#'
+      href:  '#',
+      action: function(){ showPage('perks-municipality'); }
     },
     {
       title: 'Commercial Insurance',
       desc:  'In-house trucking insurance agency with access to +120 markets to provide you the best quotes.',
       img:   'files/the nationwide haul difference/Commercial Insurance.jpg',
-      href:  '#'
+      href:  'https://roadreadyinsurance.com',
+      target: '_blank'
     },
     {
       title: 'Financing',
@@ -6794,19 +6796,22 @@
       title: 'Service & Repair',
       desc:  'Trailer, truck, RV, and bus repair — our trained technicians will get you back on the road fast.',
       img:   'files/the nationwide haul difference/service and repair.jpg',
-      href:  '#'
+      href:  'https://nhtrucktrailerrepair.com',
+      target: '_blank'
     },
     {
       title: 'Leasing & Rental',
       desc:  'Flexible rental and leasing options to meet your company needs. Minimum 12-month rental terms.',
       img:   'files/the nationwide haul difference/leasing and rental.jpg',
-      href:  '#'
+      href:  '#',
+      action: function(){ showPage('lease'); }
     },
     {
       title: 'Sell Your Equipment',
       desc:  'Get a fast and fair cash offer for your trucking equipment today. Quick appraisal, no hassle.',
       img:   'files/the nationwide haul difference/logistics-transportation-truck-cargo-ship-with-business-collaboration-businessman-shake-hands-logistic-import-export-transport-industry-background.jpg',
-      href:  '#'
+      href:  '#',
+      action: function(){ showPage('perks-sell'); }
     }
   ];
   var svcIdx   = 0;
@@ -6840,10 +6845,13 @@
         descEl.textContent  = item.desc;
         eyeEl.textContent   = ('0'+(i+1)).slice(-2) + ' / 0' + svcItems.length;
         if (item.action) {
+          btnEl.href = '#';
+          btnEl.removeAttribute('target');
           btnEl.onclick = function(e){ e.preventDefault(); item.action(); };
         } else {
           btnEl.href = item.href;
           btnEl.onclick = null;
+          if (item.target) { btnEl.setAttribute('target', item.target); } else { btnEl.removeAttribute('target'); }
         }
         titleEl.classList.remove('fade-out');
         descEl.classList.remove('fade-out');
