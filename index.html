@@ -757,6 +757,9 @@
       .fin-steps { grid-template-columns: 1fr; }
       .fin-hero h1 { font-size: 24px; }
       .fin-cta h2 { font-size: 24px; }
+      .fin-logos-row { flex-direction: column !important; gap: 12px !important; }
+      .fin-nefa-badge span { display: none !important; }
+      .fin-nefa-badge img { filter: brightness(0) invert(1); }
     }
 
     /* HERO */
@@ -2240,10 +2243,10 @@
         </div>
         <h2 id="fin-h1">Commercial Truck &amp; Trailer<br><span>Financing Solutions</span></h2>
         <p class="fin-hero__sub">Get approved fast for semi-truck, trailer, and heavy equipment financing — even with challenged credit — from our own in-house financing company: NEF NOW.</p>
-        <div style="display:flex;align-items:center;gap:20px;margin:18px 0 8px;">
+        <div class="fin-logos-row" style="display:flex;align-items:center;gap:20px;margin:18px 0 8px;">
           <img src="NEF Logo.png" alt="NEF NOW" style="height:44px;width:auto;filter:brightness(0) invert(1);">
-          <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(255,255,255,0.08);border-radius:8px;border:1px solid rgba(255,255,255,0.15);">
-            <img src="files/nefa-logo.svg" alt="NEFA" style="height:36px;width:auto;">
+          <div class="fin-nefa-badge" style="display:flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(255,255,255,0.08);border-radius:8px;border:1px solid rgba(255,255,255,0.15);">
+            <img src="NEFA.png" alt="NEFA" style="height:36px;width:auto;">
             <span style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.3;">Trusted member of the<br><strong style="color:#fff;">National Equipment Finance Association</strong></span>
           </div>
         </div>
