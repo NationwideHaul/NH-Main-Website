@@ -1100,21 +1100,25 @@
     .youtube-section { padding: 56px 0; background: #F0F0F0; }
     .youtube-section__channel { display: flex; align-items: center; justify-content: space-between; background: var(--white); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; box-shadow: var(--shadow); }
     .youtube-section__channel-left { display: flex; align-items: center; gap: 14px; }
-    .yt-channel-logo-placeholder { width: 48px; height: 48px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; }
     .yt-channel-info h3 { font-size: 15px; font-weight: 700; }
     .yt-channel-info span { font-size: 12px; color: var(--gray-text); }
     .btn-yt-subscribe { background: #FF0000; color: var(--white); padding: 8px 18px; border-radius: 4px; font-size: 13px; font-weight: 700; }
-    .videos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .video-card { position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; }
-    .video-card__thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
-    .video-card__thumb-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; }
-    .video-thumb-1 { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
-    .video-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%); }
-    .video-card__play { width: 52px; height: 52px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .video-card__info { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; color: var(--white); }
-    .video-card__title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-    .video-card__sub { font-size: 11px; opacity: 0.8; }
-    .video-card__duration { position: absolute; bottom: 14px; right: 14px; background: rgba(0,0,0,0.75); color: var(--white); font-size: 11px; padding: 2px 7px; border-radius: 4px; }
+    .yt-carousel { position: relative; }
+    .yt-carousel__track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+    .yt-carousel__track::-webkit-scrollbar { display: none; }
+    .yt-carousel__card { flex: 0 0 calc(33.333% - 14px); scroll-snap-align: start; position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; background: #000; text-decoration: none; }
+    .yt-carousel__card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: opacity 0.2s; }
+    .yt-carousel__card:hover img { opacity: 0.85; }
+    .yt-carousel__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 55%); pointer-events: none; }
+    .yt-carousel__play { width: 52px; height: 52px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transition: transform 0.2s; }
+    .yt-carousel__card:hover .yt-carousel__play { transform: translate(-50%,-50%) scale(1.1); }
+    .yt-carousel__title { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; color: #fff; font-size: 13px; font-weight: 700; line-height: 1.35; pointer-events: none; }
+    .yt-carousel__badge { position: absolute; top: 10px; right: 10px; background: rgba(255,0,0,0.9); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; pointer-events: none; }
+    .yt-carousel__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; transition: background 0.2s; }
+    .yt-carousel__nav:hover { background: #fff; }
+    .yt-carousel__nav--prev { left: -16px; }
+    .yt-carousel__nav--next { right: -16px; }
+    .yt-carousel__loading { text-align: center; padding: 60px 0; color: var(--gray-text); font-size: 14px; }
 
     /* CONTACT PAGE */
     .contact-page { padding: 72px 0 80px; }
@@ -1218,6 +1222,7 @@
       .inventory-grid { grid-template-columns: repeat(2,1fr); }
       .services-grid { grid-template-columns: repeat(3,1fr); }
       .reviews-grid { grid-template-columns: repeat(2,1fr); }
+      .yt-carousel__card { flex: 0 0 calc(50% - 10px); }
       .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .photo-gallery { grid-template-columns: repeat(3,1fr); }
     }
@@ -1237,7 +1242,8 @@
       .services-grid { grid-template-columns: repeat(2,1fr); }
       .stats__grid { grid-template-columns: 1fr; }
       .browse-category__inner { grid-template-columns: 1fr; }
-      .videos-grid { grid-template-columns: 1fr; }
+      .yt-carousel__card { flex: 0 0 85%; }
+      .yt-carousel__nav { display: none; }
       .contact-page__inner { grid-template-columns: 1fr; }
       .contact-form__row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 28px 20px; }
@@ -1781,39 +1787,24 @@
   <div class="container">
     <div class="youtube-section__channel">
       <div class="youtube-section__channel-left">
-        <img src="files/youtube-logo.jpg" alt="YouTube" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+        <img src="files/youtube-logo.jpg" alt="Nationwide Haul YouTube" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
         <div class="yt-channel-info">
           <h3>Nationwide Haul</h3>
-          <span>41 Videos &nbsp;·&nbsp; 25K Views</span>
+          <span id="ytChannelStats">Latest Videos</span>
         </div>
       </div>
-      <a href="https://www.youtube.com/@nationwidehaul" target="_blank" class="btn-yt-subscribe">Subscribe</a>
+      <a href="https://www.youtube.com/@NationwideHaul?sub_confirmation=1" target="_blank" class="btn-yt-subscribe">Subscribe</a>
     </div>
-    <div class="videos-grid">
-      <a href="https://youtu.be/ZnC8kxhPu4k" target="_blank" class="video-card">
-        <img class="video-card__thumb" src="files/social proof/DJI_20250216151815_0306_D.jpg" alt="Custom Dump Body Trailer">
-        <div class="video-card__overlay"></div>
-        <div class="video-card__play">
-          <svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg>
-        </div>
-        <div class="video-card__info">
-          <div class="video-card__title">CUSTOM DUMP BODY TRAILER</div>
-          <div class="video-card__sub">Full Review &amp; Key Features</div>
-        </div>
-        <div class="video-card__duration">3:21</div>
-      </a>
-      <a href="https://youtu.be/v8e2t8FNWrQ" target="_blank" class="video-card">
-        <img class="video-card__thumb" src="files/social proof/527396855_1307431238057209_438981655152461353_n.jpg" alt="MAC Trailer Pneumatic Tanks">
-        <div class="video-card__overlay"></div>
-        <div class="video-card__play">
-          <svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg>
-        </div>
-        <div class="video-card__info">
-          <div class="video-card__title">MAC TRAILER PNEUMATIC TANKS</div>
-          <div class="video-card__sub">Full Review &amp; Key Features</div>
-        </div>
-        <div class="video-card__duration">7:27</div>
-      </a>
+    <div class="yt-carousel" id="ytCarousel">
+      <div class="yt-carousel__track" id="ytTrack">
+        <div class="yt-carousel__loading">Loading videos...</div>
+      </div>
+      <button class="yt-carousel__nav yt-carousel__nav--prev" id="ytPrev" aria-label="Previous videos" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="yt-carousel__nav yt-carousel__nav--next" id="ytNext" aria-label="Next videos" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -7029,6 +7020,72 @@
       });
     });
   })();
+</script>
+
+<!-- YouTube Carousel — fetches latest videos from channel RSS feed -->
+<script>
+(function(){
+  var CHANNEL_ID = 'UCjWMfLksDwfwVA-u3xkhnhg';
+  var FEED_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  var PROXY = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(FEED_URL);
+  var track = document.getElementById('ytTrack');
+  var prevBtn = document.getElementById('ytPrev');
+  var nextBtn = document.getElementById('ytNext');
+  if (!track) return;
+
+  fetch(PROXY)
+    .then(function(r){ return r.text(); })
+    .then(function(xml){
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xml, 'text/xml');
+      var entries = doc.querySelectorAll('entry');
+      var videos = [];
+      entries.forEach(function(e){
+        var vidId = e.querySelector('videoId') ? e.querySelector('videoId').textContent : '';
+        var title = e.querySelector('title') ? e.querySelector('title').textContent : '';
+        var link = e.querySelector('link') ? e.querySelector('link').getAttribute('href') : '';
+        var isShort = link.indexOf('/shorts/') > -1 || title.indexOf('#shorts') > -1;
+        videos.push({ id: vidId, title: title.replace(/\s*#shorts\s*/gi,'').replace(/\s*\|.*$/,'').trim(), link: link, isShort: isShort });
+      });
+
+      // Sort: full videos first, then shorts
+      videos.sort(function(a,b){ return a.isShort - b.isShort; });
+
+      track.innerHTML = '';
+      videos.forEach(function(v){
+        var thumb = 'https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg';
+        var card = document.createElement('a');
+        card.href = v.link;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'yt-carousel__card';
+        card.innerHTML =
+          '<img src="' + thumb + '" alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy">' +
+          '<div class="yt-carousel__overlay"></div>' +
+          '<div class="yt-carousel__play"><svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg></div>' +
+          (v.isShort ? '<span class="yt-carousel__badge">SHORT</span>' : '') +
+          '<span class="yt-carousel__title">' + v.title + '</span>';
+        track.appendChild(card);
+      });
+
+      // Show nav arrows
+      if (videos.length > 3) {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+      }
+
+      // Update channel stats
+      var stats = document.getElementById('ytChannelStats');
+      if (stats) stats.textContent = videos.length + ' Videos';
+    })
+    .catch(function(){
+      track.innerHTML = '<div class="yt-carousel__loading">Could not load videos. <a href="https://www.youtube.com/@NationwideHaul" target="_blank" style="color:var(--red);font-weight:700;">Watch on YouTube</a></div>';
+    });
+
+  // Carousel navigation
+  prevBtn.addEventListener('click', function(){ track.scrollBy({ left: -400, behavior: 'smooth' }); });
+  nextBtn.addEventListener('click', function(){ track.scrollBy({ left: 400, behavior: 'smooth' }); });
+})();
 </script>
 
 <script defer src="https://link.nationwidehauldealer.com/js/form_embed.js"></script>
