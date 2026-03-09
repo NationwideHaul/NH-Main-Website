@@ -1797,7 +1797,6 @@
     </div>
     <div class="yt-carousel" id="ytCarousel">
       <div class="yt-carousel__track" id="ytTrack">
-        <div class="yt-carousel__loading">Loading videos...</div>
       </div>
       <button class="yt-carousel__nav yt-carousel__nav--prev" id="ytPrev" aria-label="Previous videos" style="display:none;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
@@ -7022,65 +7021,57 @@
   })();
 </script>
 
-<!-- YouTube Carousel — fetches latest videos from channel RSS feed -->
+<!-- YouTube Carousel — channel: @NationwideHaul (UCjWMfLksDwfwVA-u3xkhnhg) -->
+<!-- To refresh: fetch https://www.youtube.com/feeds/videos.xml?channel_id=UCjWMfLksDwfwVA-u3xkhnhg -->
 <script>
 (function(){
-  var CHANNEL_ID = 'UCjWMfLksDwfwVA-u3xkhnhg';
-  var FEED_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-  var PROXY = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(FEED_URL);
   var track = document.getElementById('ytTrack');
   var prevBtn = document.getElementById('ytPrev');
   var nextBtn = document.getElementById('ytNext');
   if (!track) return;
 
-  fetch(PROXY)
-    .then(function(r){ return r.text(); })
-    .then(function(xml){
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(xml, 'text/xml');
-      var entries = doc.querySelectorAll('entry');
-      var videos = [];
-      entries.forEach(function(e){
-        var vidId = e.querySelector('videoId') ? e.querySelector('videoId').textContent : '';
-        var title = e.querySelector('title') ? e.querySelector('title').textContent : '';
-        var link = e.querySelector('link') ? e.querySelector('link').getAttribute('href') : '';
-        var isShort = link.indexOf('/shorts/') > -1 || title.indexOf('#shorts') > -1;
-        videos.push({ id: vidId, title: title.replace(/\s*#shorts\s*/gi,'').replace(/\s*\|.*$/,'').trim(), link: link, isShort: isShort });
-      });
+  // Video data from YouTube RSS feed — full videos first, then shorts
+  var videos = [
+    {id:'ZnC8kxhPu4k',title:'Inside MAC Trailer Pneumatic Tanks',short:false},
+    {id:'mKTzfmf9wEk',title:'Why the 2026 Vanguard Composite Plate Dry Van Stands Out',short:false},
+    {id:'diGyyRQWcnU',title:'WADE Flatbed Trailer Walkaround',short:false},
+    {id:'Rx2MwVtZKqg',title:'MAC Road Warrior Flatbed Trailer Walkaround',short:false},
+    {id:'J7qBe6Ran-E',title:'MAC Road Warrior Flatbed Trailer Walkaround',short:true},
+    {id:'lXwPdwu5gIE',title:'Why Drivers Choose Nationwide Haul',short:true},
+    {id:'DHetIer73ls',title:'From Application to Delivery',short:true},
+    {id:'rsq_T7KMWMY',title:'In Trucking? We\'ve Got You Covered',short:true},
+    {id:'YB85DwSIhJU',title:'Built for Performance — Pitts Trailers',short:true},
+    {id:'BgLEjolV1sQ',title:'Florida Jobs Need Florida Trailers — MAC Dump',short:true},
+    {id:'d8ykEXvCh34',title:'Why This Dry Van Stands Out — Vanguard 2026',short:true},
+    {id:'N4R8ZHXO8us',title:'All-Aluminum Tri-Axle Stability — MAC Dump',short:true},
+    {id:'HJAQsCbnhMY',title:'September Special! Save $1,000 on Reefers',short:true},
+    {id:'YkGHo5hpj0s',title:'Best Semi Trailer Deals 2025',short:true},
+    {id:'aDBhvZVFqjs',title:'Why Wait Months for Your Trailer?',short:true}
+  ];
 
-      // Sort: full videos first, then shorts
-      videos.sort(function(a,b){ return a.isShort - b.isShort; });
+  track.innerHTML = '';
+  videos.forEach(function(v){
+    var thumb = 'https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg';
+    var link = v.short ? 'https://www.youtube.com/shorts/' + v.id : 'https://www.youtube.com/watch?v=' + v.id;
+    var card = document.createElement('a');
+    card.href = link;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.className = 'yt-carousel__card';
+    card.innerHTML =
+      '<img src="' + thumb + '" alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy">' +
+      '<div class="yt-carousel__overlay"></div>' +
+      '<div class="yt-carousel__play"><svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg></div>' +
+      (v.short ? '<span class="yt-carousel__badge">SHORT</span>' : '') +
+      '<span class="yt-carousel__title">' + v.title + '</span>';
+    track.appendChild(card);
+  });
 
-      track.innerHTML = '';
-      videos.forEach(function(v){
-        var thumb = 'https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg';
-        var card = document.createElement('a');
-        card.href = v.link;
-        card.target = '_blank';
-        card.rel = 'noopener';
-        card.className = 'yt-carousel__card';
-        card.innerHTML =
-          '<img src="' + thumb + '" alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy">' +
-          '<div class="yt-carousel__overlay"></div>' +
-          '<div class="yt-carousel__play"><svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg></div>' +
-          (v.isShort ? '<span class="yt-carousel__badge">SHORT</span>' : '') +
-          '<span class="yt-carousel__title">' + v.title + '</span>';
-        track.appendChild(card);
-      });
+  prevBtn.style.display = 'flex';
+  nextBtn.style.display = 'flex';
 
-      // Show nav arrows
-      if (videos.length > 3) {
-        prevBtn.style.display = 'flex';
-        nextBtn.style.display = 'flex';
-      }
-
-      // Update channel stats
-      var stats = document.getElementById('ytChannelStats');
-      if (stats) stats.textContent = videos.length + ' Videos';
-    })
-    .catch(function(){
-      track.innerHTML = '<div class="yt-carousel__loading">Could not load videos. <a href="https://www.youtube.com/@NationwideHaul" target="_blank" style="color:var(--red);font-weight:700;">Watch on YouTube</a></div>';
-    });
+  var stats = document.getElementById('ytChannelStats');
+  if (stats) stats.textContent = videos.length + ' Videos';
 
   // Carousel navigation
   prevBtn.addEventListener('click', function(){ track.scrollBy({ left: -400, behavior: 'smooth' }); });
