@@ -1113,8 +1113,7 @@
     .yt-carousel__play { width: 52px; height: 52px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transition: transform 0.2s; }
     .yt-carousel__card:hover .yt-carousel__play { transform: translate(-50%,-50%) scale(1.1); }
     .yt-carousel__title { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; color: #fff; font-size: 13px; font-weight: 700; line-height: 1.35; pointer-events: none; }
-    .yt-carousel__badge { position: absolute; top: 10px; right: 10px; background: rgba(255,0,0,0.9); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; pointer-events: none; }
-    .yt-carousel__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; transition: background 0.2s; }
+.yt-carousel__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; transition: background 0.2s; }
     .yt-carousel__nav:hover { background: #fff; }
     .yt-carousel__nav--prev { left: -16px; }
     .yt-carousel__nav--next { right: -16px; }
@@ -7030,31 +7029,30 @@
   var nextBtn = document.getElementById('ytNext');
   if (!track) return;
 
-  // Video data from YouTube RSS feed — full videos first, then shorts
+  // Full-length YouTube videos only (no Shorts)
   var videos = [
-    {id:'ZnC8kxhPu4k',title:'Inside MAC Trailer Pneumatic Tanks',short:false},
-    {id:'mKTzfmf9wEk',title:'Why the 2026 Vanguard Composite Plate Dry Van Stands Out',short:false},
-    {id:'diGyyRQWcnU',title:'WADE Flatbed Trailer Walkaround',short:false},
-    {id:'Rx2MwVtZKqg',title:'MAC Road Warrior Flatbed Trailer Walkaround',short:false},
-    {id:'J7qBe6Ran-E',title:'MAC Road Warrior Flatbed Trailer Walkaround',short:true},
-    {id:'lXwPdwu5gIE',title:'Why Drivers Choose Nationwide Haul',short:true},
-    {id:'DHetIer73ls',title:'From Application to Delivery',short:true},
-    {id:'rsq_T7KMWMY',title:'In Trucking? We\'ve Got You Covered',short:true},
-    {id:'YB85DwSIhJU',title:'Built for Performance — Pitts Trailers',short:true},
-    {id:'BgLEjolV1sQ',title:'Florida Jobs Need Florida Trailers — MAC Dump',short:true},
-    {id:'d8ykEXvCh34',title:'Why This Dry Van Stands Out — Vanguard 2026',short:true},
-    {id:'N4R8ZHXO8us',title:'All-Aluminum Tri-Axle Stability — MAC Dump',short:true},
-    {id:'HJAQsCbnhMY',title:'September Special! Save $1,000 on Reefers',short:true},
-    {id:'YkGHo5hpj0s',title:'Best Semi Trailer Deals 2025',short:true},
-    {id:'aDBhvZVFqjs',title:'Why Wait Months for Your Trailer?',short:true}
+    {id:'ZnC8kxhPu4k',title:'Inside MAC Trailer Pneumatic Tanks'},
+    {id:'mKTzfmf9wEk',title:'Why the 2026 Vanguard Composite Plate Dry Van Stands Out'},
+    {id:'diGyyRQWcnU',title:'WADE Flatbed Trailer Walkaround'},
+    {id:'Rx2MwVtZKqg',title:'MAC Road Warrior Flatbed Trailer Walkaround'},
+    {id:'1utuahVbVG4',title:'NEW MAC 48 High Spec Flatbed'},
+    {id:'INs_54wALqY',title:'MAC Aluminum Tri-Axle Smooth Side Florida Spec Dump'},
+    {id:'8MZ-08eTd0A',title:'Custom PITTS Chassis for Miami-Dade County'},
+    {id:'3EfRi9GjL4I',title:'Nationwide Haul Gives Back to 4KIDS of South Florida'},
+    {id:'iv8XwicQKFI',title:'Get to Know Nationwide Haul'},
+    {id:'BL80VJaekGg',title:'NEW MAC 1000C Pneumatic Dry Bulk Tanker'},
+    {id:'C12FfKAVbiI',title:'Nationwide Haul Lakeland'},
+    {id:'1PfCIm49ydY',title:'NFI International Sleeper'},
+    {id:'3hRMjAtqj_s',title:'Stoughton Grain Trailer'},
+    {id:'55FUTDvFV58',title:'NFI Volvo Day Cab'},
+    {id:'AcK4AZKu2Oo',title:'Who is NFI?'}
   ];
 
   track.innerHTML = '';
   videos.forEach(function(v){
     var thumb = 'https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg';
-    var link = v.short ? 'https://www.youtube.com/shorts/' + v.id : 'https://www.youtube.com/watch?v=' + v.id;
     var card = document.createElement('a');
-    card.href = link;
+    card.href = 'https://www.youtube.com/watch?v=' + v.id;
     card.target = '_blank';
     card.rel = 'noopener';
     card.className = 'yt-carousel__card';
@@ -7062,7 +7060,6 @@
       '<img src="' + thumb + '" alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy">' +
       '<div class="yt-carousel__overlay"></div>' +
       '<div class="yt-carousel__play"><svg width="18" height="20" viewBox="0 0 18 20" fill="white"><path d="M1 1l16 9L1 19V1z"/></svg></div>' +
-      (v.short ? '<span class="yt-carousel__badge">SHORT</span>' : '') +
       '<span class="yt-carousel__title">' + v.title + '</span>';
     track.appendChild(card);
   });
