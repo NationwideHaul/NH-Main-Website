@@ -317,8 +317,8 @@
     .ab-hero__content { position:relative; z-index:2; padding:90px 0 80px; }
     .ab-hero__eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--red); margin-bottom:18px; animation:fadeIn 0.8s ease both; }
     .ab-hero__eyebrow::before { content:''; display:block; width:28px; height:2px; background:var(--red); }
-    .ab-hero h1 { font-size:56px; font-weight:900; color:#fff; line-height:1.08; margin-bottom:6px; animation:fadeUp 0.9s 0.15s ease both; }
-    .ab-hero h1 em { color:var(--red); font-style:normal; }
+    .ab-hero h1, .ab-hero h2 { font-size:56px; font-weight:900; color:#fff; line-height:1.08; margin-bottom:6px; animation:fadeUp 0.9s 0.15s ease both; }
+    .ab-hero h1 em, .ab-hero h2 em { color:var(--red); font-style:normal; }
     .ab-hero__underline { display:block; height:4px; background:var(--red); border-radius:2px; width:0; animation:lineDraw 0.9s 1s ease forwards; margin-bottom:20px; }
     .ab-hero__desc { font-size:16px; color:rgba(255,255,255,0.65); max-width:580px; line-height:1.78; margin-bottom:36px; animation:fadeUp 0.9s 0.35s ease both; }
     .ab-hero__pills { display:flex; flex-wrap:wrap; gap:10px; animation:fadeUp 0.9s 0.5s ease both; }
@@ -456,8 +456,25 @@
     .ab-cta__btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; }
 
     @media(max-width:1024px){ .ab-eco-grid{grid-template-columns:repeat(3,1fr);} .ab-team-grid{grid-template-columns:repeat(2,1fr);} .ab-team-grid--3{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:900px){ .ab-story__inner,.ab-values__inner,.ab-exp__inner{grid-template-columns:1fr;} .ab-hero h1{font-size:36px;} }
-    @media(max-width:600px){ .ab-eco-grid{grid-template-columns:repeat(2,1fr);} .ab-stats__inner{grid-template-columns:repeat(2,1fr);} .ab-team-grid,.ab-team-grid--3{grid-template-columns:repeat(2,1fr);} .ab-values-grid{grid-template-columns:1fr;} .ab-hero{min-height:auto;} .ab-hero__overlay{background:rgba(0,0,0,0.7);} .ab-hero__content{padding:48px 0 40px;} .ab-hero h1{font-size:26px;} .ab-hero__desc{font-size:14px;margin-bottom:24px;} .ab-hero__float{display:none;} }
+    @media(max-width:900px){ .ab-story__inner,.ab-values__inner,.ab-exp__inner{grid-template-columns:1fr;} .ab-hero h1,.ab-hero h2{font-size:36px;} }
+    @media(max-width:600px){
+      .ab-eco-grid{grid-template-columns:repeat(2,1fr);}
+      .ab-team-grid,.ab-team-grid--3{grid-template-columns:repeat(2,1fr);}
+      .ab-values-grid{grid-template-columns:1fr;}
+      /* About hero mobile */
+      .ab-hero{min-height:auto;}
+      .ab-hero__overlay{background:rgba(0,0,0,0.75);}
+      .ab-hero__content{padding:48px 16px 36px;}
+      .ab-hero h1,.ab-hero h2{font-size:24px; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.5);}
+      .ab-hero__desc{font-size:13px;margin-bottom:20px;line-height:1.6;color:rgba(255,255,255,0.75);}
+      .ab-hero__pill{font-size:11px;padding:5px 10px;}
+      .ab-hero__float{display:none;}
+      /* About stats mobile */
+      .ab-stats__inner{grid-template-columns:repeat(2,1fr);}
+      .ab-stat-item{padding:16px 10px;}
+      .ab-stat-item__num{font-size:22px;}
+      .ab-stat-item__lbl{font-size:9px;margin-top:3px;}
+    }
 
     /* ============================================
        LEASE & RENT PAGE
