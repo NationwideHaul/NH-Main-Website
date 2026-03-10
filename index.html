@@ -7462,7 +7462,7 @@
   initSvcCarousel();
 
   /* PAGE SWITCHER */
-  var pages = ['home', 'contact', 'financing', 'lease', 'about', 'manufacturers', 'perks-municipality', 'perks-sell', 'perks-wholesale', 'perks-dot', 'perks-warranty', 'perks-tcs', 'oem-clearmac', 'oem-dorsey', 'oem-pitts', 'oem-vanguard', 'oem-xl', 'oem-autocar', 'oem-cie', 'oem-wade', 'legal-privacy', 'legal-terms'];
+  var pages = ['home', 'contact', 'financing', 'lease', 'about', 'manufacturers', 'perks-municipality', 'perks-sell', 'perks-remarketing', 'perks-asset', 'perks-wholesale', 'perks-dot', 'perks-warranty', 'perks-tcs', 'oem-clearmac', 'oem-dorsey', 'oem-pitts', 'oem-vanguard', 'oem-xl', 'oem-autocar', 'oem-cie', 'oem-wade', 'legal-privacy', 'legal-terms'];
   function showPage(page) {
     // close mobile nav & any open dropdowns
     document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.classList.remove('is-open'); });
@@ -7482,7 +7482,7 @@
     if (navLease)     navLease.classList.toggle('nav-active',     page === 'lease');
     if (navAbout)     navAbout.classList.toggle('nav-active',     page === 'about' || page === 'manufacturers');
     // Highlight "Client Perks" trigger button when on any perks sub-page
-    var perksPages = ['perks-municipality','perks-sell','perks-wholesale','perks-dot','perks-warranty','perks-tcs'];
+    var perksPages = ['perks-municipality','perks-sell','perks-remarketing','perks-asset','perks-wholesale','perks-dot','perks-warranty','perks-tcs'];
     var perksTrigger = document.querySelector('#perksDropdown .nav-dropdown__trigger');
     if (perksTrigger) perksTrigger.style.color = perksPages.indexOf(page) !== -1 ? 'var(--red)' : '';
     // trigger reveal animations for the newly visible page
