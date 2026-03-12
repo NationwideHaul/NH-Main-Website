@@ -110,40 +110,7 @@
     .mobile-search-btn { display: none; }
     .site-header__actions { display: contents; }
 
-    /* LEASE/RENT HELPERS */
-
-
-  function dotInspSubmit(e) {
-    e.preventDefault();
-    document.getElementById('dotInspForm').style.display = 'none';
-    document.getElementById('dotInspSuccess').style.display = 'block';
-  }
-  function sellEquipSubmit(e) {
-    e.preventDefault();
-    document.getElementById('sellEquipForm').style.display = 'none';
-    document.getElementById('sellEquipSuccess').style.display = 'block';
-  }
-  function municSubmitForm(e) {
-    e.preventDefault();
-    document.getElementById('municEquipForm').style.display = 'none';
-    document.getElementById('municEquipSuccess').style.display = 'block';
-  }
-  function lrSubmitQuote(e) {
-    e.preventDefault();
-    var form = document.getElementById('lrQuoteForm');
-    var success = document.getElementById('lrQuoteSuccess');
-    if (form) form.style.display = 'none';
-    if (success) success.style.display = 'block';
-  }
-  function lrFilter(btn, type) {
-    document.querySelectorAll('.lr-filter-tab').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    document.querySelectorAll('#lrFleetGrid .lr-fleet-card').forEach(function(card) {
-      card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
-    });
-  }
-
-  /* NAV DROPDOWN */
+    /* NAV DROPDOWN */
     .nav-dropdown { position: relative; }
     .nav-dropdown__trigger { display: flex; align-items: center; gap: 5px; font-size: 14px; font-weight: 500; color: var(--dark); cursor: pointer; white-space: nowrap; transition: color 0.2s; background: none; border: none; font-family: 'Inter', sans-serif; padding: 0; }
     .nav-dropdown__trigger:hover { color: var(--red); }
@@ -2137,6 +2104,7 @@
           <input type="hidden" name="_subject" value="New Contact Form Submission — Nationwide Haul Website">
           <input type="hidden" name="_template" value="table">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_cc" value="marketing@nationwidehaul.com">
           <div class="contact-form__row">
             <div class="contact-form__group">
               <label for="cf-first">First Name *</label>
@@ -2183,6 +2151,10 @@
           </div>
           <h3>Message Sent!</h3>
           <p>Thanks for reaching out. We'll get back to you within 1 business day.</p>
+        </div>
+        <div id="contactError" style="display:none;background:#fef2f2;border:1.5px solid #ef4444;border-radius:14px;padding:24px 28px;text-align:center;margin-top:16px;">
+          <p style="font-size:14px;color:#b91c1c;font-weight:600;margin-bottom:4px;">Something went wrong.</p>
+          <p style="font-size:13px;color:#7f1d1d;">Please try again, or call us directly at <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
         </div>
       </div>
 
@@ -2585,7 +2557,7 @@
 
 <!-- JSON-LD FAQ Schema -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the minimum rental period for a semi-trailer at Nationwide Haul?","acceptedAnswer":{"@type":"Answer","text":"Our rental program requires a minimum commitment of 6 months. To terminate, 60 days written notice is required."}},{"@type":"Question","name":"What credit score is required to lease a semi-trailer?","acceptedAnswer":{"@type":"Answer","text":"All credit scores are encouraged to apply — terms vary based on your credit profile, business history, and equipment needs."}},{"@type":"Question","name":"What insurance is required for a leased or rented semi-trailer?","acceptedAnswer":{"@type":"Answer","text":"A minimum of $1,000,000 in commercial auto liability with Nationwide Haul listed as additional insured is required. Reefer units also require cargo insurance for temperature-sensitive freight."}},{"@type":"Question","name":"Can a startup trucking company qualify for a trailer lease?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with all trailer types. Businesses under 2 years may qualify with a 2–3 month security deposit and active MC/DOT authority. Our 6-month rental program is often the best starting point for new carriers."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the minimum rental period for a semi-trailer at Nationwide Haul?","acceptedAnswer":{"@type":"Answer","text":"Our rental program requires a minimum commitment of 6 months."}},{"@type":"Question","name":"What credit score is required to lease a semi-trailer?","acceptedAnswer":{"@type":"Answer","text":"All credit scores are encouraged to apply — terms vary based on your credit profile, business history, and equipment needs."}},{"@type":"Question","name":"What insurance is required for a leased or rented semi-trailer?","acceptedAnswer":{"@type":"Answer","text":"A minimum of $1,000,000 in commercial auto liability with Nationwide Haul listed as additional insured is required. Reefer units also require cargo insurance for temperature-sensitive freight."}},{"@type":"Question","name":"Can a startup trucking company qualify for a trailer lease?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with all trailer types. Businesses under 2 years may qualify with a 2–3 month security deposit and active MC/DOT authority. Our 6-month rental program is often the best starting point for new carriers."}}]}
 </script>
 
 <!-- HERO -->
@@ -2621,7 +2593,7 @@
         <p>Our rental program requires a 6-month minimum commitment. Ideal for seasonal demand surges or testing new lanes before committing to a long-term lease.</p>
         <div class="lr-card__features">
           <div class="lr-card__feat"><span class="lr-card__feat-dot"></span>6-month minimum rental</div>
-          <div class="lr-card__feat"><span class="lr-card__feat-dot"></span>60-day written notice to terminate</div>
+          <div class="lr-card__feat"><span class="lr-card__feat-dot"></span>Well maintained and DOT inspected</div>
           <div class="lr-card__feat"><span class="lr-card__feat-dot"></span>Swap equipment as your needs change</div>
           <div class="lr-card__feat"><span class="lr-card__feat-dot"></span>Less restrictive credit requirements</div>
         </div>
@@ -2649,11 +2621,11 @@
         </thead>
         <tbody>
           <tr><td>Minimum Term</td><td>12–72 months</td><td class="lr-check">6 months</td></tr>
-          <tr><td>After Initial Term</td><td class="lr-partial"><em>return or purchase option</em></td><td>?</td></tr>
-          <tr><td>Monthly Cost</td><td class="lr-partial"><em>lower (longer term)</em></td><td class="lr-partial"><em>higher (shorter term)</em></td></tr>
+          <tr><td>After Initial Term</td><td class="lr-partial"><em>Return or purchase option</em></td><td class="lr-partial"><em>Return or renew option</em></td></tr>
+          <tr><td>Monthly Cost</td><td class="lr-partial"><em>Lower (longer term)</em></td><td class="lr-partial"><em>Higher (shorter term)</em></td></tr>
           <tr><td>DOT Annual Inspection</td><td class="lr-check">✓ Included</td><td class="lr-check">✓ Included</td></tr>
           <tr><td>Equipment Swap / Upgrade</td><td class="lr-partial">At term end</td><td class="lr-check">✓ More flexible</td></tr>
-          <tr><td>Early Exit Penalty</td><td class="lr-partial"><em>yes</em></td><td class="lr-partial"><em>flexible</em></td></tr>
+          <tr><td>Early Exit Penalty</td><td class="lr-partial"><em>Yes</em></td><td class="lr-partial"><em>Yes</em></td></tr>
           <tr><td>Multi-Unit / Fleet Programs</td><td class="lr-check">✓ Volume discounts</td><td class="lr-check">✓ Available</td></tr>
         </tbody>
       </table>
@@ -2718,7 +2690,7 @@
             <div class="faq-item__icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
           <div class="faq-item__a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <span itemprop="text">Our rental program requires a <strong>minimum commitment of 6 months</strong>. To terminate, 60 days written notice is required. There are no short-term (daily, weekly, or monthly) rental programs available.</span>
+            <span itemprop="text">Our rental program requires a <strong>minimum commitment of 6 months</strong>. There are no short-term (daily, weekly, or monthly) rental programs available.</span>
           </div>
         </div>
         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -2772,15 +2744,19 @@
         <h3>Quick Quote Request</h3>
         <p>A leasing specialist will contact you within 1 business day.</p>
         <form class="lr-form" id="lrQuoteForm" onsubmit="lrSubmitQuote(event)">
+          <input type="hidden" name="_subject" value="New Lease/Rental Quote Request — Nationwide Haul Website">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_cc" value="marketing@nationwidehaul.com">
           <div class="lr-form__row">
-            <div class="lr-form__group"><label for="lrName">Full Name</label><input type="text" autocomplete="name" id="lrName" placeholder="John Smith" required></div>
-            <div class="lr-form__group"><label for="lrPhone">Phone</label><input type="tel" inputmode="tel" autocomplete="tel" id="lrPhone" placeholder="(555) 000-0000" required></div>
+            <div class="lr-form__group"><label for="lrName">Full Name</label><input type="text" autocomplete="name" id="lrName" name="full_name" placeholder="John Smith" required></div>
+            <div class="lr-form__group"><label for="lrPhone">Phone</label><input type="tel" inputmode="tel" autocomplete="tel" id="lrPhone" name="phone" placeholder="(555) 000-0000" required></div>
           </div>
-          <div class="lr-form__group"><label for="lrEmail">Business Email</label><input type="email" autocomplete="email" id="lrEmail" placeholder="you@yourcompany.com" required></div>
+          <div class="lr-form__group"><label for="lrEmail">Business Email</label><input type="email" autocomplete="email" id="lrEmail" name="email" placeholder="you@yourcompany.com" required></div>
           <div class="lr-form__row">
             <div class="lr-form__group">
               <label for="lrEquip">Equipment Type</label>
-              <select id="lrEquip" required>
+              <select id="lrEquip" name="equipment_type" required>
                 <option value="">Select type...</option>
                 <option>53' Reefer Trailer</option>
                 <option>48' Reefer Trailer</option>
@@ -2793,7 +2769,7 @@
             </div>
             <div class="lr-form__group">
               <label for="lrType">Program Type</label>
-              <select id="lrType" required>
+              <select id="lrType" name="program_type" required>
                 <option value="">Lease or Rent?</option>
                 <option>Lease (12–72 months)</option>
                 <option>Rental (min. 6 months)</option>
@@ -2804,7 +2780,7 @@
           <div class="lr-form__row">
             <div class="lr-form__group">
               <label for="lrDuration">Duration</label>
-              <select id="lrDuration">
+              <select id="lrDuration" name="duration">
                 <option value="">Select...</option>
                 <option>6 months</option>
                 <option>12 months</option>
@@ -2817,7 +2793,7 @@
             </div>
             <div class="lr-form__group">
               <label for="lrUnits">Number of Units</label>
-              <select id="lrUnits">
+              <select id="lrUnits" name="number_of_units">
                 <option>1 unit</option>
                 <option>2–3 units</option>
                 <option>4–10 units</option>
@@ -2825,14 +2801,18 @@
               </select>
             </div>
           </div>
-          <div class="lr-form__group"><label for="lrLocation">Operating State / Region</label><input type="text" id="lrLocation" placeholder="e.g. Florida, Southeast, Nationwide"></div>
-          <div class="lr-form__group"><label for="lrNotes">Notes (MC/DOT, timeline, requirements)</label><textarea id="lrNotes" rows="2" placeholder="Optional..."></textarea></div>
+          <div class="lr-form__group"><label for="lrLocation">Operating State / Region</label><input type="text" id="lrLocation" name="operating_region" placeholder="e.g. Florida, Southeast, Nationwide"></div>
+          <div class="lr-form__group"><label for="lrNotes">Notes (MC/DOT, timeline, requirements)</label><textarea id="lrNotes" name="notes" rows="2" placeholder="Optional..."></textarea></div>
           <button type="submit" class="lr-form__submit">Send Quote Request →</button>
         </form>
         <div class="lr-form__success" id="lrQuoteSuccess">
           <div class="checkmark-green"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3>Quote Request Received!</h3>
           <p>A leasing specialist will contact you within 1 business day. For urgent needs, call <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
+        </div>
+        <div id="lrQuoteError" style="display:none;background:#fef2f2;border:1.5px solid #ef4444;border-radius:14px;padding:24px 28px;text-align:center;margin-top:16px;">
+          <p style="font-size:14px;color:#b91c1c;font-weight:600;margin-bottom:4px;">Something went wrong.</p>
+          <p style="font-size:13px;color:#7f1d1d;">Please try again, or call us directly at <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
         </div>
       </div>
     </div>
@@ -3486,33 +3466,37 @@
       </div>
 
       <form id="municEquipForm" onsubmit="municSubmitForm(event)" style="background:#fff;border:1px solid var(--gray-mid);border-radius:14px;padding:36px 40px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <input type="hidden" name="_subject" value="New Municipality Equipment Request — Nationwide Haul Website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_cc" value="marketing@nationwidehaul.com">
         <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:22px;">Contact Information</p>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Full Name <span style="color:var(--red);">*</span></label>
-            <input type="text" autocomplete="name" aria-label="Full Name" placeholder="John Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="full_name" autocomplete="name" aria-label="Full Name" placeholder="John Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Organization Name <span style="color:var(--red);">*</span></label>
-            <input type="text" placeholder="City of Miami" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="organization" placeholder="City of Miami" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">E-Mail <span style="color:var(--red);">*</span></label>
-            <input type="email" autocomplete="email" aria-label="Email Address" placeholder="you@agency.gov" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="email" name="email" autocomplete="email" aria-label="Email Address" placeholder="you@agency.gov" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Phone Number</label>
-            <input type="tel" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
         </div>
 
         <div style="margin-bottom:24px;">
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Equipment Details <span style="color:var(--red);">*</span></label>
-          <textarea aria-label="Message" rows="5" placeholder="Describe the equipment you need — type, quantity, specifications, timeline, and any special requirements..." required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
+          <textarea name="equipment_details" aria-label="Message" rows="5" placeholder="Describe the equipment you need — type, quantity, specifications, timeline, and any special requirements..." required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
         </div>
 
         <button type="submit" style="width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
@@ -3526,6 +3510,10 @@
         </div>
         <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;">Request Received!</h3>
         <p style="font-size:14px;color:var(--gray-text);">Our government sales team will review your request and reach out within 1 business day.</p>
+      </div>
+      <div id="municEquipError" style="display:none;background:#fef2f2;border:1.5px solid #ef4444;border-radius:14px;padding:24px 28px;text-align:center;margin-top:16px;">
+        <p style="font-size:14px;color:#b91c1c;font-weight:600;margin-bottom:4px;">Something went wrong.</p>
+        <p style="font-size:13px;color:#7f1d1d;">Please try again, or call us directly at <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
       </div>
     </div>
   </div>
@@ -3767,27 +3755,31 @@
       </div>
 
       <form id="sellEquipForm" onsubmit="sellEquipSubmit(event)" style="background:#fff;border:1px solid var(--gray-mid);border-radius:14px;padding:36px 40px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <input type="hidden" name="_subject" value="New Equipment Sell/Consign Submission — Nationwide Haul Website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_cc" value="marketing@nationwidehaul.com">
 
         <!-- Personal Info -->
         <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--gray-mid);">Personal Information</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">First Name <span style="color:var(--red);">*</span></label>
-            <input type="text" autocomplete="name" aria-label="First Name" placeholder="John" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="first_name" autocomplete="name" aria-label="First Name" placeholder="John" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Last Name <span style="color:var(--red);">*</span></label>
-            <input type="text" aria-label="Last Name" placeholder="Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="last_name" aria-label="Last Name" placeholder="Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px;">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">E-Mail <span style="color:var(--red);">*</span></label>
-            <input type="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="email" name="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Phone Number</label>
-            <input type="tel" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
         </div>
 
@@ -3796,31 +3788,31 @@
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:18px;margin-bottom:18px;">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Make <span style="color:var(--red);">*</span></label>
-            <input type="text" aria-label="Make" placeholder="Peterbilt" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="make" aria-label="Make" placeholder="Peterbilt" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Model <span style="color:var(--red);">*</span></label>
-            <input type="text" aria-label="Model" placeholder="389" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="model" aria-label="Model" placeholder="389" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Year <span style="color:var(--red);">*</span></label>
-            <input type="number" placeholder="2019" min="1990" max="2026" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="number" name="year" placeholder="2019" min="1990" max="2026" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Miles / Hours</label>
-            <input type="text" aria-label="Mileage" placeholder="450,000 mi" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+            <input type="text" name="miles_hours" aria-label="Mileage" placeholder="450,000 mi" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
           </div>
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Accessories / Features</label>
-          <input type="text" placeholder="e.g. Air ride suspension, sleeper cab, liftgate..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="accessories" placeholder="e.g. Air ride suspension, sleeper cab, liftgate..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
 
         <!-- Additional Info -->
         <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--gray-mid);">Additional Information</p>
         <div style="margin-bottom:18px;">
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Sale Method <span style="color:var(--red);">*</span></label>
-          <select aria-label="Select option" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;background:#fff;color:var(--dark);" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <select name="sale_method" aria-label="Select option" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;background:#fff;color:var(--dark);" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
             <option value="" disabled selected>Select</option>
             <option value="sell">Sell Equipment to Nationwide Haul</option>
             <option value="consign">Consign Equipment</option>
@@ -3829,7 +3821,7 @@
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Message</label>
-          <textarea aria-label="Message" rows="4" placeholder="Any additional details about your equipment, availability for inspection, or questions you have..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
+          <textarea name="message" aria-label="Message" rows="4" placeholder="Any additional details about your equipment, availability for inspection, or questions you have..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
         </div>
 
         <button type="submit" style="width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
@@ -3843,6 +3835,10 @@
         </div>
         <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;">We Got Your Submission!</h3>
         <p style="font-size:14px;color:var(--gray-text);">Our team will review your equipment details and reach out within 1 business day to discuss the next steps.</p>
+      </div>
+      <div id="sellEquipError" style="display:none;background:#fef2f2;border:1.5px solid #ef4444;border-radius:14px;padding:24px 28px;text-align:center;margin-top:16px;">
+        <p style="font-size:14px;color:#b91c1c;font-weight:600;margin-bottom:4px;">Something went wrong.</p>
+        <p style="font-size:13px;color:#7f1d1d;">Please try again, or call us directly at <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
       </div>
 
     </div>
@@ -4685,6 +4681,10 @@
 <section class="perks-section" id="dotScheduleForm">
   <div class="container" style="max-width:720px;">
     <form id="dotInspForm" onsubmit="dotInspSubmit(event)" style="background:#fff;border:1px solid var(--gray-mid);border-radius:14px;padding:36px 40px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+      <input type="hidden" name="_subject" value="New DOT Inspection Request — Nationwide Haul Website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_cc" value="marketing@nationwidehaul.com">
       <h2 style="font-size:22px;font-weight:800;margin-bottom:4px;">Schedule DOT Inspection</h2>
       <p style="font-size:13px;color:var(--gray-text);margin-bottom:28px;">Fill out the form below and our service team will contact you to confirm your appointment.</p>
 
@@ -4693,16 +4693,16 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Full Name <span style="color:var(--red);">*</span></label>
-          <input type="text" autocomplete="name" aria-label="Full Name" placeholder="John Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="full_name" autocomplete="name" aria-label="Full Name" placeholder="John Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Phone Number <span style="color:var(--red);">*</span></label>
-          <input type="tel" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="tel" name="phone" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
       </div>
       <div style="margin-bottom:28px;">
         <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">E-Mail <span style="color:var(--red);">*</span></label>
-        <input type="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+        <input type="email" name="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
       </div>
 
       <!-- Equipment Info -->
@@ -4710,30 +4710,30 @@
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:18px;">
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Year <span style="color:var(--red);">*</span></label>
-          <input type="number" placeholder="2020" min="1990" max="2026" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="number" name="year" placeholder="2020" min="1990" max="2026" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Make <span style="color:var(--red);">*</span></label>
-          <input type="text" aria-label="Make" placeholder="Kenworth" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="make" aria-label="Make" placeholder="Kenworth" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Model <span style="color:var(--red);">*</span></label>
-          <input type="text" placeholder="T680" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="model" placeholder="T680" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">VIN</label>
-          <input type="text" aria-label="VIN Number" placeholder="Vehicle Identification Number" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="vin" aria-label="VIN Number" placeholder="Vehicle Identification Number" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Stock # (if purchased from NH)</label>
-          <input type="text" placeholder="e.g. TNHC36781" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <input type="text" name="stock_number" placeholder="e.g. TNHC36781" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
       </div>
       <div style="margin-bottom:28px;">
         <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Additional Notes</label>
-        <textarea aria-label="Message" rows="3" placeholder="Any specific concerns or requests..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;resize:vertical;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
+        <textarea name="notes" aria-label="Message" rows="3" placeholder="Any specific concerns or requests..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;resize:vertical;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
       </div>
 
       <button type="submit" style="width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Schedule My Free DOT Inspection &rarr;</button>
@@ -4743,6 +4743,10 @@
       <div style="width:64px;height:64px;background:#fff0f0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="28" height="28" fill="none" stroke="var(--red)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
       <h2 style="font-size:22px;font-weight:800;margin-bottom:8px;">Inspection Request Received!</h2>
       <p style="color:var(--gray-text);font-size:14px;max-width:400px;margin:0 auto;">Our service team will reach out within 1 business day to confirm your appointment. Thank you for choosing Nationwide Haul.</p>
+    </div>
+    <div id="dotInspError" style="display:none;background:#fef2f2;border:1.5px solid #ef4444;border-radius:14px;padding:24px 28px;text-align:center;margin-top:16px;">
+      <p style="font-size:14px;color:#b91c1c;font-weight:600;margin-bottom:4px;">Something went wrong.</p>
+      <p style="font-size:13px;color:#7f1d1d;">Please try again, or call us directly at <a href="tel:8775597039" style="color:var(--red);font-weight:700;">(877) 559-7039</a>.</p>
     </div>
   </div>
 </section>
@@ -7580,16 +7584,17 @@
     els.forEach(function(el) { io.observe(el); });
   }
 
-  /* CONTACT FORM — sends to marketing@nationwidehaul.com via FormSubmit */
-  function handleContactSubmit(e) {
-    e.preventDefault();
-    var form = document.getElementById('contactForm');
-    var btn = form.querySelector('.contact-form__submit');
-    var success = document.getElementById('contactSuccess');
+  /* ── FORMSUBMIT AJAX HELPER ──────────────────────── */
+  function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel) {
+    var form = document.getElementById(formId);
+    var success = document.getElementById(successId);
+    var error = document.getElementById(errorId);
+    var btn = form.querySelector(btnSelector);
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending\u2026';
+    if (error) error.style.display = 'none';
     var data = new FormData(form);
-    fetch('https://formsubmit.co/ajax/marketing@nationwidehaul.com', {
+    fetch('https://formsubmit.co/ajax/' + email, {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: data
@@ -7597,15 +7602,56 @@
       if (res.ok) {
         form.style.display = 'none';
         success.style.display = 'block';
+        var modal = form.closest('.modal, [data-modal]');
+        if (modal) setTimeout(function() { modal.style.display = 'none'; }, 3000);
       } else {
         btn.disabled = false;
-        btn.textContent = 'Send Message →';
-        alert('Something went wrong. Please try again or email us directly at marketing@nationwidehaul.com');
+        btn.textContent = btnLabel;
+        if (error) error.style.display = 'block';
       }
     }).catch(function() {
       btn.disabled = false;
-      btn.textContent = 'Send Message →';
-      alert('Network error. Please try again or email us directly at marketing@nationwidehaul.com');
+      btn.textContent = btnLabel;
+      if (error) error.style.display = 'block';
+    });
+  }
+
+  /* CONTACT FORM — marketing@nationwidehaul.com */
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    submitFormAjax('contactForm', 'contactSuccess', 'contactError', 'marketing@nationwidehaul.com', '.contact-form__submit', 'Send Message \u2192');
+  }
+
+  /* LEASE/RENTAL QUOTE — leasing@nationwidehaul.com */
+  function lrSubmitQuote(e) {
+    e.preventDefault();
+    submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', 'leasing@nationwidehaul.com', '.lr-form__submit', 'Send Quote Request \u2192');
+  }
+
+  /* MUNICIPALITY EQUIPMENT — govbid@nationwidehaul.com */
+  function municSubmitForm(e) {
+    e.preventDefault();
+    submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', 'govbid@nationwidehaul.com', 'button[type="submit"]', 'Send Request to Government Sales Team \u2192');
+  }
+
+  /* SELL EQUIPMENT — marketing@nationwidehaul.com */
+  function sellEquipSubmit(e) {
+    e.preventDefault();
+    submitFormAjax('sellEquipForm', 'sellEquipSuccess', 'sellEquipError', 'marketing@nationwidehaul.com', 'button[type="submit"]', 'Submit Equipment Information \u2192');
+  }
+
+  /* DOT INSPECTION — marketing@nationwidehaul.com */
+  function dotInspSubmit(e) {
+    e.preventDefault();
+    submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', 'marketing@nationwidehaul.com', 'button[type="submit"]', 'Schedule My Free DOT Inspection \u2192');
+  }
+
+  /* LEASE/RENT FLEET FILTER */
+  function lrFilter(btn, type) {
+    document.querySelectorAll('.lr-filter-tab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('#lrFleetGrid .lr-fleet-card').forEach(function(card) {
+      card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
     });
   }
 
