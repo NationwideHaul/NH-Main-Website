@@ -9,23 +9,17 @@
   <div class="hero__content container">
     <h1 class="hero__title">Quality Trucks &amp; Trailers.<br>New, Used &amp; Ready to Haul.</h1>
     <p class="hero__subtitle">Find exactly what your fleet needs.</p>
-    <form class="hero__search" action="/inventory" method="GET">
-      <select name="type" aria-label="Equipment Type">
+    <form class="hero__search" id="heroSearchForm">
+      <select id="equipmentType" aria-label="Equipment Type">
         <option value="">&#9776; Equipment Type</option>
-        <option value="truck">Trucks</option>
-        <option value="trailer">Trailers</option>
-        <option value="dump">Dump Trailers</option>
-        <option value="dry-van">Dry Van Trailers</option>
-        <option value="refrigerated">Refrigerated Trailers</option>
-        <option value="flatbed">Flatbed Trailers</option>
-        <option value="day-cab">Day Cab Trucks</option>
-        <option value="sleeper">Sleeper Trucks</option>
+        <option value="trucks">Trucks</option>
+        <option value="trailers">Trailers</option>
       </select>
-      <select name="category" aria-label="Select Category">
-        <option value="">&#9776; Select Category</option>
-        <option value="new">New</option>
-        <option value="used">Used</option>
-        <option value="lease">Lease/Rent</option>
+      <select id="categorySelect" aria-label="Category" disabled>
+        <option value="">&#9776; Category</option>
+      </select>
+      <select id="manufacturerSelect" aria-label="Manufacturer" disabled>
+        <option value="">&#9776; Manufacturer</option>
       </select>
       <button type="submit" class="hero__search-btn">Search</button>
     </form>

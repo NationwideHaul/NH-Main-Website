@@ -842,7 +842,8 @@
     .hero__content { position: relative; z-index: 2; text-align: center; color: var(--white); padding: 80px 24px; width: 100%; }
     .hero__title { font-size: clamp(24px, 3.2vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; background: linear-gradient(135deg, #fff 0%, #fff 38%, rgba(255,180,180,0.5) 41%, rgba(230,60,60,0.75) 44%, rgba(192,24,28,0.95) 48%, rgba(230,60,60,0.75) 52%, rgba(255,180,180,0.5) 55%, #fff 58%, #fff 100%); background-size: 400% 400%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
     .hero__subtitle { font-size: 18px; font-weight: 400; opacity: 0.92; margin-bottom: 36px; }
-    .hero__search { display: flex; align-items: center; justify-content: center; gap: 0; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 8px; padding: 6px; border: 1px solid rgba(255,255,255,0.25); }
+    .hero__search { display: flex; align-items: center; justify-content: center; gap: 0; max-width: 820px; margin: 0 auto; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 8px; padding: 6px; border: 1px solid rgba(255,255,255,0.25); }
+    .hero__search select:disabled { opacity: 0.5; cursor: not-allowed; }
     .hero__search select { flex: 1; background: rgba(255,255,255,0.95); border: none; padding: 12px 14px; font-size: 14px; font-family: 'Inter', sans-serif; color: #444; outline: none; border-radius: 4px; margin-right: 6px; cursor: pointer; }
     .hero__search-btn { background: var(--red); color: var(--white); border: none; padding: 12px 28px; font-size: 14px; font-weight: 700; border-radius: 4px; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap; }
     .hero__search-btn:hover { background: var(--red-dark); }
@@ -1651,23 +1652,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero__content container">
     <h1 class="hero__title">Premium Commercial Trucks &amp; Semi-Trailers.<br>New, Used &amp; Ready to Haul.</h1>
     <p class="hero__subtitle">Find exactly what your fleet needs.</p>
-    <form class="hero__search">
-      <select aria-label="Equipment Type">
-        <option>☰ Equipment Type</option>
-        <option>Trucks</option>
-        <option>Trailers</option>
-        <option>Dump Trailers</option>
-        <option>Dry Van Trailers</option>
-        <option>Refrigerated Trailers</option>
-        <option>Flatbed Trailers</option>
-        <option>Day Cab Trucks</option>
-        <option>Sleeper Trucks</option>
+    <form class="hero__search" id="heroSearchForm">
+      <select id="equipmentType" aria-label="Equipment Type">
+        <option value="">☰ Equipment Type</option>
+        <option value="trucks">Trucks</option>
+        <option value="trailers">Trailers</option>
       </select>
-      <select aria-label="Select Category">
-        <option>☰ Select Category</option>
-        <option>New</option>
-        <option>Used</option>
-        <option>Lease/Rent</option>
+      <select id="categorySelect" aria-label="Category" disabled>
+        <option value="">☰ Category</option>
+      </select>
+      <select id="manufacturerSelect" aria-label="Manufacturer" disabled>
+        <option value="">☰ Manufacturer</option>
       </select>
       <button type="submit" class="hero__search-btn">Search</button>
     </form>
@@ -7912,6 +7907,130 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script defer src="https://link.nationwidehauldealer.com/js/form_embed.js"></script>
+
+<!-- Hero Search Bar Logic -->
+<script>
+(function() {
+  var categories = {
+    trailers: [
+      {label: 'All Categories', value: ''},
+      {label: 'Curtain Side/Roll Tarp', value: 'curtain-side-roll-tarp'},
+      {label: 'Double Drop', value: 'double-drop'},
+      {label: 'Drop Deck', value: 'drop-deck'},
+      {label: 'Drop Frame Van', value: 'drop-frame-van'},
+      {label: 'Dry Van', value: 'dry-van'},
+      {label: 'Dump Trailers', value: 'dump-trailers'},
+      {label: 'Flatbed', value: 'flatbed'},
+      {label: 'Hopper/Grain', value: 'hopper-grain'},
+      {label: 'Intermodal/Container Chassis', value: 'intermodal-container-chassis'},
+      {label: 'Live Floor', value: 'live-floor'},
+      {label: 'Log Trailers', value: 'log-trailers'},
+      {label: 'Lowboy', value: 'lowboy'},
+      {label: 'Reefer Trailers', value: 'reefer-trailers'},
+      {label: 'Refuse Trailers', value: 'refuse-trailers'},
+      {label: 'Tag Trailers', value: 'tag-trailers'},
+      {label: 'Tank Trailers', value: 'tank-trailers'},
+      {label: 'Traveling Axle', value: 'traveling-axle'}
+    ],
+    trucks: [
+      {label: 'All Categories', value: ''},
+      {label: 'Box Trucks', value: 'box-trucks'},
+      {label: 'Day Cab', value: 'day-cab'},
+      {label: 'Dump Trucks', value: 'dump-trucks'},
+      {label: 'Sleeper Trucks', value: 'sleeper-trucks'},
+      {label: 'Tank Trucks', value: 'tank-trucks'},
+      {label: 'Yard Spotter', value: 'yard-spotter'}
+    ]
+  };
+
+  var manufacturers = {
+    trailers: [
+      {label: 'All Manufacturers', value: ''},
+      {label: 'CIE', value: 'CIE'},
+      {label: 'Dorsey', value: 'DORSEY'},
+      {label: 'MAC Trailer MFG', value: 'MACTRAILERMFG'},
+      {label: 'Pitts', value: 'PITTS'},
+      {label: 'Stoughton', value: 'STOUGHTON'},
+      {label: 'Utility', value: 'UTILITY'},
+      {label: 'Vanguard', value: 'VANGUARD'},
+      {label: 'Wabash', value: 'WABASH'},
+      {label: 'Wade', value: 'WADE'},
+      {label: 'XL Specialized', value: 'XLSPECIALIZED'}
+    ],
+    trucks: [
+      {label: 'All Manufacturers', value: ''},
+      {label: 'Autocar', value: 'AUTOCAR'},
+      {label: 'Freightliner', value: 'FREIGHTLINER'},
+      {label: 'Hino', value: 'HINO'},
+      {label: 'International', value: 'INTERNATIONAL'},
+      {label: 'Kalmar', value: 'KALMAR'},
+      {label: 'Kenworth', value: 'KENWORTH'},
+      {label: 'Peterbilt', value: 'PETERBILT'},
+      {label: 'Tico', value: 'TICO'},
+      {label: 'Volvo', value: 'VOLVO'},
+      {label: 'Western Star', value: 'WESTERNSTAR'}
+    ]
+  };
+
+  var baseUrls = {
+    trailers: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trailers/28?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1',
+    trucks: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trucks/27?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1'
+  };
+
+  var equipmentType = document.getElementById('equipmentType');
+  var categorySelect = document.getElementById('categorySelect');
+  var manufacturerSelect = document.getElementById('manufacturerSelect');
+  var form = document.getElementById('heroSearchForm');
+
+  function populateSelect(selectEl, items, placeholder) {
+    selectEl.innerHTML = '';
+    var defaultOpt = document.createElement('option');
+    defaultOpt.value = '';
+    defaultOpt.textContent = '☰ ' + placeholder;
+    selectEl.appendChild(defaultOpt);
+    items.forEach(function(item) {
+      var opt = document.createElement('option');
+      opt.value = item.value;
+      opt.textContent = item.label;
+      selectEl.appendChild(opt);
+    });
+  }
+
+  equipmentType.addEventListener('change', function() {
+    var type = this.value;
+    if (type && categories[type]) {
+      populateSelect(categorySelect, categories[type], 'Category');
+      populateSelect(manufacturerSelect, manufacturers[type], 'Manufacturer');
+      categorySelect.disabled = false;
+      manufacturerSelect.disabled = false;
+    } else {
+      categorySelect.innerHTML = '<option value="">☰ Category</option>';
+      manufacturerSelect.innerHTML = '<option value="">☰ Manufacturer</option>';
+      categorySelect.disabled = true;
+      manufacturerSelect.disabled = true;
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var type = equipmentType.value;
+    if (!type) {
+      equipmentType.focus();
+      return;
+    }
+    var url = baseUrls[type];
+    var mfr = manufacturerSelect.value;
+    if (mfr) {
+      url += '&Manufacturer=' + mfr;
+    }
+    var cat = categorySelect.value;
+    if (cat) {
+      url += '&Category=' + cat;
+    }
+    window.open(url, '_blank');
+  });
+})();
+</script>
 
 <!-- Intercom Chat Widget -->
 <script>
