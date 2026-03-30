@@ -7972,6 +7972,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     trailers: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trailers/28?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1',
     trucks: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trucks/27?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1'
   };
+  var tracking = 'bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1';
 
   var equipmentType = document.getElementById('equipmentType');
   var categorySelect = document.getElementById('categorySelect');
@@ -8014,14 +8015,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       equipmentType.focus();
       return;
     }
-    var url = baseUrls[type];
-    var mfr = manufacturerSelect.value;
-    if (mfr) {
-      url += '&make=' + encodeURIComponent(mfr);
-    }
     var cat = categorySelect.value;
+    var mfr = manufacturerSelect.value;
+    var url;
     if (cat) {
-      url += '&category=' + encodeURIComponent(cat);
+      // Use the ?category= format — known to work on Sandhills
+      url = 'https://www.nationwidehaul.com/inventory/?' + tracking + '&category=' + encodeURIComponent(cat);
+      if (mfr) url += '&make=' + encodeURIComponent(mfr);
+    } else if (mfr) {
+      // Type-specific path + make filter
+      url = baseUrls[type] + '&make=' + encodeURIComponent(mfr);
+    } else {
+      // No filters — go to type-specific listing
+      url = baseUrls[type];
     }
     window.location.href = url;
   });
