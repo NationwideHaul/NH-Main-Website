@@ -7914,32 +7914,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var categories = {
     trailers: [
       {label: 'All Categories', value: ''},
-      {label: 'Curtain Side/Roll Tarp', value: 'curtain-side-roll-tarp'},
-      {label: 'Double Drop', value: 'double-drop'},
-      {label: 'Drop Deck', value: 'drop-deck'},
-      {label: 'Drop Frame Van', value: 'drop-frame-van'},
-      {label: 'Dry Van', value: 'dry-van'},
-      {label: 'Dump Trailers', value: 'dump-trailers'},
-      {label: 'Flatbed', value: 'flatbed'},
-      {label: 'Hopper/Grain', value: 'hopper-grain'},
-      {label: 'Intermodal/Container Chassis', value: 'intermodal-container-chassis'},
-      {label: 'Live Floor', value: 'live-floor'},
-      {label: 'Log Trailers', value: 'log-trailers'},
-      {label: 'Lowboy', value: 'lowboy'},
-      {label: 'Reefer Trailers', value: 'reefer-trailers'},
-      {label: 'Refuse Trailers', value: 'refuse-trailers'},
-      {label: 'Tag Trailers', value: 'tag-trailers'},
-      {label: 'Tank Trailers', value: 'tank-trailers'},
-      {label: 'Traveling Axle', value: 'traveling-axle'}
+      {label: 'Curtain Side/Roll Tarp', value: 'Curtain Side/Roll Tarp'},
+      {label: 'Double Drop', value: 'Double Drop'},
+      {label: 'Drop Deck', value: 'Drop Deck'},
+      {label: 'Drop Frame Van', value: 'Drop Frame Van'},
+      {label: 'Dry Van', value: 'Dry Van'},
+      {label: 'Dump Trailers', value: 'Dump Trailers'},
+      {label: 'Flatbed', value: 'Flatbed'},
+      {label: 'Hopper/Grain', value: 'Hopper/Grain'},
+      {label: 'Intermodal/Container Chassis', value: 'Intermodal/Container Chassis'},
+      {label: 'Live Floor', value: 'Live Floor'},
+      {label: 'Log Trailers', value: 'Log Trailers'},
+      {label: 'Lowboy', value: 'Lowboy'},
+      {label: 'Reefer Trailers', value: 'Reefer Trailers'},
+      {label: 'Refuse Trailers', value: 'Refuse Trailers'},
+      {label: 'Tag Trailers', value: 'Tag Trailers'},
+      {label: 'Tank Trailers', value: 'Tank Trailers'},
+      {label: 'Traveling Axle', value: 'Traveling Axle'}
     ],
     trucks: [
       {label: 'All Categories', value: ''},
-      {label: 'Box Trucks', value: 'box-trucks'},
-      {label: 'Day Cab', value: 'day-cab'},
-      {label: 'Dump Trucks', value: 'dump-trucks'},
-      {label: 'Sleeper Trucks', value: 'sleeper-trucks'},
-      {label: 'Tank Trucks', value: 'tank-trucks'},
-      {label: 'Yard Spotter', value: 'yard-spotter'}
+      {label: 'Box Trucks', value: 'Box Trucks'},
+      {label: 'Day Cab', value: 'Day Cab'},
+      {label: 'Dump Trucks', value: 'Dump Trucks'},
+      {label: 'Sleeper Trucks', value: 'Sleeper Trucks'},
+      {label: 'Tank Trucks', value: 'Tank Trucks'},
+      {label: 'Yard Spotter', value: 'Yard Spotter'}
     ]
   };
 
@@ -7976,7 +7976,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     trailers: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trailers/28?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1',
     trucks: 'https://www.nationwidehaul.com/inventory/?/listings/for-sale/trucks/27?bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1'
   };
-  var tracking = 'bgn=Nationwide+Haul+Web&settingscrmid=16824364&dlr=1';
 
   var equipmentType = document.getElementById('equipmentType');
   var categorySelect = document.getElementById('categorySelect');
@@ -8019,20 +8018,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       equipmentType.focus();
       return;
     }
+    var url = baseUrls[type];
     var cat = categorySelect.value;
     var mfr = manufacturerSelect.value;
-    var url;
-    if (cat) {
-      // Use the ?category= format — known to work on Sandhills
-      url = 'https://www.nationwidehaul.com/inventory/?' + tracking + '&category=' + encodeURIComponent(cat);
-      if (mfr) url += '&make=' + encodeURIComponent(mfr);
-    } else if (mfr) {
-      // Type-specific path + make filter
-      url = baseUrls[type] + '&make=' + encodeURIComponent(mfr);
-    } else {
-      // No filters — go to type-specific listing
-      url = baseUrls[type];
-    }
+    if (cat) url += '&Category=' + encodeURIComponent(cat);
+    if (mfr) url += '&Manufacturer=' + encodeURIComponent(mfr);
     window.location.href = url;
   });
 })();
