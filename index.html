@@ -7943,28 +7943,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     trailers: [
       {label: 'All Manufacturers', value: ''},
       {label: 'CIE', value: 'CIE'},
-      {label: 'Dorsey', value: 'DORSEY'},
-      {label: 'MAC Trailer MFG', value: 'MACTRAILERMFG'},
-      {label: 'Pitts', value: 'PITTS'},
-      {label: 'Stoughton', value: 'STOUGHTON'},
-      {label: 'Utility', value: 'UTILITY'},
-      {label: 'Vanguard', value: 'VANGUARD'},
-      {label: 'Wabash', value: 'WABASH'},
-      {label: 'Wade', value: 'WADE'},
-      {label: 'XL Specialized', value: 'XLSPECIALIZED'}
+      {label: 'Dorsey', value: 'Dorsey'},
+      {label: 'MAC Trailer MFG', value: 'MAC Trailer MFG'},
+      {label: 'Pitts', value: 'Pitts'},
+      {label: 'Stoughton', value: 'Stoughton'},
+      {label: 'Utility', value: 'Utility'},
+      {label: 'Vanguard', value: 'Vanguard'},
+      {label: 'Wabash', value: 'Wabash'},
+      {label: 'Wade', value: 'Wade'},
+      {label: 'XL Specialized', value: 'XL Specialized'}
     ],
     trucks: [
       {label: 'All Manufacturers', value: ''},
-      {label: 'Autocar', value: 'AUTOCAR'},
-      {label: 'Freightliner', value: 'FREIGHTLINER'},
-      {label: 'Hino', value: 'HINO'},
-      {label: 'International', value: 'INTERNATIONAL'},
-      {label: 'Kalmar', value: 'KALMAR'},
-      {label: 'Kenworth', value: 'KENWORTH'},
-      {label: 'Peterbilt', value: 'PETERBILT'},
-      {label: 'Tico', value: 'TICO'},
-      {label: 'Volvo', value: 'VOLVO'},
-      {label: 'Western Star', value: 'WESTERNSTAR'}
+      {label: 'Autocar', value: 'Autocar'},
+      {label: 'Freightliner', value: 'Freightliner'},
+      {label: 'Hino', value: 'Hino'},
+      {label: 'International', value: 'International'},
+      {label: 'Kalmar', value: 'Kalmar'},
+      {label: 'Kenworth', value: 'Kenworth'},
+      {label: 'Peterbilt', value: 'Peterbilt'},
+      {label: 'Tico', value: 'Tico'},
+      {label: 'Volvo', value: 'Volvo'},
+      {label: 'Western Star', value: 'Western Star'}
     ]
   };
 
@@ -8017,13 +8017,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var url = baseUrls[type];
     var mfr = manufacturerSelect.value;
     if (mfr) {
-      url += '&Manufacturer=' + mfr;
+      url += '&make=' + encodeURIComponent(mfr);
     }
     var cat = categorySelect.value;
     if (cat) {
-      url += '&Category=' + cat;
+      url += '&category=' + encodeURIComponent(cat);
     }
-    window.open(url, '_blank');
+    window.location.href = url;
   });
 })();
 </script>
