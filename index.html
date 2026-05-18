@@ -866,7 +866,7 @@
       50%  { background-position: -20% -20%; }
       100% { background-position: -20% -20%; }
     }
-    .hero__bg img, .hero__bg video { animation: heroBgZoom 8s ease forwards; }
+    /* heroBgZoom removed — was causing perceived shake when combined with scroll parallax */
     .hero__title   { animation: heroFadeUp 0.7s 0.1s ease both, textShimmer 8s ease-in-out 1.6s infinite; }
     .hero__subtitle{ animation: heroFadeUp 0.7s 0.25s ease both; }
     .hero__search  { animation: heroFadeUp 0.7s 0.4s ease both; }
@@ -3372,19 +3372,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="page-perks-municipality" style="display:none;">
 
 <!-- HERO with FLAGFA -->
-<section class="perks-hero">
-  <div class="container">
-    <div class="perks-hero__badge">⭐ Client Perks</div>
+<section class="perks-hero" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="Municipality.jpg" alt="Municipal trailer fleet built by Nationwide Haul" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;" loading="eager">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg, rgba(17,17,17,0.88) 30%, rgba(26,26,26,0.7) 65%, rgba(192,24,28,0.55) 100%);"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <h1>Preferred Partner for<br><span>Municipal &amp; Government Fleets</span></h1>
     <p>Nationwide Haul works directly with city, county, and government agencies to deliver fleet acquisition programs, flexible financing, and compliance-ready equipment on your schedule.</p>
 
     <!-- FLAGFA Member Bar -->
-    <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px 18px;margin-bottom:28px;max-width:640px;">
+    <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px 18px;margin-bottom:28px;max-width:640px;backdrop-filter:blur(6px);">
       <img src="FLAGFA-Logo.jpg" alt="FLAGFA – Florida Association of Governmental Fleet Administrators" style="width:56px;height:56px;object-fit:contain;border-radius:50%;background:#fff;padding:3px;flex-shrink:0;" loading="lazy">
       <p style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.55;margin:0;">As a <strong style="color:#fff;">FLAGFA member</strong>, we are committed to serving state and local agencies with top-tier government fleet solutions.</p>
     </div>
 
     <a href="#munic-form" onclick="document.getElementById('munic-form').scrollIntoView({behavior:'smooth'});return false;" class="btn-red" style="display:inline-block;padding:13px 28px;font-weight:700;border-radius:8px;font-size:15px;">Request Municipal Account &rarr;</a>
+  </div>
+</section>
+
+<!-- PAST CLIENTS CAROUSEL -->
+<section class="perks-section--gray" style="padding:60px 0;">
+  <div class="container" style="margin-bottom:0;">
+    <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:800;text-align:center;margin-bottom:6px;">Trusted by Leading Government Agencies</h2>
+    <p style="text-align:center;color:var(--gray-text);font-size:14px;margin-bottom:40px;">A proud track record of serving municipalities, counties, and public agencies across Florida.</p>
+  </div>
+  <div class="munic-carousel-wrap">
+    <div class="munic-carousel-track">
+      <!-- Set 1 -->
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Broward_County%2C_Florida.svg.png" alt="Broward County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Charlotte_County%2C_Florida.svg.png" alt="Charlotte County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/cityoforlando_horizontal_rgb_logo_official.jpg" alt="City of Orlando" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/city-of-st-cloud-logo.png" alt="City of St. Cloud" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/hc-logo-horizontal-RGB.png" alt="Hillsborough County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/image%202.png" alt="Orange County Government, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/unnamed.jpg" alt="Toho Water Authority" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/e7G42.jpg" alt="NASA" loading="lazy"></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Broward_County%2C_Florida.svg.png" alt="Broward County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Charlotte_County%2C_Florida.svg.png" alt="Charlotte County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/cityoforlando_horizontal_rgb_logo_official.jpg" alt="City of Orlando" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/city-of-st-cloud-logo.png" alt="City of St. Cloud" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/hc-logo-horizontal-RGB.png" alt="Hillsborough County, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/image%202.png" alt="Orange County Government, Florida" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/unnamed.jpg" alt="Toho Water Authority" loading="lazy"></div>
+      <div class="munic-logo-slide"><img src="municipality-logos/e7G42.jpg" alt="NASA" loading="lazy"></div>
+    </div>
   </div>
 </section>
 
@@ -3424,38 +3459,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Priority Service Access</h3>
         <p>Preferred scheduling at our certified service centers for all municipal fleet vehicles.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PAST CLIENTS CAROUSEL -->
-<section class="perks-section--gray" style="padding:60px 0;">
-  <div class="container" style="margin-bottom:0;">
-    <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:800;text-align:center;margin-bottom:6px;">Trusted by Leading Government Agencies</h2>
-    <p style="text-align:center;color:var(--gray-text);font-size:14px;margin-bottom:40px;">A proud track record of serving municipalities, counties, and public agencies across Florida.</p>
-  </div>
-  <div class="munic-carousel-wrap">
-    <div class="munic-carousel-track">
-      <!-- Set 1 -->
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Broward_County%2C_Florida.svg.png" alt="Broward County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Charlotte_County%2C_Florida.svg.png" alt="Charlotte County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/cityoforlando_horizontal_rgb_logo_official.jpg" alt="City of Orlando" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/city-of-st-cloud-logo.png" alt="City of St. Cloud" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/hc-logo-horizontal-RGB.png" alt="Hillsborough County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/image%202.png" alt="Orange County Government, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/unnamed.jpg" alt="Toho Water Authority" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/e7G42.jpg" alt="NASA" loading="lazy"></div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Broward_County%2C_Florida.svg.png" alt="Broward County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Charlotte_County%2C_Florida.svg.png" alt="Charlotte County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/cityoforlando_horizontal_rgb_logo_official.jpg" alt="City of Orlando" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/city-of-st-cloud-logo.png" alt="City of St. Cloud" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/hc-logo-horizontal-RGB.png" alt="Hillsborough County, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/image%202.png" alt="Orange County Government, Florida" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/unnamed.jpg" alt="Toho Water Authority" loading="lazy"></div>
-      <div class="munic-logo-slide"><img src="municipality-logos/e7G42.jpg" alt="NASA" loading="lazy"></div>
+      <div class="perks-card">
+        <div class="perks-card__icon" style="width:auto;height:44px;background:transparent;padding:0;border-radius:0;justify-content:flex-start;">
+          <img src="E-Verify_Logo-2x.png" alt="E-Verify Registered Employer" style="height:36px;width:auto;object-fit:contain;" loading="lazy">
+        </div>
+        <h3>E-Verify Registered Employer</h3>
+        <p>Nationwide Haul is enrolled in the federal E-Verify program — every team member's work eligibility is verified, giving public agencies full confidence in our compliance and workforce integrity.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -3512,7 +3522,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- FSA Card -->
       <div style="background:#fff;border:1.5px solid var(--gray-mid);border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.06);transition:box-shadow 0.2s;">
         <div style="background:#f8f9fb;border-bottom:1px solid var(--gray-mid);padding:28px 28px 20px;display:flex;align-items:center;gap:18px;">
-          <img src="FSA-Cooperative-Logo.webp" alt="Florida Sheriffs Association Cooperative" style="height:48px;max-width:120px;width:auto;object-fit:contain;flex-shrink:0;" loading="lazy">
+          <img src="FSA-Cooperative-Logo.webp" alt="Florida Sheriffs Association Cooperative" style="height:80px;max-width:180px;width:auto;object-fit:contain;flex-shrink:0;" loading="lazy">
           <div>
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--red);margin-bottom:4px;">Primary Vendor</div>
             <div style="font-size:15px;font-weight:800;color:var(--dark);line-height:1.2;">Florida Sheriffs<br>Association Cooperative</div>
@@ -3535,6 +3545,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
           <a href="#munic-form" onclick="document.getElementById('munic-form').scrollIntoView({behavior:'smooth'});return false;" class="btn-red" style="display:inline-block;padding:10px 22px;font-size:13px;font-weight:700;border-radius:7px;">Learn More &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MIAMI-DADE CUSTOM TRAILER SHOWCASE -->
+<section style="background:#111111;padding:72px 0;">
+  <div class="container">
+    <div class="munic-video-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+
+      <!-- Left: copy -->
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(192,24,28,0.25);border:1px solid rgba(192,24,28,0.5);color:#ff9999;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:20px;">
+          🎬 Featured Build
+        </div>
+        <h2 style="font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;">
+          Custom Trailer Built<br><span style="color:#ff6b6b;">for Miami-Dade County</span>
+        </h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:20px;">
+          We don't just sell equipment — we engineer solutions tailored to each agency's exact operational needs. This custom trailer was designed and built specifically for Miami-Dade County, meeting their unique fleet and compliance requirements from the ground up.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
+            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Engineered to Miami-Dade fleet specifications
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
+            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Full DOT compliance built into every detail
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
+            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            We can build a custom solution for your agency too
+          </div>
+        </div>
+        <a href="#munic-form" onclick="document.getElementById('munic-form').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+          Request a Custom Quote &rarr;
+        </a>
+      </div>
+
+      <!-- Right: YouTube embed -->
+      <div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+          <iframe
+            src="https://www.youtube.com/embed/8MZ-08eTd0A"
+            title="Custom Trailer Built for Miami-Dade County – Nationwide Haul"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:14px;">
+          </iframe>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px;">
+          <img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County" style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.7;" loading="lazy">
+          <span style="font-size:12px;color:rgba(255,255,255,0.5);">Miami-Dade County, Florida — Custom Build Project</span>
         </div>
       </div>
 
@@ -3604,65 +3671,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
-<!-- MIAMI-DADE CUSTOM TRAILER SHOWCASE -->
-<section style="background:#111111;padding:72px 0;">
-  <div class="container">
-    <div class="munic-video-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
-
-      <!-- Left: copy -->
-      <div>
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(192,24,28,0.25);border:1px solid rgba(192,24,28,0.5);color:#ff9999;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:20px;">
-          🎬 Featured Build
-        </div>
-        <h2 style="font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;">
-          Custom Trailer Built<br><span style="color:#ff6b6b;">for Miami-Dade County</span>
-        </h2>
-        <p style="font-size:15px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:20px;">
-          We don't just sell equipment — we engineer solutions tailored to each agency's exact operational needs. This custom trailer was designed and built specifically for Miami-Dade County, meeting their unique fleet and compliance requirements from the ground up.
-        </p>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
-          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
-            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Engineered to Miami-Dade fleet specifications
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
-            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Full DOT compliance built into every detail
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.85);">
-            <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-            We can build a custom solution for your agency too
-          </div>
-        </div>
-        <a href="#munic-form" onclick="document.getElementById('munic-form').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-          Request a Custom Quote &rarr;
-        </a>
-      </div>
-
-      <!-- Right: YouTube embed -->
-      <div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-          <iframe
-            src="https://www.youtube.com/embed/8MZ-08eTd0A"
-            title="Custom Trailer Built for Miami-Dade County – Nationwide Haul"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:14px;">
-          </iframe>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;margin-top:14px;">
-          <img src="municipality-logos/Logo_of_Miami-Dade_County%2C_Florida.svg.png" alt="Miami-Dade County" style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.7;" loading="lazy">
-          <span style="font-size:12px;color:rgba(255,255,255,0.5);">Miami-Dade County, Florida — Custom Build Project</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
 
 <footer class="site-footer">
   <div class="container">
@@ -7714,10 +7722,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Send Quote Request \u2192');
   }
 
-  /* MUNICIPALITY EQUIPMENT — marketing@nationwidehaul.com */
+  /* MUNICIPALITY EQUIPMENT — govbid@nationwidehaul.com (CC marketing@nationwidehaul.com) */
   function municSubmitForm(e) {
     e.preventDefault();
-    submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Send Request to Government Sales Team \u2192');
+    submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', 'govbid@nationwidehaul.com', 'button[type="submit"]', 'Send Request to Government Sales Team \u2192');
   }
 
   /* SELL EQUIPMENT — marketing@nationwidehaul.com */
@@ -7743,20 +7751,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   /* ── HOME: DYNAMIC EFFECTS ───────────────────────── */
 
-  // 1. Hero video parallax
-  (function() {
-    if (window.innerWidth <= 768) return;
-    var heroMedia = document.querySelector('#page-home .hero__bg video')
-                 || document.querySelector('#page-home .hero__bg img');
-    var hero = document.querySelector('#page-home .hero');
-    if (!heroMedia || !hero) return;
-    window.addEventListener('scroll', function() {
-      var scrollY = window.pageYOffset;
-      if (scrollY < hero.offsetHeight + hero.offsetTop) {
-        heroMedia.style.transform = 'scale(1) translateY(' + (scrollY * 0.3) + 'px)';
-      }
-    }, { passive: true });
-  })();
+  // 1. Hero video parallax — REMOVED. Was causing visible shaking on scroll.
+  //    Video now plays static, no transforms applied.
 
   // 2. Scroll progress bar
   (function() {
