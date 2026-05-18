@@ -1283,18 +1283,25 @@
     /* FOOTER */
     .site-footer { background: var(--white); padding: 56px 0 0; }
     .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
-    .footer__brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer__brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .footer__brand-logo img { height: 80px; width: auto; }
-    .footer__tagline { font-size: 13px; color: var(--gray-text); margin-bottom: 16px; }
-    .footer__newsletter { display: flex; }
-    .footer__newsletter input { flex: 1; padding: 10px 14px; border: 1.5px solid var(--gray-mid); border-right: none; border-radius: 6px 0 0 6px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; }
-    .footer__newsletter button { background: var(--red); color: var(--white); border: none; padding: 10px 18px; border-radius: 0 6px 6px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; }
-    .footer__col h4 { font-size: 14px; font-weight: 700; margin-bottom: 16px; }
-    .footer__links li { margin-bottom: 10px; }
-    .footer__links a { font-size: 13px; color: var(--gray-text); }
+    .footer__tagline { font-size: 15px; font-weight: 700; color: var(--dark); margin: 0 0 6px; line-height: 1.3; }
+    .footer__tagline-sub { font-size: 12px; color: var(--gray-text); margin: 0 0 14px; line-height: 1.5; max-width: 260px; }
+    .footer__newsletter { display: flex; max-width: 320px; }
+    .footer__newsletter input { flex: 1; padding: 11px 14px; border: 1.5px solid var(--gray-mid); border-right: none; border-radius: 6px 0 0 6px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+    .footer__newsletter input:focus { border-color: var(--red); }
+    .footer__newsletter button { background: var(--red); color: var(--white); border: none; padding: 11px 22px; border-radius: 0 6px 6px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: opacity 0.2s; }
+    .footer__newsletter button:hover { opacity: 0.9; }
+    .footer__newsletter button:disabled { opacity: 0.6; cursor: default; }
+    .footer__newsletter-success { display: none; font-size: 12px; color: #16a34a; font-weight: 600; margin-top: 8px; }
+    .footer__col h3 { font-size: 14px; font-weight: 800; color: var(--dark); margin: 0 0 18px; letter-spacing: 0.02em; line-height: 1.3; }
+    .footer__links { margin: 0; padding: 0; list-style: none; }
+    .footer__links li { margin: 0 0 12px; line-height: 1.4; }
+    .footer__links li:last-child { margin-bottom: 0; }
+    .footer__links a { font-size: 13px; color: var(--gray-text); line-height: 1.4; }
     .footer__links a:hover { color: var(--red); }
-    .footer__phone { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-    .footer__email { font-size: 13px; color: var(--gray-text); margin-bottom: 16px; }
+    .footer__phone { font-size: 20px; font-weight: 800; line-height: 1.3; margin: 0 0 6px; }
+    .footer__email { font-size: 14px; color: var(--gray-text); line-height: 1.4; margin: 0 0 18px; }
     .footer__flag { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray-text); margin-bottom: 16px; }
     .footer__social { display: flex; gap: 12px; }
     .footer__social a { width: 44px; height: 44px; background: var(--gray); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--dark); }
@@ -2042,10 +2049,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="NH Black.png" alt="Nationwide Haul" loading="lazy">
         </div>
         <p class="footer__tagline">Let's Stay Connected!</p>
-        <p style="font-size:12px;color:var(--gray-text);margin:-10px 0 14px;line-height:1.5;">Get industry news, limited-time promos, and new equipment available</p>
-        <div style="width:100%;height:80px;overflow:hidden;">
-          <iframe src="https://link.nationwidehauldealer.com/widget/form/44Kycgdi4PMLIzh2yTFr" style="width:100%;height:100%;border:none;border-radius:3px" id="inline-44Kycgdi4PMLIzh2yTFr" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Newsletter Form" data-height="492" data-layout-iframe-id="inline-44Kycgdi4PMLIzh2yTFr" data-form-id="44Kycgdi4PMLIzh2yTFr" title="Newsletter Form"></iframe>
-        </div>
+        <p class="footer__tagline-sub">Get industry news, limited-time promos, and new equipment available.</p>
+        <form class="footer__newsletter" onsubmit="footerNewsletterSubmit(event)">
+          <input type="hidden" name="_subject" value="New Newsletter Signup — Nationwide Haul Footer">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="source" value="Footer newsletter (nationwidehaul.com)">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email address" required>
+          <button type="submit">Go</button>
+        </form>
+        <div class="footer__newsletter-success">Thanks — you're on the list!</div>
       </div>
       <div class="footer__col">
         <h3>Explore</h3>
@@ -2261,10 +2274,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="NH Black.png" alt="Nationwide Haul" loading="lazy">
         </div>
         <p class="footer__tagline">Let's Stay Connected!</p>
-        <p style="font-size:12px;color:var(--gray-text);margin:-10px 0 14px;line-height:1.5;">Get industry news, limited-time promos, and new equipment available</p>
-        <div style="width:100%;height:80px;overflow:hidden;">
-          <iframe src="https://link.nationwidehauldealer.com/widget/form/44Kycgdi4PMLIzh2yTFr" style="width:100%;height:100%;border:none;border-radius:3px" id="inline-44Kycgdi4PMLIzh2yTFr" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Newsletter Form" data-height="492" data-layout-iframe-id="inline-44Kycgdi4PMLIzh2yTFr" data-form-id="44Kycgdi4PMLIzh2yTFr" title="Newsletter Form"></iframe>
-        </div>
+        <p class="footer__tagline-sub">Get industry news, limited-time promos, and new equipment available.</p>
+        <form class="footer__newsletter" onsubmit="footerNewsletterSubmit(event)">
+          <input type="hidden" name="_subject" value="New Newsletter Signup — Nationwide Haul Footer">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="source" value="Footer newsletter (nationwidehaul.com)">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email address" required>
+          <button type="submit">Go</button>
+        </form>
+        <div class="footer__newsletter-success">Thanks — you're on the list!</div>
       </div>
       <div class="footer__col">
         <h3>Explore</h3>
@@ -3315,10 +3334,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer__col">
         <div class="footer__brand-logo"><img src="NH Black.png" alt="Nationwide Haul" loading="lazy"></div>
         <p class="footer__tagline">Let's Stay Connected!</p>
-        <p style="font-size:12px;color:var(--gray-text);margin:-10px 0 14px;line-height:1.5;">Get industry news, limited-time promos, and new equipment available</p>
-        <div style="width:100%;height:80px;overflow:hidden;">
-          <iframe src="https://link.nationwidehauldealer.com/widget/form/44Kycgdi4PMLIzh2yTFr" style="width:100%;height:100%;border:none;border-radius:3px" id="inline-44Kycgdi4PMLIzh2yTFr" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Newsletter Form" data-height="492" data-layout-iframe-id="inline-44Kycgdi4PMLIzh2yTFr" data-form-id="44Kycgdi4PMLIzh2yTFr" title="Newsletter Form"></iframe>
-        </div>
+        <p class="footer__tagline-sub">Get industry news, limited-time promos, and new equipment available.</p>
+        <form class="footer__newsletter" onsubmit="footerNewsletterSubmit(event)">
+          <input type="hidden" name="_subject" value="New Newsletter Signup — Nationwide Haul Footer">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="source" value="Footer newsletter (nationwidehaul.com)">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email address" required>
+          <button type="submit">Go</button>
+        </form>
+        <div class="footer__newsletter-success">Thanks — you're on the list!</div>
       </div>
       <div class="footer__col">
         <h3>Explore</h3>
@@ -7720,6 +7745,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function lrSubmitQuote(e) {
     e.preventDefault();
     submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Send Quote Request \u2192');
+  }
+
+  /* FOOTER NEWSLETTER — marketing@nationwidehaul.com */
+  function footerNewsletterSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('button[type="submit"]');
+    var success = form.parentElement.querySelector('.footer__newsletter-success');
+    btn.disabled = true;
+    btn.textContent = '…';
+    var data = new FormData(form);
+    fetch('https://formsubmit.co/ajax/1f9d473f405e35b870b95b5cacd00809', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Go';
+        alert('Something went wrong. Please try again.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Go';
+      alert('Network error. Please try again.');
+    });
   }
 
   /* MUNICIPALITY EQUIPMENT — govbid@nationwidehaul.com (CC marketing@nationwidehaul.com) */
