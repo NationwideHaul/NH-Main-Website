@@ -25,3 +25,13 @@ __pycache__/
 *.swp
 *.swo
 .vercel
+
+# Image optimization backups (originals saved during compression)
+.optimization-backups/
+
+# Oversized source originals — kept locally only, excluded from deploys via .vercelignore
+/HOME VIDEO.mp4
+/Municipality.png
+
+# Raw camera originals — already converted to optimized JPGs for the site
+TopPicks by customers/DSC*.png

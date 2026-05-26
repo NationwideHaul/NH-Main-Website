@@ -1,0 +1,11 @@
+# Root-level large files (oversized originals); use leading slash to scope to root only
+/HOME VIDEO.mp4
+/Municipality.png
+/DSC01916.jpg
+/E-Verify_Logo-2x.png
+/TCS FUEL cARD PIC.png
+/nef.webp
+/youtube-logo-icon/
+.git
+node_modules
+.optimization-backups/

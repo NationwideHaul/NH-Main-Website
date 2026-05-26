@@ -1,0 +1,68 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": true,
+
+  "rewrites": [
+    { "source": "/about/", "destination": "/index.html" },
+    { "source": "/contact/", "destination": "/index.html" },
+    { "source": "/financing/", "destination": "/index.html" },
+    { "source": "/lease/", "destination": "/index.html" },
+    { "source": "/manufacturers/", "destination": "/index.html" },
+    { "source": "/manufacturers/:slug/", "destination": "/index.html" },
+    { "source": "/perks/:slug/", "destination": "/index.html" },
+    { "source": "/legal/:slug/", "destination": "/index.html" }
+  ],
+
+  "redirects": [
+    { "source": "/default.htm", "destination": "/", "permanent": true },
+    { "source": "/about.htm", "destination": "/about/", "permanent": true },
+    { "source": "/contact.htm", "destination": "/contact/", "permanent": true },
+    { "source": "/financing.htm", "destination": "/financing/", "permanent": true },
+    { "source": "/insurance.htm", "destination": "https://roadreadyinsurance.com/", "permanent": true },
+    { "source": "/privacy-policy.htm", "destination": "/legal/privacy/", "permanent": true },
+
+    { "source": "/cie-manufacturing.htm", "destination": "/manufacturers/cie/", "permanent": true },
+    { "source": "/mac-trailer.htm", "destination": "/manufacturers/clear-mac/", "permanent": true },
+    { "source": "/pitts-trailers.htm", "destination": "/manufacturers/pitts/", "permanent": true },
+    { "source": "/xl-specialized-trailers.htm", "destination": "/manufacturers/xl-specialized/", "permanent": true },
+    { "source": "/wade-trailers.htm", "destination": "/manufacturers/wade/", "permanent": true },
+    { "source": "/palfinger-forklifts.htm", "destination": "/manufacturers/", "permanent": true },
+    { "source": "/vanguard-trailers.htm", "destination": "/manufacturers/vanguard/", "permanent": true },
+    { "source": "/autocar.htm", "destination": "/manufacturers/autocar/", "permanent": true },
+    { "source": "/dorsey.htm", "destination": "/manufacturers/dorsey/", "permanent": true },
+    { "source": "/stoughton-trailers.htm", "destination": "/manufacturers/", "permanent": true },
+
+    { "source": "/truck-repair.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+    { "source": "/trailer-repair.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+    { "source": "/rv-bus-repair.htm", "destination": "https://nhrvrepair.com/", "permanent": true },
+    { "source": "/rv-bus-repair-landing.htm", "destination": "https://nhrvrepair.com/", "permanent": true },
+    { "source": "/truck-trailer-repair-landing.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+    { "source": "/locations-service-repair.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+    { "source": "/schedule-service.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+    { "source": "/pompano-beach-truck-trailer-repair.htm", "destination": "https://nhtrucktrailerrepair.com/", "permanent": true },
+
+    { "source": "/semi-trailer-leasing.htm", "destination": "/lease/", "permanent": true },
+    { "source": "/semi-trailer-rental.htm", "destination": "/lease/", "permanent": true },
+    { "source": "/faq.htm", "destination": "/financing/", "permanent": true },
+
+    { "source": "/sell-your-equipment.htm", "destination": "/perks/sell-your-equipment/", "permanent": true },
+    { "source": "/free-dot-inspections.htm", "destination": "/perks/dot-inspections/", "permanent": true },
+    { "source": "/tcs-fuel-card.htm", "destination": "/perks/tcs-fuel-card/", "permanent": true },
+    { "source": "/warranty-plans.htm", "destination": "/perks/warranty/", "permanent": true },
+    { "source": "/wholesale-division.htm", "destination": "/perks/wholesale/", "permanent": true },
+    { "source": "/municipality-clients.htm", "destination": "/perks/municipality/", "permanent": true },
+
+    { "source": "/locations-sales-lease.htm", "destination": "/contact/", "permanent": true },
+    { "source": "/contact-lakeland.htm", "destination": "/contact/", "permanent": true },
+    { "source": "/contact-pompano-beach.htm", "destination": "/contact/", "permanent": true },
+    { "source": "/contact-macon.htm", "destination": "/contact/", "permanent": true },
+
+    { "source": "/4kids.htm", "destination": "/about/", "permanent": true },
+    { "source": "/careers.htm", "destination": "/", "permanent": true },
+    { "source": "/blog.htm", "destination": "/", "permanent": true },
+
+    { "source": "/inventory/", "destination": "https://inventory.nationwidehaul.com/", "permanent": true },
+    { "source": "/inventory", "destination": "https://inventory.nationwidehaul.com/", "permanent": true }
+  ]
+}
