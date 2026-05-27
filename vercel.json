@@ -3,15 +3,19 @@
   "cleanUrls": false,
   "trailingSlash": true,
 
-  "rewrites": [
-    { "source": "/about/", "destination": "/index.html" },
-    { "source": "/contact/", "destination": "/index.html" },
-    { "source": "/financing/", "destination": "/index.html" },
-    { "source": "/lease/", "destination": "/index.html" },
-    { "source": "/manufacturers/", "destination": "/index.html" },
-    { "source": "/manufacturers/:slug/", "destination": "/index.html" },
-    { "source": "/perks/:slug/", "destination": "/index.html" },
-    { "source": "/legal/:slug/", "destination": "/index.html" }
+  "headers": [
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
   ],
 
   "redirects": [
