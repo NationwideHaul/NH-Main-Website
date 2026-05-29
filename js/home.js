@@ -438,8 +438,8 @@ initSvcCarousel();
   };
 
   var baseUrls = {
-    trailers: 'https://inventory.nationwidehaul.com/inventory/?/listings/for-sale/trailers/28?AccountCRMID=16824363&dlr=1&settingscrmid=16824364',
-    trucks: 'https://inventory.nationwidehaul.com/inventory/?/listings/for-sale/trucks/27?AccountCRMID=16824363&dlr=1&settingscrmid=16824364'
+    trailers: 'https://inventory.nationwidehaul.com/inventory/?/listings/for-sale/trailers/28?bgn=Nationwide+Haul+Web&dlr=1&settingscrmid=16824364',
+    trucks: 'https://inventory.nationwidehaul.com/inventory/?/listings/for-sale/trucks/27?bgn=Nationwide+Haul+Web&dlr=1&settingscrmid=16824364'
   };
 
   var equipmentType = document.getElementById('equipmentType');

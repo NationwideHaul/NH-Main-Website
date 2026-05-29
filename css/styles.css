@@ -1279,7 +1279,6 @@
       .reviews-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
     }
-  </style>
 
 /* ── Cookie Consent Banner ──────────────────── */
   .nh-cookie { position: fixed; left: 20px; bottom: 20px; max-width: 380px; background: #fff; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.06); padding: 22px 24px 20px; z-index: 9998; font-family: 'Inter', -apple-system, sans-serif; opacity: 0; transform: translateY(20px); transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none; }
