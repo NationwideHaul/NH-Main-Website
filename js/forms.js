@@ -2,18 +2,22 @@
    NATIONWIDE HAUL — Form Handlers
    ══════════════════════════════════════════════════════ */
 
+// GoHighLevel inbound webhook — captures every lead straight into the CRM.
+var GHL_LEAD_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/9baf6b13-b5b2-4724-8f60-c1bc65ce50c3';
+
 // ── Form AJAX Helper ────────────────────────────────────
-// Primary delivery is our own Resend backend (/api/notify): no captcha,
-// no third-party rate limits, per-team routing + Vercel logs. If that is
-// unavailable (e.g. RESEND_API_KEY not yet set) it falls back to FormSubmit
-// so leads are never lost during the transition.
+// Every lead is sent to TWO destinations so an outage in either never loses
+// it:  (1) GoHighLevel inbound webhook → contact lands in the CRM + team
+// alerts, and (2) FormSubmit → email notification to the team. The success
+// message shows as soon as EITHER delivery succeeds; the error message only
+// appears if BOTH fail.
 function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel, formType) {
   var form = document.getElementById(formId);
   var success = document.getElementById(successId);
   var error = document.getElementById(errorId);
   var btn = form.querySelector(btnSelector);
   btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
+  btn.textContent = 'Sending…';
   if (error) error.style.display = 'none';
 
   var data = new FormData(form);
@@ -30,30 +34,35 @@ function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel
     if (error) error.style.display = 'block';
   }
 
-  // Fallback: FormSubmit (only reached if the Resend backend is unavailable).
-  function viaFormSubmit() {
-    fetch('https://formsubmit.co/ajax/' + email, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    }).then(function(res) {
-      res.ok ? showSuccess() : showError();
-    }).catch(showError);
+  // Resolve to success on the first OK; only error once BOTH have failed.
+  var settled = false;
+  var remaining = 2;
+  function onResult(ok) {
+    if (ok && !settled) { settled = true; showSuccess(); return; }
+    if (--remaining === 0 && !settled) { showError(); }
   }
 
-  // Primary: our Resend serverless function.
+  // 1) GoHighLevel — JSON payload (fields mapped in the GHL workflow).
+  //    Drop FormSubmit control fields (_subject, _cc, _captcha, _honey, …).
   var payload = {};
-  data.forEach(function(v, k) { payload[k] = v; });
+  data.forEach(function(v, k) { if (k.charAt(0) !== '_') payload[k] = v; });
   if (formType) payload.form_type = formType;
-
-  fetch('/api/notify', {
+  payload.source = 'Website Form';
+  payload.page_url = location.href;
+  payload.submitted_at = new Date().toISOString();
+  fetch(GHL_LEAD_WEBHOOK, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).then(function(res) {
-    if (res.ok) { showSuccess(); }
-    else { viaFormSubmit(); }
-  }).catch(viaFormSubmit);
+  }).then(function(res) { onResult(res.ok); }).catch(function() { onResult(false); });
+
+  // 2) FormSubmit — original FormData (kept as the email channel).
+  fetch('https://formsubmit.co/ajax/' + email, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  }).then(function(res) { onResult(res.ok); }).catch(function() { onResult(false); });
 }
 
 // ── Contact Form ────────────────────────────────────────
@@ -73,7 +82,7 @@ function handleContactSubmit(e) {
       ? (teamEmail + ',marketing@nationwidehaul.com')
       : 'marketing@nationwidehaul.com';
   }
-  submitFormAjax('contactForm', 'contactSuccess', 'contactError', '1f9d473f405e35b870b95b5cacd00809', '.contact-form__submit', 'Send Message \u2192', 'contact');
+  submitFormAjax('contactForm', 'contactSuccess', 'contactError', '1f9d473f405e35b870b95b5cacd00809', '.contact-form__submit', 'Send Message →', 'contact');
 }
 
 // ── Contact Form Topic Pre-fill ─────────────────────────
@@ -105,23 +114,23 @@ function handleContactSubmit(e) {
 // ── Lease/Rental Quote Form ─────────────────────────────
 function lrSubmitQuote(e) {
   e.preventDefault();
-  submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Send Quote Request \u2192', 'lease');
+  submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Send Quote Request →', 'lease');
 }
 
 // ── Municipality Equipment Form ─────────────────────────
 function municSubmitForm(e) {
   e.preventDefault();
-  submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Send Request to Government Sales Team \u2192', 'municipality');
+  submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Send Request to Government Sales Team →', 'municipality');
 }
 
 // ── Sell Equipment Form ─────────────────────────────────
 function sellEquipSubmit(e) {
   e.preventDefault();
-  submitFormAjax('sellEquipForm', 'sellEquipSuccess', 'sellEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Submit Equipment Information \u2192', 'sell');
+  submitFormAjax('sellEquipForm', 'sellEquipSuccess', 'sellEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Submit Equipment Information →', 'sell');
 }
 
 // ── DOT Inspection Form ─────────────────────────────────
 function dotInspSubmit(e) {
   e.preventDefault();
-  submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Schedule My Free DOT Inspection \u2192', 'dot');
+  submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Schedule My Free DOT Inspection →', 'dot');
 }
