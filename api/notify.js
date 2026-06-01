@@ -121,6 +121,20 @@ export default async function handler(req, res) {
   const replyTo = body.email || undefined;
   const html = renderEmail(formType, body, route.subject);
 
+  // Build the CC list: always marketing, plus any team address(es) the form
+  // passed in `_cc` (the contact form routes by topic this way). De-dupe and
+  // drop anything that is already the primary recipient.
+  const ccSet = new Set();
+  if (route.to.toLowerCase() !== CC_ALL.toLowerCase()) ccSet.add(CC_ALL);
+  String(body._cc || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean)
+    .forEach(addr => {
+      if (addr.toLowerCase() !== route.to.toLowerCase()) ccSet.add(addr);
+    });
+  const cc = ccSet.size ? Array.from(ccSet) : undefined;
+
   try {
     const apiResp = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -131,7 +145,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from,
         to: [route.to],
-        cc: route.to.toLowerCase() === CC_ALL.toLowerCase() ? undefined : [CC_ALL],
+        cc,
         reply_to: replyTo,
         subject: route.subject,
         html
