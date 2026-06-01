@@ -398,17 +398,23 @@
       <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--gray-mid);">Contact Information</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Full Name <span style="color:var(--red);">*</span></label>
-          <input type="text" name="full_name" autocomplete="name" aria-label="Full Name" placeholder="John Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">First Name <span style="color:var(--red);">*</span></label>
+          <input type="text" name="first_name" autocomplete="given-name" aria-label="First Name" placeholder="John" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Last Name <span style="color:var(--red);">*</span></label>
+          <input type="text" name="last_name" autocomplete="family-name" aria-label="Last Name" placeholder="Smith" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px;">
         <div>
           <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Phone Number <span style="color:var(--red);">*</span></label>
           <input type="tel" name="phone" inputmode="tel" autocomplete="tel" aria-label="Phone Number" placeholder="(954) 000-0000" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
         </div>
-      </div>
-      <div style="margin-bottom:28px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">E-Mail <span style="color:var(--red);">*</span></label>
-        <input type="email" name="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;">Email Address <span style="color:var(--red);">*</span></label>
+          <input type="email" name="email" autocomplete="email" aria-label="Email Address" placeholder="you@email.com" required style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'">
+        </div>
       </div>
 
       <!-- Equipment Info -->
@@ -442,7 +448,7 @@
         <textarea name="notes" aria-label="Message" rows="3" placeholder="Any specific concerns or requests..." style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;resize:vertical;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--gray-mid)'"></textarea>
       </div>
 
-      <button type="submit" style="width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Schedule My Free DOT Inspection &rarr;</button>
+      <button type="submit" style="width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Get Started &rarr;</button>
     </form>
 
     <div id="dotInspSuccess" style="display:none;text-align:center;padding:60px 24px;">

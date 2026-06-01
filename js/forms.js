@@ -82,7 +82,7 @@ function handleContactSubmit(e) {
       ? (teamEmail + ',marketing@nationwidehaul.com')
       : 'marketing@nationwidehaul.com';
   }
-  submitFormAjax('contactForm', 'contactSuccess', 'contactError', '1f9d473f405e35b870b95b5cacd00809', '.contact-form__submit', 'Send Message →', 'contact');
+  submitFormAjax('contactForm', 'contactSuccess', 'contactError', '1f9d473f405e35b870b95b5cacd00809', '.contact-form__submit', 'Get Started →', 'contact');
 }
 
 // ── Contact Form Topic Pre-fill ─────────────────────────
@@ -114,23 +114,23 @@ function handleContactSubmit(e) {
 // ── Lease/Rental Quote Form ─────────────────────────────
 function lrSubmitQuote(e) {
   e.preventDefault();
-  submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Send Quote Request →', 'lease');
+  submitFormAjax('lrQuoteForm', 'lrQuoteSuccess', 'lrQuoteError', '1f9d473f405e35b870b95b5cacd00809', '.lr-form__submit', 'Get Started →', 'lease');
 }
 
 // ── Municipality Equipment Form ─────────────────────────
 function municSubmitForm(e) {
   e.preventDefault();
-  submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Send Request to Government Sales Team →', 'municipality');
+  submitFormAjax('municEquipForm', 'municEquipSuccess', 'municEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Get Started →', 'municipality');
 }
 
 // ── Sell Equipment Form ─────────────────────────────────
 function sellEquipSubmit(e) {
   e.preventDefault();
-  submitFormAjax('sellEquipForm', 'sellEquipSuccess', 'sellEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Submit Equipment Information →', 'sell');
+  submitFormAjax('sellEquipForm', 'sellEquipSuccess', 'sellEquipError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Get Started →', 'sell');
 }
 
 // ── DOT Inspection Form ─────────────────────────────────
 function dotInspSubmit(e) {
   e.preventDefault();
-  submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Schedule My Free DOT Inspection →', 'dot');
+  submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', '1f9d473f405e35b870b95b5cacd00809', 'button[type="submit"]', 'Get Started →', 'dot');
 }

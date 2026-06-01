@@ -465,13 +465,16 @@
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="_cc" value="info@oakwoodef.com,marketing@nationwidehaul.com">
           <div class="lr-form__row">
-            <div class="lr-form__group"><label for="lrName">Full Name</label><input type="text" autocomplete="name" id="lrName" name="full_name" placeholder="John Smith" required></div>
-            <div class="lr-form__group"><label for="lrPhone">Phone</label><input type="tel" inputmode="tel" autocomplete="tel" id="lrPhone" name="phone" placeholder="(555) 000-0000" required></div>
+            <div class="lr-form__group"><label for="lrFirst">First Name <span style="color:#ff6b6b;">*</span></label><input type="text" autocomplete="given-name" id="lrFirst" name="first_name" placeholder="John" required></div>
+            <div class="lr-form__group"><label for="lrLast">Last Name <span style="color:#ff6b6b;">*</span></label><input type="text" autocomplete="family-name" id="lrLast" name="last_name" placeholder="Smith" required></div>
           </div>
-          <div class="lr-form__group"><label for="lrEmail">Business Email</label><input type="email" autocomplete="email" id="lrEmail" name="email" placeholder="you@yourcompany.com" required></div>
+          <div class="lr-form__row">
+            <div class="lr-form__group"><label for="lrPhone">Phone Number <span style="color:#ff6b6b;">*</span></label><input type="tel" inputmode="tel" autocomplete="tel" id="lrPhone" name="phone" placeholder="(555) 000-0000" required></div>
+            <div class="lr-form__group"><label for="lrEmail">Email Address <span style="color:#ff6b6b;">*</span></label><input type="email" autocomplete="email" id="lrEmail" name="email" placeholder="you@yourcompany.com" required></div>
+          </div>
           <div class="lr-form__row">
             <div class="lr-form__group">
-              <label for="lrEquip">Equipment Type</label>
+              <label for="lrEquip">Equipment Type <span style="color:#ff6b6b;">*</span></label>
               <select id="lrEquip" name="equipment_type" required>
                 <option value="">Select type...</option>
                 <option>53' Reefer Trailer</option>
@@ -484,7 +487,7 @@
               </select>
             </div>
             <div class="lr-form__group">
-              <label for="lrType">Program Type</label>
+              <label for="lrType">Program Type <span style="color:#ff6b6b;">*</span></label>
               <select id="lrType" name="program_type" required>
                 <option value="">Lease or Rent?</option>
                 <option>Lease (12–72 months)</option>
@@ -519,7 +522,7 @@
           </div>
           <div class="lr-form__group"><label for="lrLocation">Operating State / Region</label><input type="text" id="lrLocation" name="operating_region" placeholder="e.g. Florida, Southeast, Nationwide"></div>
           <div class="lr-form__group"><label for="lrNotes">Notes (MC/DOT, timeline, requirements)</label><textarea id="lrNotes" name="notes" rows="2" placeholder="Optional..."></textarea></div>
-          <button type="submit" class="lr-form__submit">Send Quote Request →</button>
+          <button type="submit" class="lr-form__submit">Get Started →</button>
         </form>
         <div class="lr-form__success" id="lrQuoteSuccess">
           <div class="checkmark-green"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
