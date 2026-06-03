@@ -89,7 +89,7 @@ function ghlNewsletterSubmit(e, form) {
     submitted_at: new Date().toISOString()
   };
 
-  fetch('https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/799cae6c-2fdf-4428-ad12-e4a2f8332cd7', {
+  fetch('https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/9baf6b13-b5b2-4724-8f60-c1bc65ce50c3', {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
