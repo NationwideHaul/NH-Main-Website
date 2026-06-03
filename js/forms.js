@@ -2,15 +2,43 @@
    NATIONWIDE HAUL — Form Handlers
    ══════════════════════════════════════════════════════ */
 
-// GoHighLevel inbound webhook — captures every lead straight into the CRM.
-var GHL_LEAD_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/9baf6b13-b5b2-4724-8f60-c1bc65ce50c3';
+// Where the one-click fallback email is sent if a submission fails.
+var FALLBACK_EMAIL = 'marketing@nationwidehaul.com';
+
+var LEAD_FIELD_LABELS = {
+  first_name: 'First Name', last_name: 'Last Name', email: 'Email', phone: 'Phone',
+  subject: 'Subject', message: 'Message', notes: 'Notes', organization: 'Organization',
+  equipment_type: 'Equipment Type', program_type: 'Program Type', duration: 'Duration',
+  number_of_units: 'Number of Units', operating_region: 'Operating Region',
+  equipment_details: 'Equipment Details', make: 'Make', model: 'Model', year: 'Year',
+  miles_hours: 'Miles / Hours', accessories: 'Accessories', sale_method: 'Sale Method',
+  vin: 'VIN', stock_number: 'Stock Number'
+};
+
+// Build a pre-filled mailto: link from the visitor's own form data so a failed
+// submission can still reach the team in one click.
+function buildLeadMailto(data, formType) {
+  var lines = [];
+  data.forEach(function(v, k) {
+    if (!v || k.charAt(0) === '_') return;
+    var label = LEAD_FIELD_LABELS[k] || k.replace(/_/g, ' ');
+    lines.push(label + ': ' + v);
+  });
+  var subject = 'Website Lead' + (formType ? ' (' + formType + ')' : '') + ' — form failed to send';
+  var body = 'Hi Nationwide Haul team,\n\n'
+    + 'I tried to submit a form on nationwidehaul.com but it did not go through. '
+    + 'Here are my details:\n\n'
+    + lines.join('\n')
+    + '\n\nPlease get back to me. Thanks!';
+  return 'mailto:' + FALLBACK_EMAIL
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+}
 
 // ── Form AJAX Helper ────────────────────────────────────
-// Every lead is sent to TWO destinations so an outage in either never loses
-// it:  (1) GoHighLevel inbound webhook → contact lands in the CRM + team
-// alerts, and (2) FormSubmit → email notification to the team. The success
-// message shows as soon as EITHER delivery succeeds; the error message only
-// appears if BOTH fail.
+// Submits to FormSubmit. If delivery fails, the error box becomes a recovery
+// box with two one-click options: call us, or send a pre-filled email (the
+// visitor's own details) to marketing@ — so a lead is never lost.
 function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel, formType) {
   var form = document.getElementById(formId);
   var success = document.getElementById(successId);
@@ -31,38 +59,22 @@ function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel
   function showError() {
     btn.disabled = false;
     btn.textContent = btnLabel;
-    if (error) error.style.display = 'block';
+    if (!error) return;
+    error.innerHTML =
+      '<p style="font-size:15px;color:#b91c1c;font-weight:700;margin-bottom:6px;">Your request could not be sent right now.</p>'
+      + '<p style="font-size:13px;color:#7f1d1d;margin-bottom:14px;">Please reach us directly and we will respond fast:</p>'
+      + '<a href="tel:8775597039" style="display:inline-block;background:var(--red,#c0181c);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:8px;text-decoration:none;margin:0 6px 8px;">📞 Call (877) 559-7039</a>'
+      + '<a href="' + buildLeadMailto(data, formType) + '" style="display:inline-block;background:#1a1a1a;color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:8px;text-decoration:none;margin:0 6px 8px;">✉️ Email us your request</a>';
+    error.style.display = 'block';
   }
 
-  // Resolve to success on the first OK; only error once BOTH have failed.
-  var settled = false;
-  var remaining = 2;
-  function onResult(ok) {
-    if (ok && !settled) { settled = true; showSuccess(); return; }
-    if (--remaining === 0 && !settled) { showError(); }
-  }
-
-  // 1) GoHighLevel — JSON payload (fields mapped in the GHL workflow).
-  //    Drop FormSubmit control fields (_subject, _cc, _captcha, _honey, …).
-  var payload = {};
-  data.forEach(function(v, k) { if (k.charAt(0) !== '_') payload[k] = v; });
-  if (formType) payload.form_type = formType;
-  payload.source = 'Website Form';
-  payload.page_url = location.href;
-  payload.submitted_at = new Date().toISOString();
-  fetch(GHL_LEAD_WEBHOOK, {
-    method: 'POST',
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).then(function(res) { onResult(res.ok); }).catch(function() { onResult(false); });
-
-  // 2) FormSubmit — original FormData (kept as the email channel).
   fetch('https://formsubmit.co/ajax/' + email, {
     method: 'POST',
     headers: { 'Accept': 'application/json' },
     body: data
-  }).then(function(res) { onResult(res.ok); }).catch(function() { onResult(false); });
+  }).then(function(res) {
+    res.ok ? showSuccess() : showError();
+  }).catch(showError);
 }
 
 // ── Contact Form ────────────────────────────────────────
