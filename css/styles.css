@@ -1137,12 +1137,20 @@
     .footer__brand-box img { height: 78px; width: auto; display: block; }
     .footer__tagline { font-size: 16px; font-weight: 700; color: #fff; margin: 0; line-height: 1.4; }
     .footer__sub { font-size: 13px; color: #a8a8a8; line-height: 1.6; margin: 0; }
-    .footer__newsletter { display: flex; margin: 0; }
+    .footer__newsletter { display: flex; flex-wrap: wrap; margin: 0; }
     .footer__newsletter input { flex: 1; padding: 11px 14px; border: 1.5px solid #3a3a3a; border-right: none; border-radius: 8px 0 0 8px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; background: #2a2a2a; color: #fff; }
     .footer__newsletter input::placeholder { color: #7a7a7a; }
     .footer__newsletter input:focus { border-color: var(--red); background: #303030; }
     .footer__newsletter button { background: var(--red); color: #fff; border: none; padding: 11px 22px; border-radius: 0 8px 8px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.18s; }
     .footer__newsletter button:hover { background: var(--red-dark); }
+    .footer__consent { flex-basis: 100%; display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; cursor: pointer; }
+    .footer__consent input[type="checkbox"] { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 1px; accent-color: var(--red); cursor: pointer; }
+    .footer__consent span { font-size: 11px; line-height: 1.5; color: #a8a8a8; }
+    /* ── Lead-form SMS/email consent ─────────────────────── */
+    .form-consent { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 18px; text-align: left; cursor: pointer; }
+    .form-consent input[type="checkbox"] { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--red); cursor: pointer; }
+    .form-consent span { font-size: 12px; line-height: 1.55; color: #555; }
+    .form-consent a { color: var(--red); }
     .footer__col h3, .footer__col h4 { font-size: 14px; font-weight: 700; margin: 0 0 4px; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; }
     .footer__links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
     .footer__links li { margin: 0; }

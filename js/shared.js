@@ -86,7 +86,8 @@ function ghlNewsletterSubmit(e, form) {
     source: 'Footer Newsletter Form',
     site: 'nationwidehaul.com',
     page_url: location.href,
-    submitted_at: new Date().toISOString()
+    submitted_at: new Date().toISOString(),
+    sms_email_consent: 'yes'
   };
 
   fetch('https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/9baf6b13-b5b2-4724-8f60-c1bc65ce50c3', {
