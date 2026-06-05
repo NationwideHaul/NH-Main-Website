@@ -1314,3 +1314,40 @@
     .nh-cookie__actions { flex-direction: column; }
     .nh-cookie__btn { flex: none; width: 100%; }
   }
+
+    /* ============================================
+       Trailer Type Pages
+       ============================================ */
+    /* Footer now has 5 columns (added "Trailer Types") */
+    .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr 1.1fr; }
+    @media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr; } }
+
+    /* Breadcrumb */
+    .tt-breadcrumb { padding: 16px 0; font-size: 13px; color: var(--gray-text); border-bottom: 1px solid var(--gray-mid); }
+    .tt-breadcrumb a { color: var(--gray-text); text-decoration: none; }
+    .tt-breadcrumb a:hover { color: var(--red); }
+    .tt-breadcrumb span { margin: 0 8px; color: var(--gray-mid); }
+    .tt-breadcrumb .tt-breadcrumb__current { color: var(--black); font-weight: 600; margin: 0; }
+
+    /* Content sections */
+    .tt-section { padding: 48px 0; }
+    .tt-section--gray { background: var(--gray); }
+    .tt-section__inner { max-width: 860px; margin: 0 auto; }
+    .tt-section h2 { font-size: 24px; font-weight: 800; color: var(--black); margin-bottom: 16px; }
+    .tt-section h3 { font-size: 16px; font-weight: 700; color: var(--black); margin: 26px 0 8px; }
+    .tt-section p { font-size: 15px; line-height: 1.75; color: var(--gray-text); margin-bottom: 14px; }
+    .tt-section ul { margin: 0 0 16px 22px; }
+    .tt-section li { font-size: 15px; line-height: 1.7; color: var(--gray-text); margin-bottom: 8px; }
+
+    /* Service location cards */
+    .tt-locations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+    .tt-locations__card { background: #fff; border: 1.5px solid var(--gray-mid); border-radius: 10px; padding: 22px; }
+    .tt-locations__card h4 { font-size: 15px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
+    .tt-locations__card p { font-size: 13px; line-height: 1.6; color: var(--gray-text); margin: 0; }
+    @media (max-width: 760px) { .tt-locations { grid-template-columns: 1fr; } }
+
+    /* CTA secondary internal links */
+    .tt-cta-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .tt-cta-links a { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-decoration: underline; }
+    .tt-cta-links a:hover { color: #fff; }
