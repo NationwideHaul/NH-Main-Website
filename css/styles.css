@@ -545,7 +545,7 @@
 
     /* Hero banner */
     .fin-hero { background: #111111; padding: 72px 0 64px; color: #fff; position: relative; overflow: hidden; }
-    .fin-hero::before { content:''; position:absolute; inset:0; background:url('files/DSC01916.jpg') center 35%/cover no-repeat; opacity:0.5; }
+    .fin-hero::before { content:''; position:absolute; inset:0; background:url('/files/DSC01916.webp') center 35%/cover no-repeat; opacity:0.5; }
     .fin-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(17,17,17,0.65) 0%, rgba(26,26,26,0.45) 50%, rgba(192,24,28,0.4) 100%); }
     .fin-hero .container { position:relative; z-index:1; }
     .fin-hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -721,7 +721,7 @@
     /* FINANCING BANNER */
     .financing-banner { background:#fff; padding:40px 0; }
     .financing-banner__inner { border-radius:18px; display:flex; align-items:stretch; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); min-height:220px; position:relative; }
-    .financing-banner__bg { position:absolute; inset:0; background:url('files/financing-banner-bg.jpg') center 38%/cover no-repeat; }
+    .financing-banner__bg { position:absolute; inset:0; background:url('/files/financing-banner-bg.webp') center 38%/cover no-repeat; }
     .financing-banner__bg::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.45) 100%); }
     .financing-banner__content { flex:1; padding:44px 48px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2; }
     .financing-banner__badge { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,0.1); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; padding:7px 14px; border-radius:20px; margin-bottom:16px; width:fit-content; }
@@ -1351,3 +1351,15 @@
     .tt-cta-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
     .tt-cta-links a { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-decoration: underline; }
     .tt-cta-links a:hover { color: #fff; }
+
+    /* ============================================
+       YouTube facade (click-to-load)
+       ============================================ */
+    .yt-facade { position:absolute; inset:0; width:100%; height:100%; cursor:pointer; border:0; background:#000; display:block; overflow:hidden; }
+    .video-wrapper .yt-facade { position:relative; inset:auto; aspect-ratio:16/9; }
+    .yt-facade img { width:100%; height:100%; object-fit:cover; display:block; border:0; opacity:0.92; transition:opacity 0.2s; }
+    .yt-facade:hover img { opacity:1; }
+    .yt-facade::before { content:""; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:68px; height:48px; background:rgba(0,0,0,0.72); border-radius:14px; transition:background 0.2s; }
+    .yt-facade::after { content:""; position:absolute; top:50%; left:50%; transform:translate(-40%,-50%); border-style:solid; border-width:11px 0 11px 19px; border-color:transparent transparent transparent #fff; }
+    .yt-facade:hover::before, .yt-facade:focus-visible::before { background:var(--red); }
+    .yt-facade:focus-visible { outline:3px solid var(--red); outline-offset:2px; }

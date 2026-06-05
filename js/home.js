@@ -51,14 +51,14 @@ var svcItems = [
   {
     title: 'Commercial Insurance',
     desc:  'In-house trucking insurance agency with access to +120 markets to provide you the best quotes.',
-    img:   'files/the nationwide haul difference/Commercial Insurance.jpg',
+    img:   'files/the nationwide haul difference/Commercial Insurance.webp',
     href:  'https://roadreadyinsurance.com',
     target: '_blank'
   },
   {
     title: 'Financing',
     desc:  'In-house finance division to get pre-qualified today — no initial hard pull on your credit.',
-    img:   'files/the nationwide haul difference/financing.png',
+    img:   'files/the nationwide haul difference/financing.webp',
     href:  '/financing/'
   },
   {
@@ -71,13 +71,13 @@ var svcItems = [
   {
     title: 'Leasing & Rental',
     desc:  'Flexible Leasing and Rental options to fit your needs.',
-    img:   'files/the nationwide haul difference/leasing and rental.jpg',
+    img:   'files/the nationwide haul difference/leasing and rental.webp',
     href:  '/lease/'
   },
   {
     title: 'Sell Your Equipment',
     desc:  'Get a fast and fair cash offer for your trucking equipment today. Quick appraisal, no hassle.',
-    img:   'files/the nationwide haul difference/logistics-transportation-truck-cargo-ship-with-business-collaboration-businessman-shake-hands-logistic-import-export-transport-industry-background.jpg',
+    img:   'files/the nationwide haul difference/logistics-transportation-truck-cargo-ship-with-business-collaboration-businessman-shake-hands-logistic-import-export-transport-industry-background.webp',
     href:  '/perks/sell-your-equipment/'
   }
 ];
@@ -144,7 +144,10 @@ function initSvcCarousel() {
 }
 initSvcCarousel();
 
-// ── Hero video — aggressive mobile autoplay ─────────────
+// ── Hero video — load AFTER page load, then autoplay ─────
+// Until then, the preloaded WebP poster is the LCP element. The mp4
+// download is deferred (preload=none + data-src) so it never competes
+// with the poster or other critical resources.
 (function() {
   var v = document.getElementById('heroVideo');
   if (!v) return;
@@ -165,18 +168,31 @@ initSvcCarousel();
     }
   };
 
-  tryPlay();
-  setTimeout(tryPlay, 300);
-  setTimeout(tryPlay, 1200);
-  v.addEventListener('canplay', tryPlay);
-  v.addEventListener('loadeddata', tryPlay);
-  var events = ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'];
-  events.forEach(function(evt) {
-    document.addEventListener(evt, tryPlay, { passive: true });
-  });
-  document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) tryPlay();
-  });
+  var startVideo = function() {
+    var src = v.querySelector('source[data-src]');
+    if (src && !src.src) {
+      src.src = src.getAttribute('data-src');
+      v.load();
+    }
+    tryPlay();
+    setTimeout(tryPlay, 300);
+    setTimeout(tryPlay, 1200);
+    v.addEventListener('canplay', tryPlay);
+    v.addEventListener('loadeddata', tryPlay);
+    var events = ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'];
+    events.forEach(function(evt) {
+      document.addEventListener(evt, tryPlay, { passive: true });
+    });
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) tryPlay();
+    });
+  };
+
+  if (document.readyState === 'complete') {
+    startVideo();
+  } else {
+    window.addEventListener('load', startVideo);
+  }
 })();
 
 // ── Staggered card entrances (inventory + testimonials) ──

@@ -116,7 +116,26 @@ window.intercomSettings = {
   api_base: "https://api-iam.intercom.io",
   app_id: "v4qbge05",
 };
-(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/v4qbge05';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+// Defer the Intercom widget download until the user first interacts
+// (scroll/click/mousemove/touch/key), with an idle fallback. The
+// Intercom() stub is created synchronously so the "Chat with Us" buttons
+// can queue a show() that fires as soon as the widget script loads.
+(function(){
+  var w=window;var d=document;var ic=w.Intercom;
+  if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);return;}
+  var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;
+  var loaded=false;
+  var l=function(){
+    if(loaded)return;loaded=true;
+    var s=d.createElement('script');s.type='text/javascript';s.async=true;
+    s.src='https://widget.intercom.io/widget/v4qbge05';
+    var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+  };
+  var events=['scroll','click','mousemove','touchstart','keydown'];
+  var trigger=function(){l();events.forEach(function(e){w.removeEventListener(e,trigger);});};
+  events.forEach(function(e){w.addEventListener(e,trigger,{passive:true});});
+  setTimeout(l,8000);
+})();
 
 // ── Cookie Consent Banner ───────────────────────────────
 (function () {
@@ -147,4 +166,35 @@ window.intercomSettings = {
   document.getElementById('nhCookieAccept').addEventListener('click', function () { setConsent('all'); });
   document.getElementById('nhCookieReject').addEventListener('click', function () { setConsent('essential'); });
   document.getElementById('nhCookieClose').addEventListener('click', function () { setConsent('essential'); });
+})();
+
+// ── YouTube facade (click-to-load) ──────────────────────
+// Replaces the heavy YouTube iframe + player JS with a static thumbnail.
+// The real iframe (with autoplay) is injected only when the user clicks.
+(function () {
+  function load(f) {
+    if (f.dataset.loaded) return;
+    var id = f.getAttribute('data-ytid');
+    if (!id) return;
+    f.dataset.loaded = '1';
+    var params = f.getAttribute('data-ytparams') || '';
+    var ifr = document.createElement('iframe');
+    ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0' + (params ? '&' + params : '');
+    ifr.title = f.getAttribute('aria-label') || 'YouTube video';
+    ifr.setAttribute('allow', 'accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture');
+    ifr.setAttribute('allowfullscreen', '');
+    ifr.setAttribute('frameborder', '0');
+    ifr.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    f.innerHTML = '';
+    f.appendChild(ifr);
+  }
+  document.addEventListener('click', function (e) {
+    var f = e.target.closest && e.target.closest('.yt-facade');
+    if (f) load(f);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    var f = e.target.closest && e.target.closest('.yt-facade');
+    if (f) { e.preventDefault(); load(f); }
+  });
 })();
