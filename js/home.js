@@ -296,6 +296,19 @@ initSvcCarousel();
   }
 
   function render(videos) {
+    // If the live feed returns only a video or two (e.g. recent uploads were
+    // Shorts and got filtered out), pad with the curated list so the carousel
+    // still looks full instead of one lonely card.
+    if (videos.length < 3) {
+      var seen = {};
+      videos.forEach(function(v){ seen[v.id] = true; });
+      for (var i = 0; i < fallbackVideos.length && videos.length < 9; i++) {
+        if (!seen[fallbackVideos[i].id]) {
+          videos.push(fallbackVideos[i]);
+          seen[fallbackVideos[i].id] = true;
+        }
+      }
+    }
     track.innerHTML = '';
     videos.forEach(function(v){
       var thumb = 'https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg';
@@ -311,8 +324,10 @@ initSvcCarousel();
         '<span class="yt-carousel__title">' + escapeHTML(v.title) + '</span>';
       track.appendChild(card);
     });
-    prevBtn.style.display = 'flex';
-    nextBtn.style.display = 'flex';
+    // Only show nav arrows when the track actually overflows.
+    var hasOverflow = track.scrollWidth > track.clientWidth + 4;
+    prevBtn.style.display = hasOverflow ? 'flex' : 'none';
+    nextBtn.style.display = hasOverflow ? 'flex' : 'none';
     var stats = document.getElementById('ytChannelStats');
     if (stats) stats.textContent = videos.length + ' Latest Videos';
   }
