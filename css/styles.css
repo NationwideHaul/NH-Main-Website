@@ -1137,11 +1137,11 @@
     .footer__brand-box img { height: 78px; width: auto; display: block; }
     .footer__tagline { font-size: 16px; font-weight: 700; color: #fff; margin: 0; line-height: 1.4; }
     .footer__sub { font-size: 13px; color: #a8a8a8; line-height: 1.6; margin: 0; }
-    .footer__newsletter { display: flex; flex-wrap: wrap; margin: 0; }
-    .footer__newsletter input { flex: 1; padding: 11px 14px; border: 1.5px solid #3a3a3a; border-right: none; border-radius: 8px 0 0 8px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; background: #2a2a2a; color: #fff; }
+    .footer__newsletter { display: flex; flex-wrap: nowrap; margin: 0; }
+    .footer__newsletter input { flex: 1 1 0; min-width: 0; padding: 11px 14px; border: 1.5px solid #3a3a3a; border-right: none; border-radius: 8px 0 0 8px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; background: #2a2a2a; color: #fff; }
     .footer__newsletter input::placeholder { color: #7a7a7a; }
     .footer__newsletter input:focus { border-color: var(--red); background: #303030; }
-    .footer__newsletter button { background: var(--red); color: #fff; border: none; padding: 11px 22px; border-radius: 0 8px 8px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.18s; }
+    .footer__newsletter button { flex: 0 0 auto; white-space: nowrap; background: var(--red); color: #fff; border: none; padding: 11px 22px; border-radius: 0 8px 8px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.18s; }
     .footer__newsletter button:hover { background: var(--red-dark); }
     .footer__consent { flex-basis: 100%; display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; cursor: pointer; }
     .footer__consent input[type="checkbox"] { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 1px; accent-color: var(--red); cursor: pointer; }
