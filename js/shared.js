@@ -65,7 +65,50 @@ document.addEventListener('click', function(e) {
   }, { passive: true });
 })();
 
-// ── GHL Newsletter Submission ───────────────────────────
+// ── Newsletter Submission (double opt-in + anti-spam) ────
+// Posts to our own /api/newsletter serverless function, which enforces
+// honeypot, time-trap, Turnstile, validation, and rate limiting, then
+// sends a confirmation email. The subscriber is only added to the list
+// after they click the link in that email.
+
+// ↓↓↓ PASTE YOUR CLOUDFLARE TURNSTILE **SITE KEY** HERE ↓↓↓
+// Leave as-is (empty) and the form still works — Turnstile just stays
+// off until you add the key. Get it at: dash.cloudflare.com → Turnstile.
+var TURNSTILE_SITE_KEY = '';
+// ↑↑↑ (This is the PUBLIC site key. The secret key goes in Vercel env vars.) ↑↑↑
+
+// Turnstile widget ids, keyed by form, so we can read/reset per form.
+var _nhTurnstile = new WeakMap();
+
+(function initNewsletterForms() {
+  var forms = document.querySelectorAll('form.footer__newsletter');
+  if (!forms.length) return;
+
+  // Stamp each form's load time for the server-side time-trap.
+  forms.forEach(function(form) { form.dataset.loadedAt = String(Date.now()); });
+
+  if (!TURNSTILE_SITE_KEY) return; // no key yet → skip Turnstile entirely
+
+  // Load the Turnstile script once, then explicitly render a widget in
+  // each form's captcha container.
+  window.onloadTurnstileCallback = function() {
+    forms.forEach(function(form) {
+      var holder = form.querySelector('.footer__nl-captcha');
+      if (!holder || !window.turnstile) return;
+      var id = window.turnstile.render(holder, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
+        appearance: 'interaction-only' // invisible unless a challenge is needed
+      });
+      _nhTurnstile.set(form, id);
+    });
+  };
+  var s = document.createElement('script');
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
+  s.async = true; s.defer = true;
+  document.head.appendChild(s);
+})();
+
 function ghlNewsletterSubmit(e, form) {
   e.preventDefault();
   var input = form.querySelector('input[type="email"]');
@@ -81,25 +124,37 @@ function ghlNewsletterSubmit(e, form) {
   var originalBtnText = btn.textContent;
   btn.textContent = '...';
 
+  var honey = form.querySelector('input[name="company_website"]');
+  var tsId = _nhTurnstile.get(form);
+  var tsToken = (window.turnstile && tsId != null) ? window.turnstile.getResponse(tsId) : '';
+
   var payload = {
     email: email,
     source: 'Footer Newsletter Form',
     site: 'nationwidehaul.com',
     page_url: location.href,
     submitted_at: new Date().toISOString(),
-    sms_email_consent: 'yes'
+    company_website: honey ? honey.value : '',                     // honeypot
+    elapsed_ms: Date.now() - Number(form.dataset.loadedAt || 0),   // time-trap
+    'cf-turnstile-response': tsToken                               // Turnstile token
   };
 
-  fetch('https://services.leadconnectorhq.com/hooks/IEs4Gwg925sPu0AYNpdS/webhook-trigger/9baf6b13-b5b2-4724-8f60-c1bc65ce50c3', {
+  fetch('/api/newsletter', {
     method: 'POST',
-    mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
   .then(function(res) {
-    if (!res.ok) throw new Error('webhook failed: HTTP ' + res.status);
+    return res.json().catch(function(){ return {}; }).then(function(data) {
+      return { ok: res.ok, data: data };
+    });
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error((r.data && r.data.error) || 'HTTP error');
     form.style.display = 'none';
-    var ok = form.nextElementSibling;
+    var cap = form.parentNode.querySelector('.footer__nl-captcha');
+    if (cap) cap.style.display = 'none';
+    var ok = form.parentNode.querySelector('.footer__nl-ok');
     if (ok) ok.style.display = 'block';
   })
   .catch(function(err) {
@@ -107,7 +162,10 @@ function ghlNewsletterSubmit(e, form) {
     btn.disabled = false;
     btn.textContent = originalBtnText;
     input.style.borderColor = '#ef4444';
-    alert("Sorry, something went wrong. Please try again or email us at operations@nationwidehaul.com");
+    if (window.turnstile && tsId != null) window.turnstile.reset(tsId);
+    alert((err && err.message && err.message !== 'HTTP error')
+      ? err.message
+      : "Sorry, something went wrong. Please try again or email us at operations@nationwidehaul.com");
   });
 }
 
