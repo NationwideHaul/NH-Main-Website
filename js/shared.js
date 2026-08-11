@@ -124,7 +124,7 @@ function ghlNewsletterSubmit(e, form) {
   var originalBtnText = btn.textContent;
   btn.textContent = '...';
 
-  var honey = form.querySelector('input[name="company_website"]');
+  var honey = form.querySelector('input[name="_hp"]');
   var tsId = _nhTurnstile.get(form);
   var tsToken = (window.turnstile && tsId != null) ? window.turnstile.getResponse(tsId) : '';
 
@@ -134,7 +134,7 @@ function ghlNewsletterSubmit(e, form) {
     site: 'nationwidehaul.com',
     page_url: location.href,
     submitted_at: new Date().toISOString(),
-    company_website: honey ? honey.value : '',                     // honeypot
+    _hp: honey ? honey.value : '',                                 // honeypot
     elapsed_ms: Date.now() - Number(form.dataset.loadedAt || 0),   // time-trap
     'cf-turnstile-response': tsToken                               // Turnstile token
   };

@@ -502,8 +502,8 @@
         <p class="footer__sub">Get industry news, limited-time promos, and new equipment available</p>
         <form class="footer__newsletter" onsubmit="ghlNewsletterSubmit(event,this)">
           <input type="email" autocomplete="email" placeholder="Email" aria-label="Email Address" required>
-          <!-- Honeypot: hidden off-screen; bots fill it, humans never see it -->
-          <div class="nh-hp" aria-hidden="true"><label>Company Website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+          <!-- Honeypot: hidden off-screen; bots fill it, real users never see it. Neutral name + opt-out attrs so password managers / autofill never touch it. -->
+          <div class="nh-hp" aria-hidden="true"><input type="text" name="_hp" tabindex="-1" autocomplete="off" data-1p-ignore data-lpignore="true" data-bwignore data-form-type="other"></div>
           <button type="submit">Go</button>
         </form>
         <div class="footer__nl-captcha"></div>

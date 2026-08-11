@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
   // ── Layer 1: Honeypot — bots fill it, humans never see it. ──
   // Silently accept (look successful) so bots don't learn they were caught.
-  if (body.company_website && String(body.company_website).trim() !== '') {
+  if (body._hp && String(body._hp).trim() !== '') {
     return res.status(200).json({ ok: true, pending: true });
   }
 
@@ -75,17 +75,19 @@ export default async function handler(req, res) {
   }
 
   // ── Layer 4: Email validation. ──
+  // Reject SILENTLY as spam (dot-trick, SMS gateways, disposable, bad
+  // syntax/TLD): return success so bots can't tell they were caught.
+  // Real humans are guarded by the client-side format check before send.
   const v = validateEmail(body.email);
   if (!v.ok) {
-    // Generic message — don't tell spammers exactly which rule tripped.
-    return res.status(400).json({ error: 'Please enter a valid email address.' });
+    return res.status(200).json({ ok: true, pending: true });
   }
   const email = v.email;
 
   // ── Layer 5: Rate limit per IP (3 / hour). ──
   const rl = await rateLimit(ip);
   if (!rl.allowed) {
-    return res.status(429).json({ error: 'Too many signups from this connection. Please try again later.' });
+    return res.status(429).json({ error: 'Too many signups from this network. Please try again later.' });
   }
 
   // ── Layer 6: Double opt-in — send confirmation email, do NOT

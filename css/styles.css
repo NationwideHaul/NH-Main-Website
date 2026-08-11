@@ -1143,8 +1143,9 @@
     .footer__newsletter input:focus { border-color: var(--red); background: #303030; }
     .footer__newsletter button { flex: 0 0 auto; white-space: nowrap; background: var(--red); color: #fff; border: none; padding: 11px 22px; border-radius: 0 8px 8px 0; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.18s; }
     .footer__newsletter button:hover { background: var(--red-dark); }
-    /* Honeypot: pulled off-screen (NOT display:none, so bots still see & fill it) */
-    .nh-hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    /* Honeypot: pulled off-screen + invisible (NOT display:none, so bots still see & fill it) */
+    .nh-hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+    .nh-hp input { width: 1px; height: 1px; opacity: 0; }
     .footer__nl-captcha { margin-top: 10px; }
     .footer__nl-captcha:empty { margin-top: 0; }
     .footer__consent { flex-basis: 100%; display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; cursor: pointer; }
