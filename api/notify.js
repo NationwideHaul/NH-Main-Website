@@ -45,6 +45,17 @@ const ROUTES = {
 
 const CC_ALL = 'marketing@nationwidehaul.com'; // CC marketing on EVERY form
 
+// Contact form only: the selected topic (the `subject` field) decides the
+// PRIMARY recipient (To). marketing@ then rides along as CC. Topics not
+// listed here (General Question, Buying, Delivery, Other) fall through to
+// the contact route's default To (marketing@).
+const CONTACT_TOPIC_ROUTES = {
+  'Financing Options': 'info@nefnow.com',
+  'Lease & Rental':    'info@oakwoodef.com',
+  'Service & Repair':  'lakelandservice@nationwidehaul.com',
+  'Municipality Bids': 'govbid@nationwidehaul.com'
+};
+
 const FIELD_LABELS = {
   first_name: 'First Name', last_name: 'Last Name', full_name: 'Full Name',
   email: 'Email', phone: 'Phone', organization: 'Organization', subject: 'Subject',
@@ -123,17 +134,25 @@ export default async function handler(req, res) {
   const replyTo = body.email || undefined;
   const html = renderEmail(formType, body, route.subject);
 
-  // Build the CC list: always marketing, plus any team address(es) the form
-  // passed in `_cc` (the contact form routes by topic this way). De-dupe and
-  // drop anything that is already the primary recipient.
+  // Primary recipient (To). For the contact form, the chosen topic routes
+  // the lead directly to the owning team; every other form uses its own
+  // route. marketing@ is always CC'd (below), never dropped.
+  let toAddr = route.to;
+  if (formType === 'contact') {
+    const teamEmail = CONTACT_TOPIC_ROUTES[String(body.subject || '').trim()];
+    if (teamEmail) toAddr = teamEmail;
+  }
+
+  // Build the CC list: always marketing, plus any extra address(es) the form
+  // passed in `_cc`. De-dupe and drop anything already the primary recipient.
   const ccSet = new Set();
-  if (route.to.toLowerCase() !== CC_ALL.toLowerCase()) ccSet.add(CC_ALL);
+  if (toAddr.toLowerCase() !== CC_ALL.toLowerCase()) ccSet.add(CC_ALL);
   String(body._cc || '')
     .split(',')
     .map(s => s.trim())
     .filter(Boolean)
     .forEach(addr => {
-      if (addr.toLowerCase() !== route.to.toLowerCase()) ccSet.add(addr);
+      if (addr.toLowerCase() !== toAddr.toLowerCase()) ccSet.add(addr);
     });
   const cc = ccSet.size ? Array.from(ccSet) : undefined;
 
@@ -156,7 +175,7 @@ export default async function handler(req, res) {
     subject: body.subject || route.subject,
     message: body.message || body.notes || null,
     page_url: pageUrl,
-    recipient: route.to,
+    recipient: toAddr,
     payload: cleanPayload
   });
 
@@ -169,7 +188,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from,
-        to: [route.to],
+        to: [toAddr],
         cc,
         reply_to: replyTo,
         subject: route.subject,
