@@ -5,6 +5,7 @@
 // GoHighLevel webhook and show a branded confirmation page.
 // ─────────────────────────────────────────────────────────────
 import { verifyToken, GHL_WEBHOOK, clientIp } from './_lib/newsletter-utils.js';
+import { insertRow } from './_lib/supabase.js';
 
 function page({ title, heading, message, showCta }) {
   const cta = showCta
@@ -48,6 +49,16 @@ export default async function handler(req, res) {
       showCta: true
     }));
   }
+
+  // Store the confirmed subscriber in Supabase (fails soft; upsert on
+  // email so a re-confirm just refreshes the row instead of erroring).
+  await insertRow('nh_newsletter_subscribers', {
+    site: 'nationwidehaul.com',
+    email: result.email,
+    source: result.source || 'Footer Newsletter Form',
+    confirmed_at: new Date().toISOString(),
+    ip: clientIp(req)
+  }, { onConflict: 'email' });
 
   // Push the confirmed subscriber to GoHighLevel.
   try {

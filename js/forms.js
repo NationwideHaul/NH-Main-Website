@@ -36,9 +36,12 @@ function buildLeadMailto(data, formType) {
 }
 
 // ── Form AJAX Helper ────────────────────────────────────
-// Submits to FormSubmit. If delivery fails, the error box becomes a recovery
-// box with two one-click options: call us, or send a pre-filled email (the
-// visitor's own details) to marketing@ — so a lead is never lost.
+// Primary path: POST the lead to our own /api/notify function, which stores
+// it in Supabase and emails the routed team inbox via Resend.
+// Safety net: if /api/notify is unreachable or errors, we automatically retry
+// through FormSubmit (the old path) so a lead is never lost.
+// Last resort: if BOTH fail, the error box becomes a recovery box with two
+// one-click options — call us, or send a pre-filled email to marketing@.
 function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel, formType) {
   var form = document.getElementById(formId);
   var success = document.getElementById(successId);
@@ -51,6 +54,10 @@ function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel
   var data = new FormData(form);
   // Stamp the source page so the notification email/CRM shows which form it came from.
   data.append('Page URL', location.origin + location.pathname);
+
+  // Build a JSON payload for /api/notify from the same form data.
+  var payload = { form_type: formType };
+  data.forEach(function(v, k) { payload[k] = v; });
 
   function showSuccess() {
     form.style.display = 'none';
@@ -70,13 +77,26 @@ function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel
     error.style.display = 'block';
   }
 
-  fetch('https://formsubmit.co/ajax/' + email, {
+  // Fallback path — the original FormSubmit delivery, used only if our
+  // own API is unreachable or returns an error.
+  function fallbackToFormSubmit() {
+    fetch('https://formsubmit.co/ajax/' + email, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    }).then(function(res) {
+      res.ok ? showSuccess() : showError();
+    }).catch(showError);
+  }
+
+  // Primary path — our own serverless function (Supabase + Resend).
+  fetch('/api/notify', {
     method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: data
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   }).then(function(res) {
-    res.ok ? showSuccess() : showError();
-  }).catch(showError);
+    res.ok ? showSuccess() : fallbackToFormSubmit();
+  }).catch(fallbackToFormSubmit);
 }
 
 // ── Contact Form ────────────────────────────────────────

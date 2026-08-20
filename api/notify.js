@@ -11,6 +11,8 @@
 //                    but only for testing — verify your domain at resend.com/domains
 //                    for production use).
 
+import { insertRow } from './_lib/supabase.js';
+
 // ──────────────────────────────────────────────────
 // Routing map — form_type → primary recipient + subject
 // ──────────────────────────────────────────────────
@@ -134,6 +136,29 @@ export default async function handler(req, res) {
       if (addr.toLowerCase() !== route.to.toLowerCase()) ccSet.add(addr);
     });
   const cc = ccSet.size ? Array.from(ccSet) : undefined;
+
+  // ── Store the lead in Supabase FIRST (fails soft) ──
+  // Runs before the email so the lead is captured even if delivery fails.
+  // A DB hiccup never blocks the notification — insertRow logs and returns.
+  const pageUrl = body['Page URL'] || body.page_url || null;
+  const cleanPayload = Object.fromEntries(
+    Object.entries(body).filter(([k]) => !k.startsWith('_') && k !== 'form_type')
+  );
+  await insertRow('nh_leads', {
+    site: 'nationwidehaul.com',
+    form_type: formType,
+    first_name: body.first_name || null,
+    last_name: body.last_name || null,
+    full_name: body.full_name || null,
+    email: body.email || null,
+    phone: body.phone || null,
+    organization: body.organization || null,
+    subject: body.subject || route.subject,
+    message: body.message || body.notes || null,
+    page_url: pageUrl,
+    recipient: route.to,
+    payload: cleanPayload
+  });
 
   try {
     const apiResp = await fetch('https://api.resend.com/emails', {
