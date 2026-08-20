@@ -99,7 +99,7 @@ export default async function handler(req, res) {
 
   const source = String(body.source || 'Footer Newsletter Form').slice(0, 120);
   const token = makeToken(email, source, Date.now());
-  const confirmUrl = `${baseUrl(req)}/api/newsletter-confirm?token=${encodeURIComponent(token)}`;
+  const confirmUrl = `${baseUrl(req)}/api/newsletter-confirm/?token=${encodeURIComponent(token)}`;
   const from = process.env.RESEND_FROM || 'Nationwide Haul <onboarding@resend.dev>';
 
   try {

@@ -139,7 +139,7 @@ function ghlNewsletterSubmit(e, form) {
     'cf-turnstile-response': tsToken                               // Turnstile token
   };
 
-  fetch('/api/newsletter', {
+  fetch('/api/newsletter/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

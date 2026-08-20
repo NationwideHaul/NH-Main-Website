@@ -90,7 +90,8 @@ function submitFormAjax(formId, successId, errorId, email, btnSelector, btnLabel
   }
 
   // Primary path — our own serverless function (Supabase + Resend).
-  fetch('/api/notify', {
+  // Trailing slash matches vercel.json trailingSlash:true (avoids a 307 hop).
+  fetch('/api/notify/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
