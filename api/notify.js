@@ -12,6 +12,57 @@
 //                    for production use).
 
 import { insertRow } from './_lib/supabase.js';
+import {
+  validateEmail, verifyTurnstile, rateLimit, clientIp
+} from './_lib/newsletter-utils.js';
+
+const MIN_ELAPSED_MS = 3000;   // time-trap: humans can't fill a lead form in <3s
+const MAX_PER_HOUR = 5;        // lead submissions per IP per hour
+const MAX_FIELD_LEN = 5000;    // truncate any single field beyond this
+
+// Hosts allowed to POST here. Browsers always send Origin on a fetch POST,
+// so a missing/foreign Origin means a script hitting the endpoint directly.
+function originAllowed(req) {
+  const origin = req.headers.origin || req.headers.referer || '';
+  let host;
+  try { host = new URL(origin).hostname; } catch { return false; }
+  return host === 'nationwidehaul.com' || host.endsWith('.nationwidehaul.com')
+    || host.endsWith('.vercel.app') || host === 'localhost' || host === '127.0.0.1';
+}
+
+// Content heuristics for the spam that gets past the bot traps. Returns a
+// reason string when the submission looks like spam, otherwise null.
+// Flagged leads are still saved to Supabase (status 'spam') — just not emailed —
+// so a false positive can be recovered from the dashboard.
+const LINK_RE = /(https?:\/\/|www\.|\[url|<a\s|\.(ru|cn|xyz|top|click|site|online|shop)\b)/gi;
+const FOREIGN_SCRIPT_RE = /[\u0400-\u04FF\u0600-\u06FF\u0E00-\u0E7F\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/;
+const SPAM_WORDS_RE = /\b(seo|backlinks?|crypto|bitcoin|casino|viagra|cialis|porn|loan offer|web ?design services|rank (your|higher)|guest post|increase (your )?traffic|lead generation services)\b/i;
+
+function looksRandom(word) {
+  // Bot-generated names like "hYtRkLqPzW": many lower→UPPER flips in one word.
+  const flips = (String(word).match(/[a-z][A-Z]/g) || []).length;
+  return flips >= 3;
+}
+
+function spamReason(body) {
+  const names = [body.first_name, body.last_name, body.full_name, body.organization]
+    .filter(Boolean).map(String);
+  const text = [body.message, body.notes, body.equipment_details, body.accessories]
+    .filter(Boolean).join(' ');
+  const all = Object.entries(body)
+    .filter(([k]) => !k.startsWith('_'))
+    .map(([, v]) => String(v ?? '')).join(' ');
+
+  if (names.some(n => (n.match(LINK_RE) || []).length)) return 'link_in_name';
+  if ((text.match(LINK_RE) || []).length >= 2) return 'links_in_message';
+  if (FOREIGN_SCRIPT_RE.test(all)) return 'foreign_script';
+  if (SPAM_WORDS_RE.test(text)) return 'spam_keywords';
+  if (names.some(n => n.split(/\s+/).some(looksRandom))) return 'random_name';
+  if (body.first_name && body.last_name &&
+      String(body.first_name).trim().toLowerCase() === String(body.last_name).trim().toLowerCase() &&
+      String(body.first_name).trim().length > 3) return 'same_first_last';
+  return null;
+}
 
 // ──────────────────────────────────────────────────
 // Routing map — form_type → primary recipient + subject
@@ -112,9 +163,50 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
-  // Honeypot — silently drop bot submissions
-  if (body._honey) {
+  // Every hard bot signal below returns a fake 200 so bots can't tell
+  // they were caught (and never retry / adapt).
+  const drop = (reason) => {
+    console.log('notify: dropped bot submission —', reason, '| form:', body.form_type);
     return res.status(200).json({ ok: true });
+  };
+
+  // ── Layer 1: Origin — must come from our own site. ──
+  if (!originAllowed(req)) return drop('bad_origin');
+
+  // ── Layer 2: Honeypot — hidden field humans never fill. ──
+  if ((body._honey && String(body._honey).trim()) || (body._hp && String(body._hp).trim())) {
+    return drop('honeypot');
+  }
+
+  // ── Layer 3: Time-trap — missing or near-instant submission. ──
+  const elapsed = Number(body.elapsed_ms);
+  if (!Number.isFinite(elapsed) || elapsed < MIN_ELAPSED_MS) return drop('too_fast');
+
+  const ip = clientIp(req);
+
+  // ── Layer 4: Cloudflare Turnstile (fail-open until TURNSTILE_SECRET_KEY is set). ──
+  const captcha = await verifyTurnstile(body['cf-turnstile-response'], ip);
+  if (!captcha.ok) {
+    return res.status(400).json({ error: 'Please complete the verification and try again.' });
+  }
+
+  // ── Layer 5: Rate limit per IP. ──
+  const rl = await rateLimit(ip, { prefix: 'leadrl', max: MAX_PER_HOUR });
+  if (!rl.allowed) {
+    return res.status(429).json({ error: 'Too many submissions from this network. Please call us at (877) 559-7039.' });
+  }
+
+  // Strip client-controlled meta fields (never trust _cc etc. from the
+  // browser) and cap field sizes.
+  for (const k of Object.keys(body)) {
+    if (k.startsWith('_') || k === 'elapsed_ms' || k === 'cf-turnstile-response') { delete body[k]; continue; }
+    if (typeof body[k] === 'string' && body[k].length > MAX_FIELD_LEN) body[k] = body[k].slice(0, MAX_FIELD_LEN);
+  }
+
+  // ── Layer 6: Email must be real-looking (fake 200 on failure). ──
+  if (body.email) {
+    const v = validateEmail(body.email);
+    if (!v.ok) return drop('email_' + v.reason);
   }
 
   const formType = body.form_type;
@@ -143,18 +235,12 @@ export default async function handler(req, res) {
     if (teamEmail) toAddr = teamEmail;
   }
 
-  // Build the CC list: always marketing, plus any extra address(es) the form
-  // passed in `_cc`. De-dupe and drop anything already the primary recipient.
-  const ccSet = new Set();
-  if (toAddr.toLowerCase() !== CC_ALL.toLowerCase()) ccSet.add(CC_ALL);
-  String(body._cc || '')
-    .split(',')
-    .map(s => s.trim())
-    .filter(Boolean)
-    .forEach(addr => {
-      if (addr.toLowerCase() !== toAddr.toLowerCase()) ccSet.add(addr);
-    });
-  const cc = ccSet.size ? Array.from(ccSet) : undefined;
+  // CC is decided server-side ONLY. (Accepting a `_cc` from the browser
+  // let anyone make our verified domain email arbitrary addresses.)
+  const cc = toAddr.toLowerCase() !== CC_ALL.toLowerCase() ? [CC_ALL] : undefined;
+
+  // ── Layer 7: Content heuristics — save as spam, don't email. ──
+  const spam = spamReason(body);
 
   // ── Store the lead in Supabase FIRST (fails soft) ──
   // Runs before the email so the lead is captured even if delivery fails.
@@ -176,8 +262,14 @@ export default async function handler(req, res) {
     message: body.message || body.notes || null,
     page_url: pageUrl,
     recipient: toAddr,
-    payload: cleanPayload
+    payload: spam ? { ...cleanPayload, spam_reason: spam, ip } : cleanPayload,
+    status: spam ? 'spam' : 'new'
   });
+
+  if (spam) {
+    console.log('notify: flagged as spam (saved, not emailed) —', spam, '| form:', formType);
+    return res.status(200).json({ ok: true });
+  }
 
   try {
     const apiResp = await fetch('https://api.resend.com/emails', {

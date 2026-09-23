@@ -193,10 +193,11 @@ async function upstash(command) {
 /**
  * Returns { allowed:boolean, remaining:number }. Never throws — on any
  * backend error it fails open (allows the request) so a limiter outage
- * can't block real signups.
+ * can't block real signups. `prefix`/`max` let other endpoints (lead
+ * forms) keep their own separate bucket and limit.
  */
-export async function rateLimit(ip) {
-  const key = 'nlrl:' + (ip || 'unknown');
+export async function rateLimit(ip, { prefix = 'nlrl', max = MAX_PER_WINDOW } = {}) {
+  const key = prefix + ':' + (ip || 'unknown');
 
   // Upstash path (cross-instance, reliable).
   if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
@@ -204,23 +205,23 @@ export async function rateLimit(ip) {
       const incr = await upstash(['INCR', key]);
       const count = incr && incr.result;
       if (count === 1) await upstash(['EXPIRE', key, String(Math.ceil(WINDOW_MS / 1000))]);
-      return { allowed: count <= MAX_PER_WINDOW, remaining: Math.max(0, MAX_PER_WINDOW - count) };
+      return { allowed: count <= max, remaining: Math.max(0, max - count) };
     } catch (err) {
       console.error('Rate-limit (upstash) error, failing open:', err);
-      return { allowed: true, remaining: MAX_PER_WINDOW };
+      return { allowed: true, remaining: max };
     }
   }
 
   // In-memory fallback (best-effort per warm instance).
   const now = Date.now();
   const hits = (memStore.get(key) || []).filter(ts => now - ts < WINDOW_MS);
-  if (hits.length >= MAX_PER_WINDOW) {
+  if (hits.length >= max) {
     memStore.set(key, hits);
     return { allowed: false, remaining: 0 };
   }
   hits.push(now);
   memStore.set(key, hits);
-  return { allowed: true, remaining: MAX_PER_WINDOW - hits.length };
+  return { allowed: true, remaining: max - hits.length };
 }
 
 // ── Client IP extraction (Vercel) ────────────────────────────────
