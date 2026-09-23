@@ -74,7 +74,7 @@ document.addEventListener('click', function(e) {
 // ↓↓↓ PASTE YOUR CLOUDFLARE TURNSTILE **SITE KEY** HERE ↓↓↓
 // Leave as-is (empty) and the form still works — Turnstile just stays
 // off until you add the key. Get it at: dash.cloudflare.com → Turnstile.
-var TURNSTILE_SITE_KEY = '';
+var TURNSTILE_SITE_KEY = '0x4AAAAAAFBTKfeX11nL_Euf';
 // ↑↑↑ (This is the PUBLIC site key. The secret key goes in Vercel env vars.) ↑↑↑
 
 // Turnstile widget ids, keyed by form, so we can read/reset per form.
