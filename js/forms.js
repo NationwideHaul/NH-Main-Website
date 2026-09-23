@@ -37,8 +37,8 @@ function buildLeadMailto(data, formType) {
 
 // ── Anti-spam setup for lead forms ──────────────────────
 // Stamps each form's load time (server-side time-trap) and, once a
-// Turnstile site key is set in js/shared.js, renders an invisible
-// Turnstile widget above the submit button. shared.js loads the
+// Turnstile site key is set in js/shared.js, renders a visible
+// "Verify you are human" checkbox above the submit button. shared.js loads the
 // Turnstile script on every page (for the footer newsletter), so we just
 // wait for window.turnstile to appear.
 var LEAD_FORM_IDS = ['contactForm', 'lrQuoteForm', 'municEquipForm', 'sellEquipForm', 'dotInspForm'];
@@ -64,7 +64,8 @@ var _nhLeadTurnstile = {};
         btn ? btn.parentNode.insertBefore(holder, btn) : form.appendChild(holder);
         _nhLeadTurnstile[form.id] = window.turnstile.render(holder, {
           sitekey: TURNSTILE_SITE_KEY,
-          appearance: 'interaction-only' // invisible unless a challenge is needed
+          size: 'flexible',
+          appearance: 'always' // visible "Verify you are human" checkbox
         });
       });
     }, 200);
@@ -85,6 +86,14 @@ function submitFormAjax(formId, successId, errorId, btnSelector, btnLabel, formT
   var success = document.getElementById(successId);
   var error = document.getElementById(errorId);
   var btn = form.querySelector(btnSelector);
+  var tsId = _nhLeadTurnstile[formId];
+  if (window.turnstile && tsId != null && !window.turnstile.getResponse(tsId)) {
+    if (error) {
+      error.innerHTML = '<p style="font-size:14px;color:#b91c1c;font-weight:700;">Please check the "Verify you are human" box above the button.</p>';
+      error.style.display = 'block';
+    }
+    return;
+  }
   btn.disabled = true;
   btn.textContent = 'Sending…';
   if (error) error.style.display = 'none';
@@ -97,7 +106,6 @@ function submitFormAjax(formId, successId, errorId, btnSelector, btnLabel, formT
   var payload = { form_type: formType };
   data.forEach(function(v, k) { payload[k] = v; });
   payload.elapsed_ms = Date.now() - Number(form.dataset.loadedAt || Date.now());
-  var tsId = _nhLeadTurnstile[formId];
   if (window.turnstile && tsId != null) payload['cf-turnstile-response'] = window.turnstile.getResponse(tsId);
 
   function showSuccess() {

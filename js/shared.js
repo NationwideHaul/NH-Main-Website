@@ -93,12 +93,14 @@ var _nhTurnstile = new WeakMap();
   // each form's captcha container.
   window.onloadTurnstileCallback = function() {
     forms.forEach(function(form) {
-      var holder = form.querySelector('.footer__nl-captcha');
+      // The captcha holder sits right after the form (a sibling, not inside it).
+      var holder = form.parentNode.querySelector('.footer__nl-captcha');
       if (!holder || !window.turnstile) return;
       var id = window.turnstile.render(holder, {
         sitekey: TURNSTILE_SITE_KEY,
         theme: 'dark',
-        appearance: 'interaction-only' // invisible unless a challenge is needed
+        size: 'flexible',
+        appearance: 'always' // visible "Verify you are human" checkbox
       });
       _nhTurnstile.set(form, id);
     });
@@ -127,6 +129,12 @@ function ghlNewsletterSubmit(e, form) {
   var honey = form.querySelector('input[name="_hp"]');
   var tsId = _nhTurnstile.get(form);
   var tsToken = (window.turnstile && tsId != null) ? window.turnstile.getResponse(tsId) : '';
+  if (tsId != null && !tsToken) {
+    btn.disabled = false;
+    btn.textContent = originalBtnText;
+    alert('Please check the "Verify you are human" box first.');
+    return;
+  }
 
   var payload = {
     email: email,
