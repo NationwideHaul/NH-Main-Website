@@ -58,9 +58,6 @@ function spamReason(body) {
   if (FOREIGN_SCRIPT_RE.test(all)) return 'foreign_script';
   if (SPAM_WORDS_RE.test(text)) return 'spam_keywords';
   if (names.some(n => n.split(/\s+/).some(looksRandom))) return 'random_name';
-  if (body.first_name && body.last_name &&
-      String(body.first_name).trim().toLowerCase() === String(body.last_name).trim().toLowerCase() &&
-      String(body.first_name).trim().length > 3) return 'same_first_last';
   return null;
 }
 
