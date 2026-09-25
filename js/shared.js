@@ -7,7 +7,7 @@
 (function(){
   document.querySelectorAll('img').forEach(function(img){
     img.decoding = 'async';
-    if (!img.closest('.site-logo') && !img.closest('.hero')) {
+    if (!img.closest('.site-logo') && !img.closest('.hero') && !img.closest('.rep-header') && !img.closest('.rep-hero')) {
       img.loading = 'lazy';
     }
   });
