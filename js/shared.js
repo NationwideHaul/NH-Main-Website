@@ -14,7 +14,9 @@
 })();
 
 // ── Mobile nav ──────────────────────────────────────────
-document.querySelector('.nav-toggle').addEventListener('click', function() {
+// (Guarded: the /team/ rep landing pages have a slim header with no nav.)
+var _navToggle = document.querySelector('.nav-toggle');
+if (_navToggle) _navToggle.addEventListener('click', function() {
   document.querySelector('.site-nav').classList.toggle('is-open');
 });
 

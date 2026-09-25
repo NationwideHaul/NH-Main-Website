@@ -12,6 +12,7 @@
 //                    for production use).
 
 import { insertRow } from './_lib/supabase.js';
+import { REPS } from './_lib/reps.js';
 import {
   validateEmail, verifyTurnstile, rateLimit, clientIp
 } from './_lib/newsletter-utils.js';
@@ -88,6 +89,12 @@ const ROUTES = {
   dot: {
     to: 'lakelandservice@nationwidehaul.com',
     subject: 'New DOT Inspection Request — Nationwide Haul Website'
+  },
+  // Sales rep landing pages (/team/<slug>/). To + subject are resolved per
+  // rep from api/_lib/reps.js below; this is the fallback for unknown slugs.
+  rep: {
+    to: 'marketing@nationwidehaul.com',
+    subject: 'New Sales Rep Landing Page Lead — Nationwide Haul Website'
   }
 };
 
@@ -112,7 +119,9 @@ const FIELD_LABELS = {
   number_of_units: 'Number of Units', operating_region: 'Operating Region',
   equipment_details: 'Equipment Details', make: 'Make', model: 'Model', year: 'Year',
   miles_hours: 'Miles / Hours', accessories: 'Accessories', sale_method: 'Sale Method',
-  vin: 'VIN', stock_number: 'Stock Number'
+  vin: 'VIN', stock_number: 'Stock Number',
+  rep: 'Sales Rep', preferred_contact: 'Preferred Contact',
+  utm_source: 'UTM Source', utm_medium: 'UTM Medium', utm_campaign: 'UTM Campaign', utm_content: 'UTM Content'
 };
 
 function escapeHtml(s) {
@@ -221,12 +230,25 @@ export default async function handler(req, res) {
 
   const from = process.env.RESEND_FROM || 'Nationwide Haul Website <onboarding@resend.dev>';
   const replyTo = body.email || undefined;
-  const html = renderEmail(formType, body, route.subject);
+
+  // Rep landing pages: the slug (never an address) comes from the browser;
+  // the rep's inbox is looked up here. No email on file → marketing@.
+  let subject = route.subject;
+  let repToAddr = null;
+  if (formType === 'rep') {
+    const rep = REPS[String(body.rep || '').trim()];
+    if (rep) {
+      body.rep = rep.name;
+      subject = `New Lead for ${rep.name} — Sales Landing Page`;
+      repToAddr = rep.email || null;
+    }
+  }
+  const html = renderEmail(formType, body, subject);
 
   // Primary recipient (To). For the contact form, the chosen topic routes
   // the lead directly to the owning team; every other form uses its own
   // route. marketing@ is always CC'd (below), never dropped.
-  let toAddr = route.to;
+  let toAddr = repToAddr || route.to;
   if (formType === 'contact') {
     const teamEmail = CONTACT_TOPIC_ROUTES[String(body.subject || '').trim()];
     if (teamEmail) toAddr = teamEmail;
@@ -255,7 +277,7 @@ export default async function handler(req, res) {
     email: body.email || null,
     phone: body.phone || null,
     organization: body.organization || null,
-    subject: body.subject || route.subject,
+    subject: body.subject || subject,
     message: body.message || body.notes || null,
     page_url: pageUrl,
     recipient: toAddr,
@@ -280,7 +302,7 @@ export default async function handler(req, res) {
         to: [toAddr],
         cc,
         reply_to: replyTo,
-        subject: route.subject,
+        subject,
         html
       })
     });

@@ -41,7 +41,7 @@ function buildLeadMailto(data, formType) {
 // "Verify you are human" checkbox above the submit button. shared.js loads the
 // Turnstile script on every page (for the footer newsletter), so we just
 // wait for window.turnstile to appear.
-var LEAD_FORM_IDS = ['contactForm', 'lrQuoteForm', 'municEquipForm', 'sellEquipForm', 'dotInspForm'];
+var LEAD_FORM_IDS = ['contactForm', 'lrQuoteForm', 'municEquipForm', 'sellEquipForm', 'dotInspForm', 'repLeadForm'];
 var _nhLeadTurnstile = {};
 
 (function initLeadForms() {
@@ -81,7 +81,7 @@ var _nhLeadTurnstile = {};
 // options — call us, or send a pre-filled email to marketing@.
 // (The old FormSubmit fallback was removed: its public token let bots skip
 // every spam check.)
-function submitFormAjax(formId, successId, errorId, btnSelector, btnLabel, formType) {
+function submitFormAjax(formId, successId, errorId, btnSelector, btnLabel, formType, onSuccess) {
   var form = document.getElementById(formId);
   var success = document.getElementById(successId);
   var error = document.getElementById(errorId);
@@ -111,6 +111,7 @@ function submitFormAjax(formId, successId, errorId, btnSelector, btnLabel, formT
   function showSuccess() {
     form.style.display = 'none';
     success.style.display = 'block';
+    if (onSuccess) onSuccess();
     var modal = form.closest('.modal, [data-modal]');
     if (modal) setTimeout(function() { modal.style.display = 'none'; }, 3000);
   }
@@ -195,4 +196,17 @@ function sellEquipSubmit(e) {
 function dotInspSubmit(e) {
   e.preventDefault();
   submitFormAjax('dotInspForm', 'dotInspSuccess', 'dotInspError', 'button[type="submit"]', 'Get Started →', 'dot');
+}
+
+// ── Sales Rep Landing Page Form (/team/<slug>/) ─────────
+// The hidden `rep` field carries the slug; api/notify.js maps it to the
+// rep's inbox server-side.
+function repLeadSubmit(e) {
+  e.preventDefault();
+  var form = document.getElementById('repLeadForm');
+  var btnLabel = form.querySelector('.rep-form__submit').textContent;
+  submitFormAjax('repLeadForm', 'repLeadSuccess', 'repLeadError', '.rep-form__submit', btnLabel, 'rep', function() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'generate_lead', form_type: 'rep', rep: form.elements.rep.value });
+  });
 }

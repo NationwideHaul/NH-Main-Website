@@ -9,3 +9,6 @@
 .git
 node_modules
 .optimization-backups/
+
+# Rep landing page generator (template + script) — not served
+/scripts/
