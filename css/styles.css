@@ -721,7 +721,7 @@
     /* FINANCING BANNER */
     .financing-banner { background:#fff; padding:40px 0; }
     .financing-banner__inner { border-radius:18px; display:flex; align-items:stretch; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); min-height:220px; position:relative; }
-    .financing-banner__bg { position:absolute; inset:0; background:url('files/financing-banner-bg.jpg') center 38%/cover no-repeat; }
+    .financing-banner__bg { position:absolute; inset:0; background:url('/files/financing-banner-bg.jpg') center 38%/cover no-repeat; }
     .financing-banner__bg::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.45) 100%); }
     .financing-banner__content { flex:1; padding:44px 48px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2; }
     .financing-banner__badge { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,0.1); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; padding:7px 14px; border-radius:20px; margin-bottom:16px; width:fit-content; }
