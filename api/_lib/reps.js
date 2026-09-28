@@ -68,7 +68,6 @@ export const REPS = {
     email: 'ray@nationwidehaul.com',
     phone: '7543244610',
     sms: false,
-    photoPos: '30% 20%',
     headline: 'Your direct line to the right equipment.',
     bio: "I work one-on-one with owner-operators and fleets to find the right equipment at the right price — then make financing, insurance and delivery simple. Tell me what you need and I'll get you real options, fast."
   }
