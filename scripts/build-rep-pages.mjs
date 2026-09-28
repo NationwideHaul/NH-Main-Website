@@ -60,5 +60,5 @@ for (const [slug, rep] of Object.entries(REPS)) {
   const outDir = path.join(root, 'team', slug);
   await mkdir(outDir, { recursive: true });
   await writeFile(path.join(outDir, 'index.html'), html);
-  console.log(`✓ /team/${slug}/${rep.email ? '' : '   (no email set → leads go to marketing@)'}`);
+  console.log(`✓ /team/${slug}/${rep.email ? '' : '   (no email set → leads go to operations@)'}`);
 }

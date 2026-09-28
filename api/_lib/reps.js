@@ -5,14 +5,15 @@
 //   • the static pages  — `node scripts/build-rep-pages.mjs` regenerates
 //     team/<slug>/index.html from scripts/rep-template.html
 //   • lead routing      — api/notify.js looks the rep up by slug so the
-//     lead is emailed to that rep (marketing@ is always CC'd).
+//     lead is emailed to that rep (operations@ is always CC'd — NOT
+//     marketing@, whose inbox the CRM auto-ingests).
 //
 // The recipient email is resolved SERVER-SIDE from the slug; the browser
 // only ever sends the slug, so the form can't be used as an open relay.
 //
 // To add a rep: add an entry, drop a photo in team/photos/<slug>.jpg,
 // run the build script, commit.
-//   email  — where their leads go. Leave '' to route to marketing@ only.
+//   email  — where their leads go. Leave '' to route to operations@ only.
 //   phone  — their direct line / cell (digits only). '' = main line.
 //   sms    — true if `phone` can receive texts (shows a "Text me" button).
 //   photoPos — optional CSS object-position for off-center photos.

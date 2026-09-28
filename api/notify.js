@@ -92,13 +92,16 @@ const ROUTES = {
   },
   // Sales rep landing pages (/team/<slug>/). To + subject are resolved per
   // rep from api/_lib/reps.js below; this is the fallback for unknown slugs.
+  // Rep leads never touch marketing@: the CRM auto-ingests that mailbox, and
+  // reps add their landing-page leads to the CRM themselves.
   rep: {
-    to: 'marketing@nationwidehaul.com',
+    to: 'operations@nationwidehaul.com',
     subject: 'New Sales Rep Landing Page Lead — Nationwide Haul Website'
   }
 };
 
-const CC_ALL = 'marketing@nationwidehaul.com'; // CC marketing on EVERY form
+const CC_ALL = 'marketing@nationwidehaul.com'; // CC marketing on every form…
+const CC_REP = 'operations@nationwidehaul.com'; // …except rep landing pages (see ROUTES.rep)
 
 // Contact form only: the selected topic (the `subject` field) decides the
 // PRIMARY recipient (To). marketing@ then rides along as CC. Topics not
@@ -256,7 +259,8 @@ export default async function handler(req, res) {
 
   // CC is decided server-side ONLY. (Accepting a `_cc` from the browser
   // let anyone make our verified domain email arbitrary addresses.)
-  const cc = toAddr.toLowerCase() !== CC_ALL.toLowerCase() ? [CC_ALL] : undefined;
+  const ccAddr = formType === 'rep' ? CC_REP : CC_ALL;
+  const cc = toAddr.toLowerCase() !== ccAddr.toLowerCase() ? [ccAddr] : undefined;
 
   // ── Layer 7: Content heuristics — save as spam, don't email. ──
   const spam = spamReason(body);
