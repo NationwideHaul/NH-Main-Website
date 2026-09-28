@@ -120,7 +120,7 @@ const FIELD_LABELS = {
   equipment_details: 'Equipment Details', make: 'Make', model: 'Model', year: 'Year',
   miles_hours: 'Miles / Hours', accessories: 'Accessories', sale_method: 'Sale Method',
   vin: 'VIN', stock_number: 'Stock Number',
-  rep: 'Sales Rep', assigned_rep_email: 'Assigned Rep Email', preferred_contact: 'Preferred Contact',
+  rep: 'Sales Rep', preferred_contact: 'Preferred Contact',
   utm_source: 'UTM Source', utm_medium: 'UTM Medium', utm_campaign: 'UTM Campaign', utm_content: 'UTM Content'
 };
 
@@ -239,9 +239,6 @@ export default async function handler(req, res) {
     const rep = REPS[String(body.rep || '').trim()];
     if (rep) {
       body.rep = rep.name;
-      // Machine-read by the CRM's email-lead cron (CRM-NH src/lib/rep-landing.ts)
-      // so the lead is assigned to this rep instead of the round-robin.
-      if (rep.email) body.assigned_rep_email = rep.email;
       subject = `New Lead for ${rep.name} — Sales Landing Page`;
       repToAddr = rep.email || null;
     }
