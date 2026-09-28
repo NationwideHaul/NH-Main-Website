@@ -44,10 +44,8 @@
       'FN:' + rep.name,
       'ORG:Nationwide Haul',
       'TITLE:' + rep.title,
-      'TEL;TYPE=WORK,VOICE:+1' + rep.phone,
+      'TEL;TYPE=CELL,VOICE:+1' + rep.phone,
       rep.email ? 'EMAIL;TYPE=WORK:' + rep.email : '',
-      'URL:' + location.origin + location.pathname,
-      'ADR;TYPE=WORK:;;5021 Frontage Road N.;Lakeland;FL;33810;USA',
       'END:VCARD'
     ].filter(Boolean);
     var blob = new Blob([lines.join('\r\n')], { type: 'text/vcard' });

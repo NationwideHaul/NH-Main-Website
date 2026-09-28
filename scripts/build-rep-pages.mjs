@@ -39,7 +39,7 @@ for (const [slug, rep] of Object.entries(REPS)) {
     EMAIL: esc(rep.email || ''),
     PHONE_TEL: phone,
     PHONE_DISPLAY: fmtPhone(phone),
-    SPECIALTIES: rep.specialties.map((s) => `<li>${esc(s)}</li>`).join('\n          '),
+    PHOTO_POS: esc(rep.photoPos || 'center 22%'),
     SMS_BUTTON: sms
       ? `<a href="sms:${phone}" class="rep-btn rep-btn--dark" data-rep-cta="hero_text">${SMS_ICON} Text ${first}</a>`
       : '',

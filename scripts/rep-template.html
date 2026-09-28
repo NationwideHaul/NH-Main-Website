@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css?v=3">
-  <link rel="stylesheet" href="/css/rep.css?v=1">
+  <link rel="stylesheet" href="/css/rep.css?v=2">
 </head>
 <body class="rep-page" data-rep="{{SLUG}}" data-rep-name="{{NAME}}" data-rep-title="{{TITLE}}" data-rep-phone="{{PHONE_TEL}}" data-rep-email="{{EMAIL}}">
   <!-- Google Tag Manager (noscript) -->
@@ -61,7 +61,7 @@
   <div class="container rep-hero__inner">
     <div class="rep-hero__intro">
       <div class="rep-hero__card">
-        <img class="rep-hero__photo" src="team/photos/{{SLUG}}.jpg" alt="{{NAME}}, {{TITLE}} at Nationwide Haul" width="800" height="800" fetchpriority="high">
+        <img class="rep-hero__photo" src="team/photos/{{SLUG}}.jpg" alt="{{NAME}}, {{TITLE}} at Nationwide Haul" width="800" height="800" fetchpriority="high" style="object-position:{{PHOTO_POS}}">
         <div class="rep-hero__badge">
           <span class="rep-hero__badge-dot"></span> Available to help today
         </div>
@@ -81,9 +81,6 @@
             Save My Contact
           </button>
         </div>
-        <ul class="rep-hero__tags" aria-label="{{FIRST}}'s specialties">
-          {{SPECIALTIES}}
-        </ul>
       </div>
     </div>
 
@@ -163,6 +160,35 @@
   </div>
 </section>
 
+<!-- AUTHORIZED DEALER - LOGO CAROUSEL -->
+<section class="authorized-dealer">
+  <div class="container">
+    <h2>Authorized Dealer Of:</h2>
+  </div>
+  <div class="logo-carousel-wrapper">
+    <div class="logo-carousel-track" id="logoTrack">
+      <!-- Set 1 -->
+      <a href="/manufacturers/clear-mac/" style="flex-shrink:0;"><img src="Logos showcase/Clear MAc Logo (2).png" alt="Clear MAC" loading="lazy"></a>
+      <a href="/manufacturers/dorsey/" style="flex-shrink:0;"><img src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey" loading="lazy"></a>
+      <a href="/manufacturers/pitts/" style="flex-shrink:0;"><img src="Logos showcase/Pitts Logo (1).png" alt="Pitts" loading="lazy"></a>
+      <a href="/manufacturers/vanguard/" style="flex-shrink:0;"><img src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard" loading="lazy"></a>
+      <a href="/manufacturers/xl-specialized/" style="flex-shrink:0;"><img src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized" loading="lazy"></a>
+      <a href="/manufacturers/autocar/" style="flex-shrink:0;"><img src="Logos showcase/autocar-logo-2025.webp" alt="Autocar" loading="lazy"></a>
+      <a href="/manufacturers/cie/" style="flex-shrink:0;"><img src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing" loading="lazy"></a>
+      <a href="/manufacturers/wade/" style="flex-shrink:0;"><img src="Logos showcase/download.png" alt="WADE Services" loading="lazy"></a>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <a href="/manufacturers/clear-mac/" style="flex-shrink:0;"><img src="Logos showcase/Clear MAc Logo (2).png" alt="Clear MAC" loading="lazy"></a>
+      <a href="/manufacturers/dorsey/" style="flex-shrink:0;"><img src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey" loading="lazy"></a>
+      <a href="/manufacturers/pitts/" style="flex-shrink:0;"><img src="Logos showcase/Pitts Logo (1).png" alt="Pitts" loading="lazy"></a>
+      <a href="/manufacturers/vanguard/" style="flex-shrink:0;"><img src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard" loading="lazy"></a>
+      <a href="/manufacturers/xl-specialized/" style="flex-shrink:0;"><img src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized" loading="lazy"></a>
+      <a href="/manufacturers/autocar/" style="flex-shrink:0;"><img src="Logos showcase/autocar-logo-2025.webp" alt="Autocar" loading="lazy"></a>
+      <a href="/manufacturers/cie/" style="flex-shrink:0;"><img src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing" loading="lazy"></a>
+      <a href="/manufacturers/wade/" style="flex-shrink:0;"><img src="Logos showcase/download.png" alt="WADE Services" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
 <!-- TRUST STRIP -->
 <section class="rep-trust" aria-label="Why Nationwide Haul">
   <div class="container rep-trust__grid">
@@ -224,45 +250,74 @@
   </div>
 </section>
 
-<!-- BRANDS -->
-<section class="rep-brands">
-  <div class="container">
-    <p class="rep-brands__label">Authorized dealer of</p>
-    <div class="rep-brands__row">
-      <img src="Logos showcase/Clear MAc Logo (2).png" alt="Clear MAC" loading="lazy">
-      <img src="Logos showcase/Vanguard Corp Logo (1).png" alt="Vanguard" loading="lazy">
-      <img src="Logos showcase/DORSEY LOGO-01.png" alt="Dorsey" loading="lazy">
-      <img src="Logos showcase/Pitts Logo (1).png" alt="Pitts" loading="lazy">
-      <img src="Logos showcase/XL Specialized Logo (1).png" alt="XL Specialized" loading="lazy">
-      <img src="Logos showcase/autocar-logo-2025.webp" alt="Autocar" loading="lazy">
-      <img src="Logos showcase/cie-manufacturing-logo.webp" alt="CIE Manufacturing" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
+<!-- REVIEWS — live from Google (js/sections.js); static cards are the fallback -->
 <section class="rep-reviews">
   <div class="container">
     <div class="rep-section-head">
-      <p class="rep-eyebrow">5-star rated on Google</p>
+      <p class="rep-eyebrow">Google reviews</p>
       <h2>What our customers say</h2>
+      <p data-google-summary>5-star rated on Google by fleets and owner-operators.</p>
     </div>
-    <div class="rep-reviews__grid">
-      <figure class="rep-review">
-        <div class="rep-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>Purchased 3 used Mac Trailers for my business from Nationwide Haul. Highly satisfied with the transaction.</blockquote>
-        <figcaption>Jesus Martinez</figcaption>
-      </figure>
-      <figure class="rep-review">
-        <div class="rep-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>I was having a hard time finding a drop deck trailer for my business until I went to Nationwide Haul… I couldn't have asked for a better experience.</blockquote>
-        <figcaption>Nick Harrison</figcaption>
-      </figure>
-      <figure class="rep-review">
-        <div class="rep-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>I just bought a trailer from Nationwide Haul. The service I received was one of the best I can ask for… highly recommend.</blockquote>
-        <figcaption>Aurel Farcas</figcaption>
-      </figure>
+    <div class="reviews-grid" data-google-reviews>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__avatar" style="background:#EA4335;">J</div>
+          <div><div class="review-card__name">Jesus Martinez</div><div class="review-card__date">Google</div></div>
+        </div>
+        <div class="review-card__stars">★★★★★</div>
+        <p class="review-card__text">Purchased 3 used Mac Trailers for my business from Nationwide Haul. Highly satisfied with the transaction…</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__avatar" style="background:#4285F4;">N</div>
+          <div><div class="review-card__name">Nick Harrison</div><div class="review-card__date">Google</div></div>
+        </div>
+        <div class="review-card__stars">★★★★★</div>
+        <p class="review-card__text">I was having a hard time finding a drop deck trailer for my business until I went to Nationwide Haul… I couldn't have asked for a better experience.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__avatar" style="background:#34A853;">J</div>
+          <div><div class="review-card__name">Jose Villalta</div><div class="review-card__date">Google</div></div>
+        </div>
+        <div class="review-card__stars">★★★★★</div>
+        <p class="review-card__text">…Thank you for the smooth transaction. Everything went well and I appreciate your quick response and professionalism.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__avatar" style="background:#FBBC05;">A</div>
+          <div><div class="review-card__name">Aurel Farcas</div><div class="review-card__date">Google</div></div>
+        </div>
+        <div class="review-card__stars">★★★★★</div>
+        <p class="review-card__text">I just bought a trailer from Nationwide Haul the service I did receive was one of the best I can ask for… highly recommend 10 ★</p>
+      </div>
+    </div>
+    <div class="google-review-links" data-google-links hidden></div>
+  </div>
+</section>
+
+<!-- YOUTUBE SECTION -->
+<section class="youtube-section">
+  <div class="container">
+    <div class="youtube-section__channel">
+      <div class="youtube-section__channel-left">
+        <img id="ytChannelAvatar" src="files/nh-yt-avatar.jpg" alt="Nationwide Haul YouTube" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);" loading="lazy">
+        <div class="yt-channel-info">
+          <h3>Nationwide Haul</h3>
+          <span id="ytChannelStats">Latest Videos</span>
+        </div>
+      </div>
+      <a href="https://www.youtube.com/@NationwideHaul?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-yt-subscribe">Subscribe</a>
+    </div>
+    <div class="yt-carousel" id="ytCarousel">
+      <div class="yt-carousel__track" id="ytTrack">
+      </div>
+      <button class="yt-carousel__nav yt-carousel__nav--prev" id="ytPrev" aria-label="Previous videos" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="yt-carousel__nav yt-carousel__nav--next" id="ytNext" aria-label="Next videos" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -270,7 +325,7 @@
 <!-- FINAL CTA -->
 <section class="rep-final">
   <div class="container rep-final__inner">
-    <img class="rep-final__photo" src="team/photos/{{SLUG}}.jpg" alt="" width="96" height="96" loading="lazy">
+    <img class="rep-final__photo" src="team/photos/{{SLUG}}.jpg" alt="" width="96" height="96" loading="lazy" style="object-position:{{PHOTO_POS}}">
     <div>
       <h2>Ready when you are.</h2>
       <p>Browse what's on the lot, or tell me what you need and I'll find it.</p>
@@ -369,7 +424,8 @@
 
   <script src="/js/shared.js"></script>
   <script src="/js/forms.js"></script>
-  <script src="/js/rep.js?v=1"></script>
+  <script src="/js/sections.js?v=1"></script>
+  <script src="/js/rep.js?v=2"></script>
 
 </body>
 </html>

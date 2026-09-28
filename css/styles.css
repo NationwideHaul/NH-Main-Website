@@ -1356,3 +1356,10 @@
     .tt-cta-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
     .tt-cta-links a { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-decoration: underline; }
     .tt-cta-links a:hover { color: #fff; }
+
+    /* Live Google reviews (js/sections.js) */
+    .google-review-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; }
+    .google-review-links[hidden] { display: none; }
+    .google-review-links a { font-size: 14px; font-weight: 700; color: var(--red); text-decoration: none; }
+    .google-review-links a:hover { text-decoration: underline; }
+    img.review-card__avatar { display: block; }
