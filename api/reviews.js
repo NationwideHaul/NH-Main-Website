@@ -12,7 +12,9 @@
 // most. If the key is missing or Google errors, the page keeps the static
 // reviews already in its HTML.
 
-const PLACE_QUERY = 'Nationwide Haul Dealership, 5021 Frontage Road N, Lakeland, FL 33810';
+// The sales dealership listing — NOT the separate "Truck & Trailer Repair"
+// profile, which a plain name search tends to return first.
+const PLACE_QUERY = 'Nationwide Haul Dealership Lakeland FL';
 const FIELDS = 'id,displayName,rating,userRatingCount,googleMapsUri,reviews';
 
 let cachedPlaceId = null;
@@ -25,13 +27,17 @@ async function findPlaceId(key) {
     headers: {
       'Content-Type': 'application/json',
       'X-Goog-Api-Key': key,
-      'X-Goog-FieldMask': 'places.id'
+      'X-Goog-FieldMask': 'places.id,places.displayName'
     },
-    body: JSON.stringify({ textQuery: PLACE_QUERY, maxResultCount: 1 })
+    body: JSON.stringify({ textQuery: PLACE_QUERY, maxResultCount: 10 })
   });
   if (!r.ok) throw new Error('searchText ' + r.status + ' ' + (await r.text()).slice(0, 300));
   const data = await r.json();
-  cachedPlaceId = data.places && data.places[0] && data.places[0].id;
+  const places = data.places || [];
+  const name = (pl) => ((pl.displayName && pl.displayName.text) || '').toLowerCase();
+  const pick = places.find(pl => name(pl).includes('dealership'))
+    || places.find(pl => name(pl).includes('nationwide haul') && !/repair|rv|bus/.test(name(pl)));
+  cachedPlaceId = pick && pick.id;
   if (!cachedPlaceId) throw new Error('place not found');
   return cachedPlaceId;
 }
