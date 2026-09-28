@@ -46,7 +46,7 @@ export const REPS = {
     name: 'Pablo Rodriguez',
     first: 'Pablo',
     title: 'Sales Representative',
-    email: '',
+    email: 'pablo@nationwidehaul.com',
     phone: '',
     sms: false,
     headline: 'Your direct line to the right equipment.',
