@@ -139,7 +139,7 @@ ${table('Factores de aprobación', ['Factor', 'Por qué importa', 'Cómo mejorar
   <p>También se aprueban negocios nuevos: NEF NOW tiene programas para startups, normalmente con más enganche. Muchos prestamistas <strong>no cobran penalidad por pago anticipado</strong>, así que puede refinanciar cuando mejore su crédito.</p>
   <h2>Alternativa: Rentar Primero</h2>
   <p>Si todavía no califica, la <a href="/lease/">renta</a> (mínimo 6 meses) tiene requisitos de crédito menos estrictos y le ayuda a construir historial.</p>
-  <p><a href="https://www.nefnow.com/app/?co=1001" target="_blank" rel="noopener"><strong>Precalifíquese con NEF NOW &rarr;</strong></a> &middot; <a href="${R('semi-trailer-financing-bad-credit')}">English version</a> &middot; Llame al <a href="tel:8775597039">(877) 559-7039</a></p>`, true),
+  <p><a href="https://www.nefnow.com/app/?co=1001" target="_blank" rel="noopener"><strong>Precalifíquese con NEF NOW &rarr;</strong></a> &middot; <a href="${R('semi-trailer-financing-bad-credit')}">English version</a> &middot; Asesores que hablan español: <a href="tel:8775597039">(877) 559-7039</a></p>`, true),
     faq: [
       ['¿Cuál es el puntaje mínimo para financiar un trailer?', 'Con NEF NOW se aprueban puntajes desde 500. Con crédito más bajo normalmente se pide más enganche, entre 20% y 40%.'],
       ['¿La precalificación afecta mi crédito?', 'No. Es una consulta suave que no afecta su puntaje y toma minutos.'],
@@ -182,7 +182,7 @@ ${table('Checklist trailer usado', ['Área', 'Qué revisar'], [
   <p><strong>Garantías</strong> para equipo usado, incluida garantía para unidades de reefer.</p>
   <p><strong>Leasing y renta:</strong> leasing de 12 a 72 meses o renta desde 6 meses.</p>
   <p><strong>Entrega a todo EE.UU.</strong> &mdash; no necesita vivir en Florida para comprar.</p>
-  <p>Llame al <a href="tel:8775597039">(877) 559-7039</a>, lunes a viernes de 8am a 5pm.</p>`, true),
+  <p><strong>Atención en español:</strong> contamos con asesores que hablan español. Llame al <a href="tel:8775597039">(877) 559-7039</a>, lunes a viernes de 8am a 5pm.</p>`, true),
     faq: [
       ['¿Dónde puedo comprar un trailer de carga usado en Florida?', 'En Nationwide Haul, con sucursales en Lakeland (5021 Frontage Road N.) y Pompano Beach (2221 NW 22nd St), además de Macon, Georgia. Teléfono (877) 559-7039.'],
       ['¿Qué tipos de trailers venden?', 'Dry vans de 48 y 53 pies, reefers, plataformas (flatbeds), dump trailers y lowboys, nuevos y usados.'],

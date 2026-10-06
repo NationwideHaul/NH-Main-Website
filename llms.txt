@@ -33,6 +33,7 @@ Key facts:
 - [Municipal & government fleets](https://www.nationwidehaul.com/perks/municipality/)
 
 ## Guides
+- [Semi-trailer prices — real asking prices from our inventory, updated weekly](https://www.nationwidehaul.com/resources/semi-trailer-prices/) · raw data: [inventory-prices.json](https://www.nationwidehaul.com/data/inventory-prices.json)
 - [Semi-trailer financing with bad credit](https://www.nationwidehaul.com/resources/semi-trailer-financing-bad-credit/)
 - [Lease vs. buy a semi-trailer](https://www.nationwidehaul.com/resources/lease-vs-buy-semi-trailer/)
 - [Dry van vs. reefer trailer](https://www.nationwidehaul.com/resources/dry-van-vs-reefer-trailer/)
@@ -42,6 +43,7 @@ Key facts:
 - [Dump trailer buying guide: body types & specs](https://www.nationwidehaul.com/resources/dump-trailer-buying-guide/)
 
 ## En español
+- [Precios de trailers (datos reales, cada semana)](https://www.nationwidehaul.com/resources/es/precios-de-trailers/)
 - [Financiamiento de trailer con mal crédito](https://www.nationwidehaul.com/resources/es/financiamiento-trailer-mal-credito/)
 - [Dónde comprar un trailer usado en Florida](https://www.nationwidehaul.com/resources/es/comprar-trailer-usado-florida/)
 

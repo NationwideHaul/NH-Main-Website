@@ -4,6 +4,7 @@
 // Profile exactly. If a GBP changes, change it here and in index.html's JSON-LD.
 
 import wave2 from './content-pages-wave2.mjs';
+import prices from './content-pages-prices.mjs';
 
 export const SITE = 'https://www.nationwidehaul.com';
 export const OG_IMAGE = `${SITE}/files/og/nationwide-haul-og.jpg`;
@@ -79,7 +80,7 @@ ${ps.map((p) => `  <p>${p}</p>`).join('\n')}
 `;
 const table = (label, head, rows) => `  <div style="overflow-x:auto;margin:24px 0;">
   <table class="lr-compare-table" aria-label="${label}">
-    <thead><tr>${head.map((h) => `<th>${h}</th>`).join('')}</tr></thead>
+    <thead><tr>${head.map((h, i) => i > 2 ? `<th style="background:#111111;color:#fff;text-align:center;">${h}</th>` : `<th>${h}</th>`).join('')}</tr></thead>
     <tbody>
 ${rows.map((r) => `      <tr>${r.map((c, i) => i === 0 ? `<td><strong>${c}</strong></td>` : `<td style="text-align:center;">${c}</td>`).join('')}</tr>`).join('\n')}
     </tbody>
@@ -305,6 +306,7 @@ ${table('Used trailer inspection checklist', ['Area', 'What to look for'], [
 });
 
 articles.push(...wave2({ R, intro, section, table, articleLd }));
+articles.push(...prices({ R, intro, section, table, articleLd, SITE }));
 
 const resourcesHub = {
   path: '/resources/',
