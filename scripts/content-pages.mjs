@@ -3,6 +3,8 @@
 // Location NAP (name/address/phone/hours) must match each Google Business
 // Profile exactly. If a GBP changes, change it here and in index.html's JSON-LD.
 
+import wave2 from './content-pages-wave2.mjs';
+
 export const SITE = 'https://www.nationwidehaul.com';
 export const OG_IMAGE = `${SITE}/files/og/nationwide-haul-og.jpg`;
 const ORG_ID = `${SITE}/#organization`;
@@ -302,6 +304,8 @@ ${table('Used trailer inspection checklist', ['Area', 'What to look for'], [
   schema: [articleLd(R('used-semi-trailer-inspection-checklist'), 'Used Semi-Trailer Inspection Checklist', 'What to check before buying a used semi-trailer.')]
 });
 
+articles.push(...wave2({ R, intro, section, table, articleLd }));
+
 const resourcesHub = {
   path: '/resources/',
   crumbs: [{ name: 'Resources', path: '/resources/' }],
@@ -324,7 +328,10 @@ ${articles.map((a) => `    <a href="${a.path}" class="mfr-card">
   <p><a href="/trailers/dry-vans/">Dry vans</a> &middot; <a href="/trailers/reefer-trailers/">Reefer trailers</a> &middot; <a href="/trailers/flatbed-trailers/">Flatbed trailers</a> &middot; <a href="/trailers/dump-trailers/">Dump trailers</a> &middot; <a href="/trailers/lowboy-trailers/">Lowboy trailers</a></p>`, true)
 };
 
+const enFin = articles.find((a) => a.path === R('semi-trailer-financing-bad-credit'));
+enFin.alternates = [{ lang: 'en', path: enFin.path }, { lang: 'es', path: R('es/financiamiento-trailer-mal-credito') }];
+
 for (const a of articles) a.updated ??= 'October 2026';
-for (const a of articles) a.crumbs = [{ name: 'Resources', path: '/resources/' }, { name: a.h1, path: a.path }];
+for (const a of articles) a.crumbs = [{ name: a.crumbsName || 'Resources', path: '/resources/' }, { name: a.h1, path: a.path }];
 
 export const PAGES = [locationsHub, ...locationPages, resourcesHub, ...articles];
