@@ -27,19 +27,17 @@ export const LOCATIONS = [
     slug: 'pompano-beach',
     city: 'Pompano Beach', state: 'FL', stateName: 'Florida',
     street: '2221 NW 22nd St', zip: '33069',
-    phone: '+1-954-727-3382', phoneDisplay: '(954) 727-3382',
-    blurb: 'Serving South Florida, Broward, Palm Beach and the Miami metro, with a full service shop for trucks, trailers, RVs and buses.',
+    phone: '+1-877-559-7039', phoneDisplay: '(877) 559-7039',
+    blurb: 'Serving South Florida, Broward, Palm Beach and the Miami metro with new and used trailers, financing and leasing.',
     region: 'South Florida, Broward, Palm Beach and Miami-Dade',
-    service: 'https://nhtrucktrailerrepair.com/'
   },
   {
     slug: 'macon',
     city: 'Macon', state: 'GA', stateName: 'Georgia',
     street: '137 Debbie Ct', zip: '31206',
-    phone: '+1-478-308-7077', phoneDisplay: '(478) 308-7077',
+    phone: '+1-877-559-7039', phoneDisplay: '(877) 559-7039',
     blurb: 'Central Georgia coverage at the I-75 / I-16 crossroads, supporting regional and long-haul fleets across Georgia and the Southeast.',
     region: 'Central Georgia, Atlanta, Savannah and the Southeast',
-    service: 'https://nhtrucktrailerrepair.com/'
   }
 ];
 
@@ -125,7 +123,9 @@ ${grid([
   ['Trucks', 'Semi-trucks plus Autocar yard trucks and severe-duty vocational trucks. <a href="/manufacturers/autocar/">Autocar lineup</a>.'],
   ['Financing', 'In-house financing through NEF NOW with 40+ lenders; credit scores as low as 500 and startup programs. <a href="/financing/">Financing details</a>.'],
   ['Leasing &amp; Rental', 'Leases from 12&ndash;72 months and rentals from a 6-month minimum; every unit DOT-inspected. <a href="/lease/">Lease &amp; rental</a>.'],
-  ['Service &amp; DOT Inspections', `Truck and trailer repair, plus free DOT inspections for life on equipment bought from us. <a href="/perks/dot-inspections/">DOT perk</a> &middot; <a href="${l.service}">Service shop</a>.`],
+  l.service
+    ? ['Service &amp; DOT Inspections', `Truck and trailer repair, plus free DOT inspections for life on equipment bought from us. <a href="/perks/dot-inspections/">DOT perk</a> &middot; <a href="${l.service}">Service shop</a>.`]
+    : ['Free DOT Inspections', 'Free DOT inspections for life on equipment bought from Nationwide Haul, performed at our Lakeland service shop. <a href="/perks/dot-inspections/">DOT perk</a>.'],
   ['Sell or Trade', 'Sell, consign or auction your trucks and trailers. <a href="/perks/sell-your-equipment/">Sell your equipment</a>.']
 ])}
 </div></section>
