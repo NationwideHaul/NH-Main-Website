@@ -324,6 +324,7 @@ ${articles.map((a) => `    <a href="${a.path}" class="mfr-card">
   <p><a href="/trailers/dry-vans/">Dry vans</a> &middot; <a href="/trailers/reefer-trailers/">Reefer trailers</a> &middot; <a href="/trailers/flatbed-trailers/">Flatbed trailers</a> &middot; <a href="/trailers/dump-trailers/">Dump trailers</a> &middot; <a href="/trailers/lowboy-trailers/">Lowboy trailers</a></p>`, true)
 };
 
+for (const a of articles) a.updated ??= 'October 2026';
 for (const a of articles) a.crumbs = [{ name: 'Resources', path: '/resources/' }, { name: a.h1, path: a.path }];
 
 export const PAGES = [locationsHub, ...locationPages, resourcesHub, ...articles];

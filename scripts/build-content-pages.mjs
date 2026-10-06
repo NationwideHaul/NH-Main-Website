@@ -79,7 +79,8 @@ ${page.faq.map(([q, a]) => `  <h3>${esc(q)}</h3>\n  <p>${a}</p>`).join('\n')}
 <!-- HERO -->
 <section class="oem-hero"><div class="container">
   <h1>${esc(page.h1)}</h1>
-  <p>${page.lede}</p>
+  <p>${page.lede}</p>${page.updated ? `
+  <p style="font-size:13px;opacity:.75;margin-top:12px;">Updated ${page.updated} &middot; By the Nationwide Haul sales &amp; finance team</p>` : ''}
 </div></section>
 ${page.body}${faqHtml}
 <!-- CTA -->
